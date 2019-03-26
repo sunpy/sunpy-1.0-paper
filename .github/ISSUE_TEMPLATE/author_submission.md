@@ -8,7 +8,7 @@ We welcome anyone who has made a meaningful contribution to the SunPy community
 to be a coauthor on this paper. If you feel that you have made a meaningful
 contribution and would like to be a coauthor, please submit an issue with the
 following details.
---!>
+!-->
 
 ## Details
 
@@ -26,7 +26,7 @@ following details.
 <!--
 Please provide a short description of your contribution to the community. This
 information will be collated for all coauthors.
---!>
+!-->
 
 
 
