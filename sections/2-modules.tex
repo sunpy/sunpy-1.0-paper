@@ -1,0 +1,42 @@
+\section{Data Types - laura}
+The \sunpypkg provides core data types that are designed to provide a standardized interface to data structures across data types (images, lightcurves, spectra) as well as data sources. These core data types currently provided by \sunpypkg are \Map and \Timeseries classes which support 2D image data and 1D temporal data, respectively. They offer a consistent interface to the user allowing a simpler work-flow in the analysis and manipulation of observations. These objects provide visualization and basic manipulation routines with a consistent API. For example, metadata is provided by the \code{.meta} property, the data is stored in \code{.data}. They also handle all of the manipulation necessary to read data in from mission-specific files.
+
+This section provides an over of the \Map and \Timeseries objects. 
+
+\subsection{Map - data with two spatial dimensions}
+The \Map class provides the functionality to store 2D data associated with a coordinate system and relevant meta data, such as images of the Sun. A \Map object is created using the \Map\ factory which will produce a \GenericMap object or a subclass of \GenericMap which deals with instrument specific data. 
+
+
+
+
+
+
+Images from the following instruments are explicitly supported in \sunpypkg. Explicit support means that a \Map\ source file exists for each image source.  The source file provides a compatibility layer between the source science data and the \Map\ object.  This conveniently allows the definition of source-specific parameters, such as color tables. SunPy typically uses the color tables as provided by the instrument team, with appropriate image scaling to account for the dynamic range of the image.
+\begin{itemize}
+    \item SDO: AIA, HMI line-of-sight magnetograms
+    \item SOHO: EIT, MDI
+    \item STEREO: EUVI, COR1 and COR2 data from both STEREO-A and STEREO-B
+    \item Hinode: XRT
+    \item IRIS: Slit jaw imager (SJI) data
+    \item KCor: all polarized brightness data.
+    \item PROBA2: SWAP
+    \item RHESSI: single reconstructed images
+    \item TRACE: All single-image FITS files.
+    \item Yohkoh: SXT
+\end{itemize}
+Helioviewer JPEG2000 image files of the above data sources are also supported by the \Map\ class.
+
+\subsection{TimeSeries}
+Time-series data is a of the fundamental observational data types. The \Timeseries class is designed to handle time-series data through a robust and consistent interface. The inherent structure of a \Timeseries object consists of times and measurements while the underlying structure used to store the data is a \code{pandas.DataFrame}. It supports time-series data from a wide range of solar instruments. 
+
+The \GenericTimeSeries class is the base class of \Timeseries, which is created through the \Timeseries factory. A number of instruments are supported through subclassing which have instrument-specific methods for reading source files. Custom \Timeseries can also be made from input data in the form of a \code{pandas.DataFrame}, an \code{astropy.table.Table} or a \numpy array. 
+
+\Timeseries currently supports data sources from the following instruments: the Geostationary Operational Environmental Satellite (\textit{GOES}) X-ray Sensor (XRS), \textit{SDO} EUV Variability Experiment (EVE) \citep{woods2010extreme}, \textit{PROBA2} Large Yield Radiometer (LYRA) \citep{dominique2013lyra}, \textit{Fermi} Gamma-ray Burst (GBM) monitor \citep{meegan2009fermi}, the Nobeyama
+Radioheliograph (\textit{NoRH}) \citep{nakajima1994nobeyama}, and \textit{RHESSI} \citep{lin2003reuven}. The \Timeseries\ object also supports the National Oceanic and Atmospheric (NOAA) Space Weather Prediction Center (SWPC) solar cycle monthly indices and predicted progression. Similar to \Map, these data sources are supported as there is a \Timeseries\ source file for each listed above. With this strucuture additional instruments and data sources can easily be added. 
+
+\Timeseries holds meta data, stored in the \Timeseriesmetadata object. This functionality is designed to allow the user to create a single \Timeseries by combining multiple \Timeseries together into one, preserving the metadata relevant to each cell, column or row, concatenated into an organized fashion. 
+
+\Timeseries also supports manipulation functionality for working with time-series data including adding new columns of data to a \Timeseries, truncating a \Timeseries over a specified time range, resampling, and creating other data products from an existing \Timeseries, such as into a pandas.Dataframe or an astropy table. The \Timeseries object, similar to \Map, has it's own visualization plotting methods allowing for easy inspection of the data.
+
+
+

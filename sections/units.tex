@@ -1,0 +1,10 @@
+\section{Physical Units - Bobra}
+
+%Discuss the units SEP. discuss that we are using astropy units and provide a short description of it's capabilities. mention that sunpy.sun provides quantities with units. mention the NASA units disaster and reference units policy for NASA as reference here is a interesting reference \url{https://sma.nasa.gov/news/safety-messages/safety-message-item/lost-in-translation}
+
+SunPy works with AstroPy physical quantities, which combine a value and a unit. For example, a value might be $47$, and a unit might be m/s. Together, $47$ m/s represents a quantity object. Quantity objects may be scalars, sequences, or NumPy arrays. Quantity objects are converted to float by default.
+
+Every SunPy function that requires a physical value uses Astropy quantities. This has three main benefits. First, this eliminates any confusion about the units of a physical quantity. Second, SunPy users can expect the input and output of a function to retain the same units or unit system. Third, the AstroPy units submodule makes converting between physical units, such as Gauss and Tesla, straightforward by using the $to\_value()$ method. Similarly, enforcing the correct physical unit (e.g. magnetic flux density) is straightforward by using the $quantity\_input()$ validation tool.
+
+The SunPy Sun submodule contains constants, parameters and models of the Sun as Astropy quantities. These include variable quantities, such as the Carrington rotation number, as well as constants, such as the solar mass. 
+

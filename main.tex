@@ -1,0 +1,67 @@
+% to be published in ApJ
+% other potential avenues for publication Elsevier Astronomy and Computing
+
+
+\documentclass{aastex62}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{listings}
+\usepackage{xspace}
+
+\newcommand{\package}[1]{\texttt{#1}\xspace}
+\newcommand{\github}{\package{GitHub}}
+\newcommand{\python}{\package{Python}}
+\newcommand{\sunpy}{SunPy\xspace}
+\newcommand{\sunpypkg}{\package{sunpy}}
+
+\newcommand{\astropy}{Astropy\xspace}
+\newcommand{\astropypkg}{\package{astropy}}
+
+\newcommand{\code}[1]{\texttt{#1}\xspace}
+\newcommand{\sunpycode}[1]{\code{#1}}
+
+\newcommand{\Map}{\sunpycode{Map}}
+\newcommand{\Timeseries}{\sunpycode{TimeSeries}}
+\newcommand{\Timeseriesmetadata}{\sunpycode{TimeSeriesMetaData}}
+\newcommand{\Spectra}{\sunpycode{Spectra}}
+\newcommand{\Fido}{\sunpycode{Fido}}
+\newcommand{\Lightcurve}{\sunpycode{LightCurve}}
+\newcommand{\GenericTimeSeries}{\sunpycode{GenericTimeSeries}}
+\newcommand{\GenericMap}{\sunpycode{GenericMap}}
+
+\shorttitle{Sunpy Project II}
+\shortauthors{The Sunpy Community}
+
+% Words that should not be hyphenated
+\hyphenation{NumFOCUS}
+
+
+% For commenting - can be deleted before submission
+\usepackage[colorinlistoftodos]{todonotes}
+\newcommand{\inlinecomment}[2]{\todo[inline]{#1: #2}\xspace}
+\newcommand{\comment}[2]{\todo{#1: #2}\xspace}
+
+
+\begin{document}
+
+\title{The SunPy Project: Open Source Development and Status of the  v1.0 Core Package }
+\input{authors.tex}
+\input{sections/0-abstract.tex}
+\date{November 2018}
+
+\input{sections/1-introduction.tex}
+\input{sections/2-modules.tex}
+\input{sections/3-coordinates.tex}
+\input{sections/fido.tex}
+\input{sections/units.tex}
+\input{sections/affiliated.tex}
+\input{sections/community.tex}
+\input{sections/infrastructure.tex}
+\input{sections/future.tex}
+
+\acknowledgments
+\software{Astropy \citep{astropy2018}}
+
+\bibliography{bibliography}
+
+\end{document}
