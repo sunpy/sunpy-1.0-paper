@@ -33,6 +33,3 @@ Rules for Authorship
 ====================
 Anyone with an official role with the SunPy project as well as anyone that
 has contributed code to the sunpy package is guaranteed authorship.
-
-If you are a code contributor please fill out this [form](https://forms.gle/caX4jcUhZqBSoLT2A)
-or make a pull request to edit `authors.tex`.
