@@ -1,6 +1,6 @@
 ---
 name: Authorship Registration
-about: Register your interest in being a coauthor on the SunPy paper.
+about: Register to become a coauthor on the SunPy 1.0 paper.
 ---
 
 <!--
@@ -20,14 +20,11 @@ following details.
 
 * Affiliation
 
-* ORCID
+* ORCID (if available)
 
 ## Contribution to the SunPy Community
 <!--
 Please provide a short description of your contribution to the community. This
 information will be collated for all coauthors.
 !-->
-
-
-
 
