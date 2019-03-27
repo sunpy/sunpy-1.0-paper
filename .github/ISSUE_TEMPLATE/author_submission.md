@@ -4,10 +4,7 @@ about: Register to become a coauthor on the SunPy 1.0 paper.
 ---
 
 <!--
-We welcome anyone who has made a meaningful contribution to the SunPy community
-to be a coauthor on this paper. If you feel that you have made a meaningful
-contribution and would like to be a coauthor, please submit an issue with the
-following details.
+The SunPy v1.0 paper will have an inclusive authorship policy based on an honor system. If you feel your contribution to the SunPy community, code, or ecosystem is enough to warrant authorship, please fill out all the sections of the following template:
 !-->
 
 ## Details
@@ -24,7 +21,6 @@ following details.
 
 ## Contribution to the SunPy Community
 <!--
-Please provide a short description of your contribution to the community. This
-information will be collated for all coauthors.
+Please provide a short description of your contribution to the community. We will not evaluate these short descriptions in any way we will simply aggregate them into an appendix for the paper.
 !-->
 
