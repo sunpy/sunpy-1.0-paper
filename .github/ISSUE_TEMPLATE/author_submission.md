@@ -21,6 +21,6 @@ The SunPy v1.0 paper will have an inclusive authorship policy based on an honor 
 
 ## Contribution to the SunPy Community
 <!--
-Please provide a short description of your contribution to the community. We will not evaluate these short descriptions in any way we will simply aggregate them into an appendix for the paper.
+Please provide a short description of your contribution to the community. We will not evaluate these short descriptions in any way, we will simply aggregate them into an appendix for the paper.
 !-->
 
