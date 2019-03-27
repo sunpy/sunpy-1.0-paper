@@ -14,11 +14,11 @@ following details.
 
 * Given Name
 
-*  Family Name
+* Family Name
 
-*  Email
+* Email
 
-*  Affiliation
+* Affiliation
 
 * ORCID
 
