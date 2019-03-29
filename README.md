@@ -31,5 +31,11 @@ devoted to organizing and discussing this paper.
 
 Rules for Authorship
 ====================
-Anyone with an official role with the SunPy project as well as anyone that
-has contributed code to the sunpy package is guaranteed authorship.
+This paper will have an inclusive authorship policy, modeled after the authorship
+policy of the [yt 3.0 paper](https://github.com/yt-project/yt-3.0-paper#authorship-policy).
+
+1] Anyone with an official role with the SunPy project as well as anyone that
+has contributed code to the sunpy package is guaranteed authorship (as long as they agree).
+
+2] If you feel your contribution to the SunPy community, code, or ecosystem is enough to warrant authorship, please click the following to create an issue and follow the template [Gituhub issue](https://github.com/sunpy/sunpy-1.0-paper/issues/new?template=author_submission.md). We only ask that you provide a short description describing your contribution. We will not evaluate these short descriptions 
+in any way -- we will simply aggregate them.
