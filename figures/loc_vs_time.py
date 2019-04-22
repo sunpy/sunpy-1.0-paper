@@ -8,7 +8,7 @@ import sunpy_paper
 sunpy_paper.setup_plot()
 
 datafile_url = os.path.join(sunpy_paper.data_dir, 'loc_vs_time.csv')
-data = pd.read_csv(datafile_url, parse_dates=True, index_col=0)
+data = pd.read_csv(datafile_url, parse_dates=True, index_col=0, comment='#')
 
 x = data.index
 y1 = data['code'].values / 10000.
