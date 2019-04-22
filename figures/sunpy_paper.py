@@ -1,7 +1,6 @@
 """The following file contains generic functions to produce the plots in the sunpy paper."""
 
 import git
-from pathlib import Path
 import os
 import seaborn
 import matplotlib
@@ -15,7 +14,7 @@ sunpy_releases = {'0.9': '2018/04/22', '0.8': '2017/08/17', '0.7': '2016/05/24',
                   '0.2': '2012/11/26', '0.1': '2011/09/28'}
 
 data_dir = Path(os.path.join(Path(__file__).parents[1], 'data'))
-sunpy_path = sunpy.__dir__
+sunpy_path = Path(sunpy.__file__).parents[1]
 
 
 def get_author_transform_mapping(repo):
