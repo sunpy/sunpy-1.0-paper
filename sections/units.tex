@@ -1,10 +1,19 @@
 \section{Physical Units - Bobra}
+\label{sec:units}
+\todo{edits by Steven Christe}
 
 %Discuss the units SEP. discuss that we are using astropy units and provide a short description of it's capabilities. mention that sunpy.sun provides quantities with units. mention the NASA units disaster and reference units policy for NASA as reference here is a interesting reference \url{https://sma.nasa.gov/news/safety-messages/safety-message-item/lost-in-translation}
 
-SunPy works with AstroPy physical quantities, which combine a value and a unit. For example, a value might be $47$, and a unit might be m/s. Together, $47$ m/s represents a quantity object. Quantity objects may be scalars, sequences, or NumPy arrays. Quantity objects are converted to float by default.
+Calculations of physical quantities have traditionally been performed in software 
+using bare numbers in the interest of speed as well as simplicity. Physical units
+have frequently been recorded in comments or in documentation which can easily lead
+to errors and potentially catastrophy. The Mars Climate Orbiter mishap in 1988 was caused by a unit discrepancy. The spacecraft trajectory was reported in English units instead metric which led to the the Mars Climate Orbiter entering the Martian atmosphere well-below its intended altitude causing complete mission failure \citep{mco_mishap_report}. A more modern approach is described by \citep{Damevski2009}
+which consists of describing units at the system architecture level. This capability 
+is provided by the \package{astropy.units} module and and a SEP mandates its use.
 
-Every SunPy function that requires a physical value uses Astropy quantities. This has three main benefits. First, this eliminates any confusion about the units of a physical quantity. Second, SunPy users can expect the input and output of a function to retain the same units or unit system. Third, the AstroPy units submodule makes converting between physical units, such as Gauss and Tesla, straightforward by using the $to\_value()$ method. Similarly, enforcing the correct physical unit (e.g. magnetic flux density) is straightforward by using the $quantity\_input()$ validation tool.
+The \package{astropy.units} module defines a \code{astropy.units.Quantity} class which combine a value and a unit. This class is an extension to \code{numpy.array} and provides significant performance compared to other approaches \todo{add a reference here?}. Every input and output of \sunpypkg functions that requires a physical value make use of \code{astropy.units.Quantity}. Enforcement on input is provided by a decorator (\code{quantity\_input()}). This approach eliminates any confusion about the units of a physical quantity in input or output. Also conversions between such as Gauss and Tesla units are made straightforward with the \code{.to()} method.
 
-The SunPy Sun submodule contains constants, parameters and models of the Sun as Astropy quantities. These include variable quantities, such as the Carrington rotation number, as well as constants, such as the solar mass. 
+The \package{sunpy.sun} module contains constants, parameters and models of the Sun provided as \code{astropy.units.Constants} which are \code{astropy.units.Quantity} with additional reference metadata. These include variable quantities, such as the Carrington rotation number, as well as constants, such as the solar mass. 
+
+\todo{do we want to discuss astropy time in this section as well?}
 

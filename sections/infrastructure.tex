@@ -1,8 +1,30 @@
 \section{Infrastructure - Stuart}
+\label{sec:infrastructure}
 
 \subsection{Releases and Versioning - Nabil}
 \subsection{Continuous Integration - Nabil}
-Mention why we are doing them.
-list all of the tests. Mention all of the places we are getting free services from.
+
+(Are we using library or codebase?)
+
+Continuous Integration (CI) refers to the practice of routine inspection of code changes into the main  library.
+The action of either submitting code or accepting code triggers several free services which runs the updated  library against a series of known outputs that exist within specific test code, to check for any breakages or unexpected changes within the  library.
+This allows developers to be aware of any changes therefore quickly fixing any problems that arise and ensures the library is maintained.
+
+SunPy's test suite can be broken down into three broad categories: offline, online and visual (figure) tests. 
+The offline test suite checks the majority of the SunPy codebase from doing coordinate transforms to data Input/Output.
+The online test suite specifically checks any code that contacts generalized data service providers such as the VSO or JSOC as well as specific data providers like GOES or NOAA.
+Finally the visual (figure) test suite checks any code that enables the plotting of our core data types and ensures that our code outputs images with the correct axis style, axis scaling and so forth.
+
+This practice relies on several cloud based solutions that provide free server time to run the library's test suite as well as specific tasks like generating and hosting our documentation.
+Recently we have reduced the number of services to provide a more consistent experience, but as of time of writing we use:
+\begin{itemize}
+\item \href{https://azure.microsoft.com/en-gb/services/devops/pipelines/}{Microsoft's Azure pipelines}: This runs the entire test suite on each operating system (Windows, Mac, Linux) each time a change is made.
+\item \href{https://circleci.com}{circleci}: This runs the library's documentation, a special 32bit build and the visual (figure) tests.
+\item \href{https://travis-ci.org}{Travis CI}: This runs a daily scheduled (cron) job that executes the entire test suite and will alert the developers if any of the tests fail.
+\item \href{https://readthedocs.org/}{Read the Docs}: This is where our \href{http://docs.sunpy.org/en/stable/}{online documentation} is hosted, they also build the documentation in the process.
+\item \href{https://codecov.io/}{Codecov}: This aggregates the results from each test suite to monitor the amount of lines covered by the library's test suite.
+\end{itemize}
+
+
 \subsection{Package Template}
 Provided for affiliated packages

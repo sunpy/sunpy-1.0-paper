@@ -1,12 +1,15 @@
 \section{Affiliated Packages - Steven}
 \label{sec:affil_package}
+\todo{ready for review - 26-Mar-2019}
+
+
 In order to foster an interoperable software environment which minimizes the cognitive burden on users, the \sunpy project supports the concept of affiliated packages.
-A \sunpy affiliated package is a \python package that builds upon the functionality of the \sunppkg package or provides general functionality useful to solar data analysis. Affiliated packages can also be used to develop and mature core functionality outside of the constraints of \sunppkg.
+A \sunpy affiliated package is a \python package that builds upon the functionality of the \sunpypkg package or provides general functionality useful to solar data analysis. Affiliated packages can also be used to develop and mature core functionality outside of the constraints of \sunpypkg.
 
 In order to promote high-quality code and foster consistency and interoperability the following requirements must be satisfied by any potential affiliated packages.
 \begin{itemize}
-    \item In order to reduce code duplication and complexity, the package must make use of all appropriate features in \sunppkg.
-    \item Documentation must be provided that explains the function and use of the package, and it should be of comparable quality to \sunppkg.
+    \item In order to reduce code duplication and complexity, the package must make use of all appropriate features in \sunpypkg.
+    \item Documentation must be provided that explains the function and use of the package, and it should be of comparable quality to \sunpypkg.
     \item A test suite must be provided to verify the correct operation of the package.
     \item The developers should engage with the community to encourage knowledge and code sharing.
 \end{itemize}
@@ -18,90 +21,101 @@ The following section provides short descriptions of the existing affiliated pac
 
 \subsection{drms - Kolja Glogowski - MONICA}
 \label{sec:drms}
+\todo{reviewed by Steve Christe - 26-mar-2019}
 
 The \package{drms} affiliated package provides functionality which allows for direct access to data hosted by the Joint Science Operations Center (JSOC). This is the primary data center for the Solar Dynamics Observatory’s (SDO)\todo{check if these instruments have already been reference before this section, and make sure that reference are provided} Helioseismic and Magnetic Imager (HMI) and Atmospheric Imaging Assembly (AIA) instruments as well as data from the Solar and Heliospheric Observatory's (SoHO) Michelson Doppler Imager (MDI) instrument. DRMS stands for Data Record Management System, a pSQL database that contains metadata, as well as pointers to image data, for every image taken by AIA, HMI, and MDI. The \package{drms} package provides access to the unique search capabilities of the JSOC which include: metadata search queries, export tailored FITS files and serve these files in a variety of methods, as well as export data as movies and images in various formats.
 
 \todo{schriste - clean up, add more detail on that last sentence, also say what is the JSOC API interface}.
 
 \subsection{ndcube - Dan Ryan}
-\package{ndcube} is a free, open-source, community-developed Python package for manipulating N-dimensional coordinate-aware astronomical data.
-The package provides a unified API for slicing, visualization, coordinate conversion and inspection of the data, metadata and coordinate transformations.
-\texttt{ndcube}'s data classes are not specific to any number or physical type of axis.
-It can therefore be used for any data type (e.g. images, spectra, timeseries, etc.) so long as it can represented by an array and a set of World Coordinate System (WCS) transformations.
-This makes \texttt{ndcube}'s data classes ideal for subclassing when creating data-type-specific classes while keeping the non-data-type-specific functionalities (e.g. slicing) common between classes.
+\label{sec:ndcube}
+The \package{ndcube} package provides data classes for manipulating N-dimensional coordinate-aware astronomical data which are common in solar physics.
+For example, a series of images taken sequentially by a CCD-based instrument like SDO/AIA can be stored as a single 3-D array with one temporal and two spatial axes, where each array element represents a pixel.
+There are several components common to such datasets besides the data array itself, including uncertainties, units, metadata and quality flags which mark whether a data value is reliable.
+Furthermore, there are common tasks performed on most N-dimensional datasets including slicing, visualization and coordinate transformations.
 
-The \texttt{ndcube} package is composed of two basic data classes, \texttt{NDCube} and \texttt{NDCubeSequence}.
-(Note the \texttt{ndcube} package is distinguished from the \texttt{NDCube} data class via capitalization.)
-\texttt{NDCube} is for managing a single array and set of WCS transformations, while \texttt{NDCubeSequence} is for handling multiple arrays, each described by their own set of WCS transformations.
-They share similar APIs to enable the user to think about their data in an intuitive way, rather than focusing on the format in which that data happens to be stored.
+\package{ndcube}'s data classes are inherited from \astropy's \sunpycode{NDData} container class.  Its purpose is to combine the container with generalized, intuitive but powerful APIs for slicing, visualization, coordinate conversion and data inspection.
+It leverages pre-existing functionalities from mature scientific Python packages: powerful array-based operations including masked-array handling from \package{NumPy}; visualization from \package{matplotlib}; and support from \astropy\ for handling units and World Coordinate System (WCS) transformations, common in solar physics.
 
-\texttt{NDCube} is subclassed from \texttt{astropy}'s \texttt{NDDdata} class and so provides attributes for a single data array (\texttt{NDCube.data}) and corresponding uncertainty (\texttt{NDCube.uncertainty}) and mask arrays (\texttt{NDCube.mask}).
-It also provides attributes for the data unit (\texttt{NDCube.unit}) and metadata (\texttt{NDCube.meta}).
-Transformations between the pixel/array indices and real world coordinates can be stored in two ways.
-The first is as an \texttt{astropy.wcs.WCS} instance in the \texttt{NDCube.wcs} attribute.
-Currently a \texttt{WCS} instance is required.
-The WCS framework is standard throughout astronomy and many powerful tools for plotting and performing transformations exist in the \texttt{astropy} which are leveraged by \texttt{ndcube}.
-New coordinate transformation tools like \texttt{astropy}'s \texttt{gWCS} (Generalized World Coordinate System) will be incorporated into \texttt{ndcube} in the future.
-A second optional method of storing coordinate information is as a dictionary of extra coordinates in the \texttt{NDCube.extra\_coords} attribute.
-Each entry stores the coordinate's name, the axis or axes to which it corresponds, and a \texttt{numpy.array} or an \texttt{astropy.unit.Quantity} giving the coordinate value at each location along the relevant axis/axes.
-The final attribute is \texttt{NDCube.missing\_axis} which will be discussed below.
+\package{ndcube} provides two primary data classes, \sunpycode{NDCube} and \sunpycode{NDCubeSequence}.
+\sunpycode{NDCube} handles a single data array described by a single set of coordinate transformations.
+Users can optionally include uncertainties, a data mask, a data unit and metadata.
+It is also possible to associate data axes with extra array- or \astropy\ \sunpycode{Quantity}-based coordinates.
+\sunpycode{NDCubeSequence} is designed to handle datasets spread over multiple data arrays, each described by its own set of coordinate transformations.
+Under the hood, \sunpycode{NDCubeSequence} is a list of \sunpycode{NDCubes} with compatible dimensions.
+\sunpycode{NDCubeSequence} enables users to effectively concatenate \sunpycode{NDCubes} if they are sequential along a given axis, e.g.\ time, while keeping the coordinate transformations distinct, or add an extra dimension to their data not described by the WCS translations.
+This can be useful if it is not possible or desirable to describe the entire dataset with a single set of WCS transformations or the constituent \sunpycode{NDCubes} don't represent the same measured property.
 
-One of \texttt{NDCube}'s most useful capabilities is its simple, yet powerful slicing.
-Slicing can be performed in array-index-space or using real world coordinates.
-\texttt{NDCube} uses Python's native slicing API to crop in array-index-space as can be done for other objects like list, tuples, numpy arrays, astropy Quantities, etc.
-However, in the case of \texttt{NDCube}, the slicing in not only applied to data array, but also the uncertainty, mask, WCS transformations and extra coordinates.
-This allows users to move closer to the speed of thought during their analysis by freeing them from the tedious, well-understood, but easy-to-mishandle process of slicing all aspects of their data.
+These classes are not specific to any number or physical type of axes.
+They can therefore be used for any data type (e.g. images, spectra, etc.) so long as it can be represented by an array and a set of coordinate transformations.
+Both classes have generalized APIs for data visualization and performing coordinate transformations.
+In addition they have powerful slicing APIs that allow users to slice the entire dataset with a single command using either array indices or real world coordinates.
+This slices all components of the \sunpycode{NDCube} including the data array, uncertainties, data mask and coordinates simultaneously.
+This enables users to manipulate their dataset more quickly and accurately, allowing them to more efficiently and reliably achieve their science goals.
+These features make \package{ndcube}'s data classes ideal for subclassing.  They centralize the development and maintenance of common fundamental data class functionalities, streamlining development and maintenance of higher level classes.  They also offer a common fundamental API between classes that helps users to more easily manipulate multiple data types.
 
-It is also possible to crop an \texttt{NDCube} instance using real world coordinates thanks to its \texttt{NDCube.crop\_by\_coords} method.
-A user defines the lower and upper bounds of a region of interest along each axis using the real world coordinates of the \texttt{WCS} instance.
-The method then determines the smallest rectangular region in array-index-space which encompasses that region of interest.
-In addition to \texttt{NDCube.crop\_by\_coords}, there is an analogous \texttt{NDCube.crop\_by\_extra\_coord} method which allows a user to crop an \texttt{NDCube} instance using a single extra coordinate.
-As with the array-index-space slicing described above, both the above methods apply the cropping not only to the data, but also the uncertainty, mask, \texttt{WCS} instance and extra coordinates.
-
-When slicing data it is common to reduce the dimensionality of the data when only interested in one point along one of the axes.
-This can cause issues if the coordinate transformation of another axis is dependent on information from the reduced axis, e.g.\ latitude and longitude.
-For this reason, axes from the WCS instance are never removed, only reduced to a length of 1.
-However, the dimensionality of the data, uncertainty and mask are reduced in the normal way.  
-This can lead to scenarios where there are more axes in the \texttt{WCS} instance than the data arrays.
-To handle this issue, the \texttt{NDCube.missing\_axis} attribute is used.
-This is a list boolean values which indicate which axes of the \texttt{WCS} instance do not have a corresponding axis in the data array.  
-By referencing \texttt{NDCube.missing\_axis}, the correct WCS transformations can always be made.
-In the case of extra coordinates corresponding to a reduced axis, the coordinate value at the location where the axis was sliced is retained, but the extra coordinate's axis is presented as \texttt{None}.
-
-While \texttt{NDCube.extra\_coords} explicitly supplies the value of a coordinate at each location along its associated axis or axes, such values for the coordinates of the \texttt{WCS} instance are stored functionally.
-Although this can be very useful, e.g.\ by reducing the size of the object and enabling the use of powerful plotting tools like \texttt{WCSAxes}, there are times when a user wants to extract the coordinate values.
-\texttt{NDCube} provides a few methods to conveniently perform these transformations.
-\texttt{NDCube.pixel\_to\_world} allows a user to get the real world coordinates of a pixel or multiple pixels by entering their indices along all axes.  \texttt{NDCube.world\_to\_pixel} does the same in reverse.  As with the equivalent native \texttt{astropy.wcs.WCS} method, \texttt{world\_to\_pixel} returns the non-integer index values that precisely correspond to the input real world coordinates.  These methods are very useful in performing the transformations for a few array indices, but can be cumbersome when a user wants to perform the transformations for many or all pixels.  To make this easier, \texttt{NDCube} has a \texttt{axis\_world\_coords} method which returns the real world coordinates at each index along all axes.
-The only input required is the name or number of the axis or axes along which the transformations should be performed.  The default is to do this for all axes.
-
-\texttt{NDCube} has a number a helpful inspection properties help the user quickly understand the data within.  The \texttt{NDCube.dimensions} which returns an \texttt{astropy.units.Quantity} instance with the length of each data axis.
-The \texttt{NDCube.world\_physical\_axis\_types} gives the physical type of each axis derived on the \texttt{CTYPE} parameters on the \texttt{WCS} instance.  By default the names are complaint with the IVOA UCD1+ controlled vocabulary\footnote{\url{http://www.ivoa.net/documents/REC/UCD/UCDlist-20070402.html}} but can be overridden when subclassing.
-
-Another very helpful capability of \texttt{NDCube} is its built-in visualization suite.  It provides a simple, generic API via the \texttt{NDCube.plot} method which visualizes the data differently depending on user inputs and the number of dimensions.  Either a static line plot or image can be produced for 1- and 2-D data cubes, while animated line plots and images can be produced for data cube of $>$1 dimension.  Users can pick which axis or axes should make up the plot/image axes while other dimensions are animated through using interactive sliders.  This visualization suite is based on sunpy animator classes and is the only part of \texttt{NDCube} that is dependent on sunpy itself.  However, the suite is provided as a mixin class so users who don't want to depend of sunpy or who want to build more specific or powerful visualization suites can do so easily by combining their own mixin with \texttt{NDCube}'s other powerful capabilities.
-
-Many of \texttt{NDCube}'s capabilities, such as its slicing and coordinate transformations, depends on the existence a single data array described by a single set of WCS transformations.
-However a single set of WCS transformations may not always adequately describe our data set.
-Handling these cases is the role of \texttt{NDCubeSequence}, \texttt{ndcube}'s second main data class.
-Fundamentally \texttt{NDCubeSequence} is a list of \texttt{NDCube} instances with the same slicing and visualization APIs as \texttt{NDCube} which enable users to still think of and interact with their data as if were a single cube.
-By default, \texttt{NDCubeSequence} effectively adds an extra dimension to the data which is considered perpendicular to the axes of the constituent \texttt{NDCube}s.
-For example, say we have a set of images, each described its own set of WCS transformations.
-Fine pointing adjustments have been applied to each frame manually which introduce discontinuities between the WCS transformations through time.
-Therefore, the data cannot by represented by a single combined set of WCS transformations and hence can't be stored in an \texttt{NDCube}.
-However, it can be represented as an \texttt{NDCubeSequence} of 2-D \texttt{NDCube}s where the time axis is now represented by the sequence axis.
-The data set will be represented as 3-D and users can still, slice, visualize, and perform coordinate transformations in almost the same way as if the data were still stored in a single data cube.
-
-\texttt{NDCubeSequence} can also handle more complicated versions of this scenario.
-Say our set of images do not require fine-scale pointing adjustments, but rather are interrupted by a single pointing manoeuvre.  This means that the data set can be described by two sequential 3-D image cubes, the first with a set of WCS transformations before the pointing manoeuvre and second with one from after.
-We would still prefer to think of our data as a single 3-D cube but unlike the above example, the sequence axis is not a truly independent dimension, but rather parallel to the time axes of the constituent \texttt{NDCube}s.
-In other words, moving from cube to cube along the sequence dimension is the same moving along the time axis, just in bigger steps, than if we were to move along the time axis within a sub-cube.
-\texttt{NDCubeSequence} makes this easy by enabling the user to set the \texttt{common\_axis} attribute to one of the data axes of the constituent \texttt{NDCube}s.
-With the \texttt{common\_axis} set, users can choose to slice, visualize and inspect the \texttt{NDCubeSequence} as either a 4-D or 3-D data set thanks to properties and methods such as \texttt{NDCubeSequence.index\_as\_cube} and \texttt{NDCubeSequence.plot\_as\_cube}.
+Although stable versions of \package{ndcube} are currently available via \package{conda-forge} and \package{pip}, development continues.
+Among the planned future features are support for arithmetic operations, resampling and \astropy's generalized WCS module (\sunpycode{gWCS}) which provides more flexibility than the traditional FITS-WCS framework.
 
 
 \subsection{radiospectra - David}
 
 
 \subsection{IRISPy - Dan Ryan}
-\package{IRISPy} is a package that provides tools to read, manipulate and visualize data from the Interface Region Imaging Spectrograph (IRIS; \citealt{DePontieu2014}). It provides a set of classes for handling both the slit-jaw imager (SJI) and spectrograph (SG) observations. These link the observations with various forms of supporting data including: measurement uncertainties; units; a data mask to mark pixels with unreliable or unphysical data values; WCS (World Coordinate System) transformations that describe the position, wavelengths and times represented by the pixels; and general metadata. These classes also provide methods for applying a number of calibration routines including exposure time correction and conversion between data number, photons, and energy units. 
+\label{sec:irispy}
+\todo{Reviewed by Steven Christe - 26-Mar-2019}
+\package{IRISPy} provides tools to read, manipulate and visualize data from the Interface Region Imaging Spectrograph (IRIS; \citealt{DePontieu2014}).
+At the time of writing, \package{IRISPy} has not been released and so some aspects of the API may still change.
+However, the main elements of \package{IRISPy} have now been established.
+\package{IRISpy} currently includes two functions for reading IRIS level 2 FITS files from slit-jaw imager (SJI) and  spectrograph (SG), respectively.
+These functions are designed to read one of more files from the same observing mode.
+Observations from different observing modes cannot currently be combined because the dimensions of the resulting data can differ significantly.
+Depending on the type of files, the data is returned in \sunpycode{IRISMapCube} or \sunpycode{IRISSpectrogramCubeSequence} classes which are inherited from the \package{ndcube} data classes (Section~\ref{sec:ndcube}).
+As such, they link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations.
+Measurement uncertainties accounting for Poisson statistics and readout noise are automatically calculated while a mask identifies what pixels of the data array are exposed to the Sun.
+The mask facilitates basic operations, e.g.\ mean, max, etc., and removes bad pixels from the color table in visualizations.
+Meanwhile auxiliary data such as exposure times and orbital parameters are stored as extra coordinates (Section~\ref{sec:ndcube}) aligned with the time axis.
+This design links all the relevant data and metadata from the FITS files in a logical fashion, while the slicing and visualization features inherited from the \package{ndcube} data classes allow these data to be represented more faithfully at each stage of the analysis.
+
+The \sunpycode{IRISMapCube} class is comprised of three dimensions, solar longitude, latitude and time.
+It includes a method for applying and removing exposure time corrections based on the exposure times stored in the extra coordinates derived from the auxiliary data in the FITS files.
+This method automatically alter the data unit by dividing or multiplying in by seconds.
+Thus users can tell whether or not the exposure time correction has been applied to the data, helping to avoid analysis errors.
+Dust mask methods mark SJI pixels in the data mask known to be scientifically unusable due to dust deposits.
+The process in reversible so users can also unmark these pixels if they choose.
+
+The \sunpycode{IRISSpectrogramCubeSequence} class SG holds data from a single IRIS spectral window.
+Multiple \sunpycode{IRISSpectrogramCubeSequence}s holding observations in different windows from the same observing mode can be combined into an \sunpycode{IRISSpectrograph} container object.
+Rastering slit spectrographs like IRIS, produce data that is simultaneously 3D and 4D.
+This is because the slit, through which each observation is taken, can move sequentially in the x-direction, taking observation at each location.
+Moreover, once an observation has been taken at each position in the raster pattern, the process can be repeated over and over again during a single observing campaign, convolving the spatial x-dimension with time.
+It is therefore equally valid to think of the dimensionality of the observations as 3D (time, solar y, wavelength) or (raster scan number, solar x, solar y, wavelength).
+This problem is dealt with by the IRIS instrument software by producing two separate instances of the data in 3D and 4D.
+This is a simple, intuitive strategy but does have obvious drawbacks.
+For example, it roughly the required memory and means that each piece of analysis must be performed separately on both instances to ensure both copies of the data stay consistent.
+This can reduce the efficiency and accuracy of the data analysis.
+\sunpycode{IRISSpectrogramCubeSequence} addresses this problem by supplying two independent slicing and visualization APIs on the same instance, one that allows the user to interact with the data as time, solar y, wavelength, and another as raster scan number, solar x, solar y, wavelength.
+Users can switch back and forth between the APIs seamlessly.
+This means with two simple commands, users can trim their data to a region of interest along the time axis, say an event start and end time.
+And then isolate a subset of slit positions along the x-axis that overlap with the event.
+Moreover, because both APIs interact with the same underlying copy of the data, there is no need repeat analyses or worry track the consistency of different copies of the data.
+This drastically increases the speed and accuracy of locating and analyzing regions of interest.
+
+In addition to the slicing and visualization APIs, \sunpycode{IRISSpectrogramCubeSequence} includes a method to convert the data between data number (DN), number of photons, and radiance.
+This method automatically alters the unit attribute as required so users can always tell what form the data is in.
+This method allows the energies radiated by given lines during an event to be determined.
+
+Currently however converting to radiance is done assuming the pre-flight-measured response function, making it less reliable for more recent observations.
+However, work is currently underway to support time-dependent derivations of the response functions which will give \package{IRISpy} the basic functionalities for performing IRIS level 2 data analysis.
+In addition, future enhancements to the \package{ndcube} data classes, such as support for arithmetic operations and resampling will be utilized by \package{IRISpy}.
+
+
+%This is useful when one axis represents two coordinates, one of which is parallel while the other is not.
+%For example, a scanning slit-spectrograph can scan its slit through a number of positions along the x-axis, before moving back to the original position and repeating the process.
+%Therefore the sequence axis is parallel, as the scans are sequential in time, but also perpendicular because in that the scan number represented by the sequence axis is not related to the spatial position of the slit represented by the x-axis of the constituent \sunpycode{NDCubes}. 
+%Users may want to think of the x-axis as time, in which case the \sunpycode{NDCubeSequence} is like an ND dataset, then instantly change to thinking about the x-axis as slit position, in which case the \sunpycode{NDCubeSequence} is better represented as an N+1D dataset.
+%To achieve this model in the past, the data would have to be duplicated and placed into two separate objects with different shapes and sets of coordinate transformations.
+%This paradigm requires both objects be kept consistent, leading to a greater workload and potentially more errors.
+%By contrast, \sunpycode{NDCubeSequence} makes this possible for a single object, speeding up analysis, minimizing memory resources, and reducing the potential for errors.
 
 %Moreover, because the data unit is linked to the object, it is always obvious what unit the data is in. This saves scientists the hassle of performing important, but laborious and repetitive data conversions and avoid confusion by always tracking the unit of the data through those conversions. This leads to more efficient and accurate science.

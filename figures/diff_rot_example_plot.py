@@ -1,14 +1,14 @@
-from sunpy.net import Fido, attrs as a
 from sunpy import map
 from sunpy.physics import differential_rotation
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 import matplotlib.pyplot as plt
-import glob
+import os
+import sunpy_paper
 
-#get the data of interest and save fits files
-map1 = map.Map('../data/aia_lev1_1600a_2014_10_20t00_00_16_13z_image_lev1.fits')
-map2 = map.Map('../data/aia_lev1_1600a_2014_10_22t00_00_16_12z_image_lev1.fits')
+# get the data of interest and save fits files
+map1 = map.Map(os.path.join(sunpy_paper.data_dir, 'aia_lev1_1600a_2014_10_20t00_00_16_13z_image_lev1.fits'))
+map2 = map.Map(os.path.join(sunpy_paper.data_dir, ' aia_lev1_1600a_2014_10_22t00_00_16_12z_image_lev1.fits'))
 
 #rotate map at 2014-10-20 to day of 2014-10-22
 rotated_map = differential_rotation.diffrot_map(map1, time=map2.date)

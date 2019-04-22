@@ -1,4 +1,7 @@
-\section{Fido and data search and download - Jack}\label{fido}
+\section{Fido and data search and download - Jack - ready for review}
+\label{sec:fido}
+\todo{ready for review}
+
 The principle interface between \sunpy and observational solar physics data is the \Fido\ data search and retrieval module. The purpose of \Fido is to present a unified data search and download interface to the user that simplifies and homogenizes the use of multiple data providers.  At present, \Fido interfaces with the Virtual Solar Observatory (VSO), the Joint Science Operations Center (JSOC) (see Section \ref{sec:drms}) and a small number of data providers that make their data available via web-accessible resources such as HTTP websites (RHESSI, SDO-EVE, NOAA GOES soft X-ray flux, PROBA2-LYRA and NOAA sunspot number prediction) and FTP sites (NOAA sunspot number, Nobeyama Radioheliograph).
 
 A \Fido search can include multiple instruments, and can query all available data providers.  For example, a single search request can be issued that will query both the LYRA and RHESSI providers individually.  Data downloads via the \code{Fido.fetch} method can be split up into multiple parallel streams, improving download speeds.  \Fido also handles failed data downloads: the output from \code{Fido.fetch} flags failed downloads, and passing that output back in to \code{Fido.fetch}\ allows \Fido to attempt to download those files again.
