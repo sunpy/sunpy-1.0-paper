@@ -1,10 +1,8 @@
-from sunpy.net import Fido, attrs as a
 from sunpy import map
 from sunpy.physics import differential_rotation
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 import matplotlib.pyplot as plt
-import glob
 
 #get the data of interest and save fits files
 map1 = map.Map('../data/aia_lev1_1600a_2014_10_20t00_00_16_13z_image_lev1.fits')
