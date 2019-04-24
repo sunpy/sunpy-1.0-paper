@@ -3,4 +3,4 @@ pandas
 gitpython
 numpy
 seaborn
-
+pfsspy
