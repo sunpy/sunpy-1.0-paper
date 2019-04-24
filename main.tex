@@ -7,6 +7,9 @@
 \usepackage{natbib}
 \usepackage{listings}
 \usepackage{xspace}
+\usepackage{paralist}
+\usepackage{geometry}
+\geometry{right=1.5in}
 
 \newcommand{\package}[1]{\texttt{#1}\xspace}
 \newcommand{\github}{\package{GitHub}}
@@ -28,6 +31,16 @@
 \newcommand{\Lightcurve}{\sunpycode{LightCurve}}
 \newcommand{\GenericTimeSeries}{\sunpycode{GenericTimeSeries}}
 \newcommand{\GenericMap}{\sunpycode{GenericMap}}
+
+\newcommand{\hpc}{helioprojective Cartesian\xspace}
+\newcommand{\hcc}{heliocentric Cartesian\xspace}
+\newcommand{\hgs}{heliographic Stonyhurst\xspace}
+\newcommand{\hgc}{heliographic Carrington\xspace}
+\newcommand{\hpcframe}{\package{HelioprojectiveCartesian}}
+\newcommand{\hccframe}{\package{HeliocentricCartesian}}
+\newcommand{\hgsframe}{\package{HeliographicStonyhurst}}
+\newcommand{\hgcframe}{\package{HeliographicCarrington}}
+
 
 \shorttitle{Sunpy Project II}
 \shortauthors{The Sunpy Community}
@@ -61,6 +74,7 @@
 
 \acknowledgments
 \software{Astropy \citep{astropy2018}}
+
 
 \bibliography{bibliography}
 
