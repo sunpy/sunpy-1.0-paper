@@ -47,3 +47,12 @@ has contributed code to the sunpy package is guaranteed authorship (as long as t
 
 2] If you feel your contribution to the SunPy community, code, or ecosystem is enough to warrant authorship, please click the following to create an issue and follow the template [Gituhub issue](https://github.com/sunpy/sunpy-1.0-paper/issues/new?template=author_submission.md). We only ask that you provide a short description describing your contribution. We will not evaluate these short descriptions 
 in any way -- we will simply aggregate them.
+
+Timeline
+========
+The timeline for this paper is
+* April 1st - First draft
+* May 1st - Second draft
+* June 1st - Third draft (good enough to be handed out at SPD meeting in Jun)
+* July 1st - Fourth draft final review
+* Submit!
