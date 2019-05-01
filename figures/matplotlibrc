@@ -1,0 +1,17 @@
+font.family : serif
+font.serif : Computer Modern
+text.usetex : True
+axes.titlesize : 10
+axes.labelsize : 10
+legend.fontsize : 7
+xtick.labelsize : 8
+ytick.labelsize : 8
+xtick.major.pad : 3
+xtick.minor.pad : 3
+ytick.major.pad : 3
+ytick.minor.pad : 3
+xtick.direction : in
+ytick.direction : in
+savefig.dpi : 200
+savefig.format : pdf
+savefig.bbox : tight
