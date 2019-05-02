@@ -1,6 +1,4 @@
 """The following file contains generic functions to produce the plots in the sunpy paper."""
-
-import git
 import os
 import seaborn
 import matplotlib
