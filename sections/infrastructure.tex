@@ -1,30 +1,61 @@
 \section{Infrastructure - Stuart}
 \label{sec:infrastructure}
+% edited by Steven C. 23-Apr-2019
 
 \subsection{Releases and Versioning - Nabil}
-\subsection{Continuous Integration - Nabil}
+% my formatting sucks here, sorry Steve.
 
-(Are we using library or codebase?)
+SunPy has been releasing on a ill-defined schedule but for 1.0 and on-wards, it was decided to follow a release schedule. 
+There will be two planned releases of \sunpypkg per year with 6 months between these releases around the months of May and November.
+This is to align the release with release cycles of upstream packages such as Astropy.
 
-Continuous Integration (CI) refers to the practice of routine inspection of code changes into the main  library.
-The action of either submitting code or accepting code triggers several free services which runs the updated  library against a series of known outputs that exist within specific test code, to check for any breakages or unexpected changes within the  library.
-This allows developers to be aware of any changes therefore quickly fixing any problems that arise and ensures the library is maintained.
+Furthermore, each release of \sunpypkg will fit into one of two categories: a Long Term Support (LTS) release and a short-support or non-LTS release.
+The main difference is the differing amounts of time that a release will be supported by bug fixes and documentation upgrades. 
+The first release of the year shall be a non-LTS release, which shall be supported for 6 months or until the next release.
+The second release of the year will be an LTS release and will be supported for 12 months or until the next LTS release.
 
-SunPy's test suite can be broken down into three broad categories: offline, online and visual (figure) tests. 
-The offline test suite checks the majority of the SunPy codebase from doing coordinate transforms to data Input/Output.
-The online test suite specifically checks any code that contacts generalized data service providers such as the VSO or JSOC as well as specific data providers like GOES or NOAA.
-Finally the visual (figure) test suite checks any code that enables the plotting of our core data types and ensures that our code outputs images with the correct axis style, axis scaling and so forth.
+\sunpypkg will follow the following versioning system: ``X.Y.z", where the three components have the following meaning.
+``X" is the LTS version number, this will be incremented with every LTS.
+``Y" is the release counter, this will be 0 for LTS releases and increment for each intermediate release.
+``z" is the bug fix number, and is to be incremented for any bug-fix releases.
 
-This practice relies on several cloud based solutions that provide free server time to run the library's test suite as well as specific tasks like generating and hosting our documentation.
-Recently we have reduced the number of services to provide a more consistent experience, but as of time of writing we use:
+An example release sequence, following this scheme, would look like this:
+
 \begin{itemize}
-\item \href{https://azure.microsoft.com/en-gb/services/devops/pipelines/}{Microsoft's Azure pipelines}: This runs the entire test suite on each operating system (Windows, Mac, Linux) each time a change is made.
-\item \href{https://circleci.com}{circleci}: This runs the library's documentation, a special 32bit build and the visual (figure) tests.
-\item \href{https://travis-ci.org}{Travis CI}: This runs a daily scheduled (cron) job that executes the entire test suite and will alert the developers if any of the tests fail.
-\item \href{https://readthedocs.org/}{Read the Docs}: This is where our \href{http://docs.sunpy.org/en/stable/}{online documentation} is hosted, they also build the documentation in the process.
-\item \href{https://codecov.io/}{Codecov}: This aggregates the results from each test suite to monitor the amount of lines covered by the library's test suite.
+\itemsep0em
+\item 1.0.0 is an LTS release, released November 2019.
+\item 1.1.0 is a short support release, released May 2020.
+\item 1.0.1 and 1.1.1 are bug-fix releases, released June 2020, to fix a current bug and back-port the fix to the LTS version.
+\item 2.0.0 is an LTS release, released November 2020.
 \end{itemize}
 
+One benefit of users using an LTS release is that it will provide warnings for any functionality that will be changed or removed for the next LTS release.
+Where as changes to the code that could break existing scripts, will not happen until the next LTS release but could happen on the non-LTS releases.
+This provides a stable base for long term \sunpy users.
 
-\subsection{Package Template}
-Provided for affiliated packages
+\subsection{Continuous Integration - Nabil}
+The \sunpyproj follows common practices and makes extensive use of continuous integration
+which refers to the practice of automated testing and code change inspection.  
+Any and all proposed code contributions to \sunpypkg trigger test suits to be run on a number of free services which integrate into the \github website. 
+These services provide the first review of all new code and therefore maintain the integrity of the package which makes it easier for new contributors to understand the impact of their changes.
+
+\sunpypkg's test suite can be broken down into three broad categories: offline, online and figure tests. 
+Offline test suite checks the majority of the codebase. 
+Online tests specifically checks code that contacts generalized data service providers such as the VSO \todo{(predefined else where?)} or JSOC as well as specific data providers like GOES or NOAA. 
+These tests depend on the availability of these online services. 
+Finally figure tests check code that generate plots and will generate a failure if the image has changed. 
+This enables high level functionality checks.
+
+\sunpy makes use of the following online services:
+
+\begin{itemize}
+\item \href{https://azure.microsoft.com/en-gb/services/devops/pipelines/}{Microsoft's Azure pipelines}: Runs the entire test suite on each operating system (Windows, Mac, Linux).
+\item \href{https://circleci.com}{circleci}: Runs the library's documentation, a special 32bit build and the figure tests.
+\item \href{https://travis-ci.org}{Travis CI}: Runs the entire test suite on a daily cadence.
+\item \href{https://codecov.io/}{Codecov}: Provides code coverage metrics.
+\end{itemize}
+
+% sdc 24-Apr-2019 the following is not a test suite
+%\item \href{https://readthedocs.org/}{Read the Docs}: This is where our \href{http://docs.sunpy.org/en/stable/}{online documentation} is hosted, they also build the documentation in the process.
+% Nabil 04-May-2019 sure but I think its important to add it somewhere. 
+% We do use it a lot and it should be listed somewhere.
