@@ -31,6 +31,11 @@ Please follow the following standards. We designed the following guidelines to m
 *  Use plain English to reference a piece of code (e.g. "a Pandas dataframe" versus "a `pandas.DataFrame`").
 *  Define references to other code whenever reasonable (e.g. "a Pandas dataframe, or a two-dimensional data structure aligned in rows and columns").
 
+LaTeX Formatting
+----------------
+
+Please always be strict on having one sentance per line to aid in git diffing and latex error detection.
+
 Feedback & Comments
 ===================
 Please provide feedback or comments as issues. There is also a
