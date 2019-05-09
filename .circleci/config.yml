@@ -1,0 +1,35 @@
+merge-check: &merge-check
+  name: Check if we need to merge upstream master
+  command: |
+    if [[ -n "${CIRCLE_PR_NUMBER}" ]]; then
+      git fetch origin --tags
+      git fetch origin +refs/pull/$CIRCLE_PR_NUMBER/merge:pr/$CIRCLE_PR_NUMBER/merge
+      git checkout -qf pr/$CIRCLE_PR_NUMBER/merge
+    fi
+
+version: 2
+jobs:
+  latex-pdf:
+    docker:
+      - image: koppor/texlive
+    steps:
+      - checkout
+      - run: *merge-check
+      - run: pdflatex main.tex
+      - store_artifacts:
+          path: main.pdf
+
+      - run:
+          name: "Built pdf is available at:"
+          command: DOCS_URL="${CIRCLE_BUILD_URL}/artifacts/${CIRCLE_NODE_INDEX}/${CIRCLE_WORKING_DIRECTORY/#\~/$HOME}/main.pdf"; echo $DOCS_URL
+
+workflows:
+  version: 2
+
+  latex-test:
+    jobs:
+      - latex-pdf
+
+notify:
+  webhooks:
+    - url: https://giles.cadair.com/circleci
