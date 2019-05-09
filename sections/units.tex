@@ -1,19 +1,24 @@
 \section{Physical Units - Bobra}
 \label{sec:units}
-\todo{edits by Steven Christe}
+% edited by Steven C. 23-Apr-2019
 
 %Discuss the units SEP. discuss that we are using astropy units and provide a short description of it's capabilities. mention that sunpy.sun provides quantities with units. mention the NASA units disaster and reference units policy for NASA as reference here is a interesting reference \url{https://sma.nasa.gov/news/safety-messages/safety-message-item/lost-in-translation}
 
-Calculations of physical quantities have traditionally been performed in software 
-using bare numbers in the interest of speed as well as simplicity. Physical units
-have frequently been recorded in comments or in documentation which can easily lead
-to errors and potentially catastrophy. The Mars Climate Orbiter mishap in 1988 was caused by a unit discrepancy. The spacecraft trajectory was reported in English units instead metric which led to the the Mars Climate Orbiter entering the Martian atmosphere well-below its intended altitude causing complete mission failure \citep{mco_mishap_report}. A more modern approach is described by \citep{Damevski2009}
-which consists of describing units at the system architecture level. This capability 
-is provided by the \package{astropy.units} module and and a SEP mandates its use.
+Calculations of physical quantities have traditionally been performed in software using raw numbers in the interest of speed as well as simplicity. 
+Physical units have frequently been recorded in comments or in documentation which can easily lead to errors or even disaster. 
+The Mars Climate Orbiter mishap in 1988 was caused by a unit discrepancy. 
+The spacecraft trajectory was reported in English units instead of metric which led to the the Mars Climate Orbiter entering the Martian atmosphere well-below its intended altitude causing complete mission failure \citep{mco_mishap_report}. 
+A more modern approach which ensures that physical quantities are fully described in 
+software is described by \citep{Damevski2009}. 
+The \sunpypkg implements this concept in all of its code through functionality provided by \astropy. 
+The \code{astropy.units} subpackage implements support for physical quantities by extending \numpy array objects and define a \code{Quantity} object which consists of a number with associated units. 
+Tests have shown that the overhead to using this functionality are minimal in most cases. 
+It is formally mandated that all user-facing functionality provided by \sunpypkg make use of \code{Quantity} objects if appropriate. 
+\code{astropy.units} also provides a tool to restrict the input in function definition to units of a particular type (e.g. length, mass). 
+This is used through all \sunpypkg modules.
 
-The \package{astropy.units} module defines a \code{astropy.units.Quantity} class which combine a value and a unit. This class is an extension to \code{numpy.array} and provides significant performance compared to other approaches \todo{add a reference here?}. Every input and output of \sunpypkg functions that requires a physical value make use of \code{astropy.units.Quantity}. Enforcement on input is provided by a decorator (\code{quantity\_input()}). This approach eliminates any confusion about the units of a physical quantity in input or output. Also conversions between such as Gauss and Tesla units are made straightforward with the \code{.to()} method.
-
-The \package{sunpy.sun} module contains constants, parameters and models of the Sun provided as \code{astropy.units.Constants} which are \code{astropy.units.Quantity} with additional reference metadata. These include variable quantities, such as the Carrington rotation number, as well as constants, such as the solar mass. 
+The \package{sunpy.sun} module contains constants, parameters and models of the Sun provided which are all provided as physical quantities as \code{astropy.units.Constants} which are \code{Quantity} with additional reference metadata. 
+These include variable quantities, such as the Carrington rotation number, as well as constants, such as the solar mass. 
 
 \todo{do we want to discuss astropy time in this section as well?}
 

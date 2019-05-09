@@ -1,9 +1,5 @@
 # sunpy-1.0-paper
-The SunPy 1.0 Paper Repo.
-
-As of this commit, this is only a snapshot of the paper. Editing is
-currently ongoing in real-time on Overleaf. You can view the latest
-version using this [link](https://www.overleaf.com/read/kqhqgznzswds).
+The SunPy 1.0 paper repository.
 
 Scope of the Paper
 ==================

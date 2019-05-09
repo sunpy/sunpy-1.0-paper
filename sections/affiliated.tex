@@ -1,113 +1,70 @@
 \section{Affiliated Packages - Steven}
 \label{sec:affil_package}
-\todo{ready for review - 26-Mar-2019}
+% edited by Steven C. 23-Apr-2019
 
-
-In order to foster an interoperable software environment which minimizes the cognitive burden on users, the \sunpy project supports the concept of affiliated packages.
-A \sunpy affiliated package is a \python package that builds upon the functionality of the \sunpypkg package or provides general functionality useful to solar data analysis. Affiliated packages can also be used to develop and mature core functionality outside of the constraints of \sunpypkg.
-
-In order to promote high-quality code and foster consistency and interoperability the following requirements must be satisfied by any potential affiliated packages.
+In order to foster collaboration and code re-use, the \sunpyproj supports the concept of affiliated packages. 
+These are \python package that build upon the functionality of the \sunpypkg package or provides general functionality useful to solar physics. 
+Affiliated packages can also be used to develop and mature subpackage functionality outside of the constraints of \sunpypkg. 
+The following requirements must be satisfied by any potential affiliated packages.
 \begin{itemize}
-    \item In order to reduce code duplication and complexity, the package must make use of all appropriate features in \sunpypkg.
+    \item the package must make use of all appropriate features in \sunpypkg.
     \item Documentation must be provided that explains the function and use of the package, and it should be of comparable quality to \sunpypkg.
     \item A test suite must be provided to verify the correct operation of the package.
-    \item The developers should engage with the community to encourage knowledge and code sharing.
 \end{itemize}
+Developers can formally apply to become an affiliated package to the lead developer. 
+Final approval is required by the \sunpy board for acceptance. 
+Packages are re-reviewed on a yearly basis to ensure that they continue to meet the standards. 
+All affiliated packages are listed on \url{sunpy.org}, are provided support by the \sunpy developer community, and advertised at conferences and workshops. 
+In addition, the project further defines sponsored affiliated package which is an affiliated package whose maintenance and development is the responsibility of the \sunpy project.  
 
-Developers can formally apply to become an affiliated package to the \sunpy lead developer whose responsibilities include to define the application and review process. Final approval is required of the board for acceptance. Packages are re-reviewed on a yearly basis to ensure that they continue to meet the standards. All affiliated packages are listed on \url{sunpy.org}, provided support by the \sunpy developer community, and further advertised at conferences and workshops. In addition, the project further defines sponsored affiliated package which is an affiliated package whose maintenance and development is the responsibility of the \sunpy project.  
+Add a line about providing a package template for affiliated packages.
 
-The following section provides short descriptions of the existing affiliated packages.
+The following sections provides short descriptions of the existing affiliated packages.
 \label{sec:affil_packages}
 
 \subsection{drms - Kolja Glogowski - MONICA}
 \label{sec:drms}
 \todo{reviewed by Steve Christe - 26-mar-2019}
 
-The \package{drms} affiliated package provides functionality which allows for direct access to data hosted by the Joint Science Operations Center (JSOC). This is the primary data center for the Solar Dynamics Observatory’s (SDO)\todo{check if these instruments have already been reference before this section, and make sure that reference are provided} Helioseismic and Magnetic Imager (HMI) and Atmospheric Imaging Assembly (AIA) instruments as well as data from the Solar and Heliospheric Observatory's (SoHO) Michelson Doppler Imager (MDI) instrument. DRMS stands for Data Record Management System, a pSQL database that contains metadata, as well as pointers to image data, for every image taken by AIA, HMI, and MDI. The \package{drms} package provides access to the unique search capabilities of the JSOC which include: metadata search queries, export tailored FITS files and serve these files in a variety of methods, as well as export data as movies and images in various formats.
+The \package{drms} affiliated package provides functionality which allows for direct access to data hosted by the Joint Science Operations Center (JSOC). 
+This is the primary data center for the Solar Dynamics Observatory’s (SDO)\todo{check if these instruments have already been reference before this section, and make sure that reference are provided} Helioseismic and Magnetic Imager (HMI) and Atmospheric Imaging Assembly (AIA) instruments as well as data from the Solar and Heliospheric Observatory's (SoHO) Michelson Doppler Imager (MDI) instrument. 
+DRMS stands for Data Record Management System, a pSQL database that contains metadata, as well as pointers to image data, for every image taken by AIA, HMI, and MDI. 
+The \package{drms} package provides access to the unique search capabilities of the JSOC which include: metadata search queries, export tailored FITS files and serve these files in a variety of methods, as well as export data as movies and images in various formats.
 
 \todo{schriste - clean up, add more detail on that last sentence, also say what is the JSOC API interface}.
 
 \subsection{ndcube - Dan Ryan}
 \label{sec:ndcube}
-The \package{ndcube} package provides data classes for manipulating N-dimensional coordinate-aware astronomical data which are common in solar physics.
-For example, a series of images taken sequentially by a CCD-based instrument like SDO/AIA can be stored as a single 3-D array with one temporal and two spatial axes, where each array element represents a pixel.
-There are several components common to such datasets besides the data array itself, including uncertainties, units, metadata and quality flags which mark whether a data value is reliable.
-Furthermore, there are common tasks performed on most N-dimensional datasets including slicing, visualization and coordinate transformations.
+% edited by Steven C. 25-Apr-2019
 
-\package{ndcube}'s data classes are inherited from \astropy's \sunpycode{NDData} container class.  Its purpose is to combine the container with generalized, intuitive but powerful APIs for slicing, visualization, coordinate conversion and data inspection.
-It leverages pre-existing functionalities from mature scientific Python packages: powerful array-based operations including masked-array handling from \package{NumPy}; visualization from \package{matplotlib}; and support from \astropy\ for handling units and World Coordinate System (WCS) transformations, common in solar physics.
-
-\package{ndcube} provides two primary data classes, \sunpycode{NDCube} and \sunpycode{NDCubeSequence}.
-\sunpycode{NDCube} handles a single data array described by a single set of coordinate transformations.
-Users can optionally include uncertainties, a data mask, a data unit and metadata.
-It is also possible to associate data axes with extra array- or \astropy\ \sunpycode{Quantity}-based coordinates.
-\sunpycode{NDCubeSequence} is designed to handle datasets spread over multiple data arrays, each described by its own set of coordinate transformations.
-Under the hood, \sunpycode{NDCubeSequence} is a list of \sunpycode{NDCubes} with compatible dimensions.
-\sunpycode{NDCubeSequence} enables users to effectively concatenate \sunpycode{NDCubes} if they are sequential along a given axis, e.g.\ time, while keeping the coordinate transformations distinct, or add an extra dimension to their data not described by the WCS translations.
-This can be useful if it is not possible or desirable to describe the entire dataset with a single set of WCS transformations or the constituent \sunpycode{NDCubes} don't represent the same measured property.
-
-These classes are not specific to any number or physical type of axes.
-They can therefore be used for any data type (e.g. images, spectra, etc.) so long as it can be represented by an array and a set of coordinate transformations.
-Both classes have generalized APIs for data visualization and performing coordinate transformations.
-In addition they have powerful slicing APIs that allow users to slice the entire dataset with a single command using either array indices or real world coordinates.
-This slices all components of the \sunpycode{NDCube} including the data array, uncertainties, data mask and coordinates simultaneously.
-This enables users to manipulate their dataset more quickly and accurately, allowing them to more efficiently and reliably achieve their science goals.
-These features make \package{ndcube}'s data classes ideal for subclassing.  They centralize the development and maintenance of common fundamental data class functionalities, streamlining development and maintenance of higher level classes.  They also offer a common fundamental API between classes that helps users to more easily manipulate multiple data types.
-
-Although stable versions of \package{ndcube} are currently available via \package{conda-forge} and \package{pip}, development continues.
-Among the planned future features are support for arithmetic operations, resampling and \astropy's generalized WCS module (\sunpycode{gWCS}) which provides more flexibility than the traditional FITS-WCS framework.
-
+The \package{ndcube} package provides functionality for manipulating N-dimensional coordinate-aware data.  
+It can support any combination of axis-types for example
+images (2 spatial axis), images over time (2 spatial and 1 time axis), spectrograms
+(wavelength and time), as well as more complex data sets such as from slit spectragraphs (wavelength, time, and spatial). 
+It provides the class \sunpycode{NDCube} which is a
+subclass of \astropy's \sunpycode{NDData} data container class which hold together
+the data array uncertainties, and (potentially) a data mask. 
+\sunpycode{NDCube} adds
+support for handling world coordinate transformations through the World Coordinate System (WCS) architecture commonly used in solar physics (\todo{insert WCS reference here}). 
+This package provides powerful and intuitive slicing that allow users to slice the entire dataset with a single command using either array indices or real world coordinates. 
+This slices all components including the data array, and coordinates simultaneously. 
+This enables users to manipulate their dataset more quickly and accurately, allowing them to more efficiently and reliably achieve their science goals and is meant to be used as a basis for more advanced and instrument specific functionality (see Section~\ref{sec:irispy}). 
+Support for generalized WCS module (\todo{insert reference here}) is planned to be added in the next major release.
 
 \subsection{radiospectra - David}
 
 
 \subsection{IRISPy - Dan Ryan}
 \label{sec:irispy}
-\todo{Reviewed by Steven Christe - 26-Mar-2019}
-\package{IRISPy} provides tools to read, manipulate and visualize data from the Interface Region Imaging Spectrograph (IRIS; \citealt{DePontieu2014}).
-At the time of writing, \package{IRISPy} has not been released and so some aspects of the API may still change.
-However, the main elements of \package{IRISPy} have now been established.
-\package{IRISpy} currently includes two functions for reading IRIS level 2 FITS files from slit-jaw imager (SJI) and  spectrograph (SG), respectively.
-These functions are designed to read one of more files from the same observing mode.
-Observations from different observing modes cannot currently be combined because the dimensions of the resulting data can differ significantly.
-Depending on the type of files, the data is returned in \sunpycode{IRISMapCube} or \sunpycode{IRISSpectrogramCubeSequence} classes which are inherited from the \package{ndcube} data classes (Section~\ref{sec:ndcube}).
-As such, they link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations.
-Measurement uncertainties accounting for Poisson statistics and readout noise are automatically calculated while a mask identifies what pixels of the data array are exposed to the Sun.
+% edited by Steven C. 25-Apr-2019
+
+\package{IRISPy} provides tools to read, manipulate and visualize data from the Interface Region Imaging Spectrograph (IRIS; \citealt{DePontieu2014}). 
+IRIS is a NASA Small Explorer mission which has two instruments; a slit-jaw imager (SJI) and a rastering slit spectrograph (SG). 
+The \package{IRISPy} is limited to reading level 2 data for either of these instruments. 
+This package provide data classes \sunpycode{IRISMapCube} and {IRISSpectrogramCubeSequence} which hold data from SJI and SG respectively.
+Built on top of the functionality provided by \package{ndcube} (see Section\~ref{sec:ndcube}) they link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provide easy slicing of the data in any axis. 
+Measurement uncertainties accounting for Poisson statistics and readout noise are automatically calculated while a mask identifies what pixels of the data array are exposed to the Sun. 
 The mask facilitates basic operations, e.g.\ mean, max, etc., and removes bad pixels from the color table in visualizations.
-Meanwhile auxiliary data such as exposure times and orbital parameters are stored as extra coordinates (Section~\ref{sec:ndcube}) aligned with the time axis.
-This design links all the relevant data and metadata from the FITS files in a logical fashion, while the slicing and visualization features inherited from the \package{ndcube} data classes allow these data to be represented more faithfully at each stage of the analysis.
-
-The \sunpycode{IRISMapCube} class is comprised of three dimensions, solar longitude, latitude and time.
-It includes a method for applying and removing exposure time corrections based on the exposure times stored in the extra coordinates derived from the auxiliary data in the FITS files.
-This method automatically alter the data unit by dividing or multiplying in by seconds.
-Thus users can tell whether or not the exposure time correction has been applied to the data, helping to avoid analysis errors.
-Dust mask methods mark SJI pixels in the data mask known to be scientifically unusable due to dust deposits.
-The process in reversible so users can also unmark these pixels if they choose.
-
-The \sunpycode{IRISSpectrogramCubeSequence} class SG holds data from a single IRIS spectral window.
-Multiple \sunpycode{IRISSpectrogramCubeSequence}s holding observations in different windows from the same observing mode can be combined into an \sunpycode{IRISSpectrograph} container object.
-Rastering slit spectrographs like IRIS, produce data that is simultaneously 3D and 4D.
-This is because the slit, through which each observation is taken, can move sequentially in the x-direction, taking observation at each location.
-Moreover, once an observation has been taken at each position in the raster pattern, the process can be repeated over and over again during a single observing campaign, convolving the spatial x-dimension with time.
-It is therefore equally valid to think of the dimensionality of the observations as 3D (time, solar y, wavelength) or (raster scan number, solar x, solar y, wavelength).
-This problem is dealt with by the IRIS instrument software by producing two separate instances of the data in 3D and 4D.
-This is a simple, intuitive strategy but does have obvious drawbacks.
-For example, it roughly the required memory and means that each piece of analysis must be performed separately on both instances to ensure both copies of the data stay consistent.
-This can reduce the efficiency and accuracy of the data analysis.
-\sunpycode{IRISSpectrogramCubeSequence} addresses this problem by supplying two independent slicing and visualization APIs on the same instance, one that allows the user to interact with the data as time, solar y, wavelength, and another as raster scan number, solar x, solar y, wavelength.
-Users can switch back and forth between the APIs seamlessly.
-This means with two simple commands, users can trim their data to a region of interest along the time axis, say an event start and end time.
-And then isolate a subset of slit positions along the x-axis that overlap with the event.
-Moreover, because both APIs interact with the same underlying copy of the data, there is no need repeat analyses or worry track the consistency of different copies of the data.
-This drastically increases the speed and accuracy of locating and analyzing regions of interest.
-
-In addition to the slicing and visualization APIs, \sunpycode{IRISSpectrogramCubeSequence} includes a method to convert the data between data number (DN), number of photons, and radiance.
-This method automatically alters the unit attribute as required so users can always tell what form the data is in.
-This method allows the energies radiated by given lines during an event to be determined.
-
-Currently however converting to radiance is done assuming the pre-flight-measured response function, making it less reliable for more recent observations.
-However, work is currently underway to support time-dependent derivations of the response functions which will give \package{IRISpy} the basic functionalities for performing IRIS level 2 data analysis.
-In addition, future enhancements to the \package{ndcube} data classes, such as support for arithmetic operations and resampling will be utilized by \package{IRISpy}.
 
 
 %This is useful when one axis represents two coordinates, one of which is parallel while the other is not.
