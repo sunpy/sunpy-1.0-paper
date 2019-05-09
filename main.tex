@@ -1,7 +1,4 @@
-% to be published in ApJ
-% other potential avenues for publication Elsevier Astronomy and Computing
-
-
+% To be published in ApJ or Elsevier Astronomy and Computing
 \documentclass{aastex62}
 \usepackage[utf8]{inputenc}
 \usepackage{natbib}
@@ -12,16 +9,22 @@
 \geometry{right=1.5in}
 
 \newcommand{\package}[1]{\texttt{#1}\xspace}
+\newcommand{\code}[1]{\texttt{#1}\xspace}
+
 \newcommand{\github}{\package{GitHub}}
+
 \newcommand{\python}{\package{Python}}
+
 \newcommand{\sunpy}{SunPy\xspace}
+\newcommand{\sunpyproj}{\sunpy project\xspace}
 \newcommand{\sunpypkg}{\package{sunpy}}
+\newcommand{\sunpycode}[1]{\code{#1}}
 
 \newcommand{\astropy}{Astropy\xspace}
 \newcommand{\astropypkg}{\package{astropy}}
 
-\newcommand{\code}[1]{\texttt{#1}\xspace}
-\newcommand{\sunpycode}[1]{\code{#1}}
+\newcommand{\numpy}{NumPy\xspace}
+
 
 \newcommand{\Map}{\sunpycode{Map}}
 \newcommand{\Timeseries}{\sunpycode{TimeSeries}}
@@ -41,19 +44,16 @@
 \newcommand{\hgsframe}{\package{HeliographicStonyhurst}}
 \newcommand{\hgcframe}{\package{HeliographicCarrington}}
 
-
 \shorttitle{Sunpy Project II}
 \shortauthors{The Sunpy Community}
 
 % Words that should not be hyphenated
 \hyphenation{NumFOCUS}
 
-
 % For commenting - can be deleted before submission
 \usepackage[colorinlistoftodos]{todonotes}
 \newcommand{\inlinecomment}[2]{\todo[inline]{#1: #2}\xspace}
 \newcommand{\comment}[2]{\todo{#1: #2}\xspace}
-
 
 \begin{document}
 
@@ -74,7 +74,6 @@
 
 \acknowledgments
 \software{Astropy \citep{astropy2018}}
-
 
 \bibliography{bibliography}
 
