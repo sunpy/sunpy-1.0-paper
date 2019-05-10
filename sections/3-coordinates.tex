@@ -12,19 +12,19 @@ Both the \hpc and \hcc frames are observer-dependent and require the location of
 In the \hpc frame, the observer is at the origin of the coordinate system while in the \hcc frame the $z$-axis is defined to be parallel to the Sun-observer line.
 % elaborate a bit more here as well; why are these frames useful? (split into two paragraphs)
 
-% Description of the HCRS <-> HGS transform? - Stuart Mumford, Albert Shih? 
+% Description of the HCRS <-> HGS transform? - Stuart Mumford, Albert Shih?
 
 \begin{figure}
     % Why are the arrows between the solar frames brown and green? all black?
     \centering
     \includegraphics[width=0.75\textwidth]{figures/sunpy_frames.pdf}
-    \caption{Graph of possible transformations between reference frames as implemented in \package{sunpy.coordinates}. 
-    The arrows indicate transformations between the different frames. 
+    \caption{Graph of possible transformations between reference frames as implemented in \package{sunpy.coordinates}.
+    The arrows indicate transformations between the different frames.
     Note that coordinates can be transformed to more general astronomical coordinate frames via the \hgs frame.}
     \label{fig:transform_graph}
 \end{figure}
 
-Coordinates and their associated frames are specified using an \astropy \code{SkyCoord} object \citep[see Section 3.3 of][]{astropy2018}. 
+Coordinates and their associated frames are specified using an \astropy \code{SkyCoord} object \citep[see Section 3.3 of][]{astropy2018}.
 Observer location is encoded in the same way.
 For example, in the \hpc and \hcc frames, the \code{.observer\_coordinate} attribute is a \code{SkyCoord} defined in the \hgs frame.
 The default observer location is set to the position of the Earth as long as the time of the observation is specified.
@@ -33,19 +33,19 @@ If the time is not set the coordinate cannot be transformed to another frame unl
 
 The \package{sunpy.coordinates} subpackage is most useful when combined with the \sunpycode{Map} object (see \autoref{sec:map}).
 Coordinates are automatically populated when opening a FITS image using the appropriate header metadata.
-This combination enables a number of number of tasks which were once cumbersome. 
+This combination enables a number of number of tasks which were once cumbersome.
 A few examples are shown in \autoref{fig:coordinates_examples}.
 % brief description of figures
 
-%Just as an \code{astropy.units.Quantity} object is used to attach units to a numerical value (see \autoref{sec:units}), an \code{astropy.coordinates.SkyCoord} object includes the spatial coordinate as well as the system in which that coordinate is defined. In addition to the numerical values of the coordinate, a \code{SkyCoord} includes a reference frame or system and a representation. A reference frame describes the manner in which a point is oriented in space while a representation is a way to describe a point in a particular reference frame (e.g. Cartesian, spherical). 
+%Just as an \code{astropy.units.Quantity} object is used to attach units to a numerical value (see \autoref{sec:units}), an \code{astropy.coordinates.SkyCoord} object includes the spatial coordinate as well as the system in which that coordinate is defined. In addition to the numerical values of the coordinate, a \code{SkyCoord} includes a reference frame or system and a representation. A reference frame describes the manner in which a point is oriented in space while a representation is a way to describe a point in a particular reference frame (e.g. Cartesian, spherical).
 
 \begin{figure}
     \gridline{\fig{figures/fieldlines_aia.pdf}{0.3\textwidth}{(a)}
               \fig{figures/venus_transit.pdf}{0.3\textwidth}{(b)}
-              \fig{figures/cumulative_authors.pdf}{0.3\textwidth}{(c)}
+              \fig{figures/coronagraph_starfield.pdf}{0.3\textwidth}{(c)}
               }
-    \caption{(a) Several example use cases of the coordinates machinery in \sunpy. 
-    (a) Field lines traced from a field extrapolation of active region NOAA XXXX computed using \package{pfsspy} overlaid on an 171 \AA image from AIA.}
+    \caption{Several example use cases of the coordinates machinery in \sunpy.
+    (a) Field lines traced from a field extrapolation of active region NOAA XXXX computed using \package{pfsspy} overlaid on an 171 \AA image from AIA. (b) The venus transit (c) star field on a coronagraph image.}
     \label{fig:coordinates_examples}
 \end{figure}
 
@@ -58,8 +58,8 @@ A few examples are shown in \autoref{fig:coordinates_examples}.
 
 
 \subsection{Solar differential coordination - Jack}
-One paragraph long. 
-Not clear if it needs to be in this location. 
+One paragraph long.
+Not clear if it needs to be in this location.
 Should it be in a map utility section?
 
 Don't forget to refer to the figure!
@@ -70,9 +70,9 @@ Figure \ref{fig:diff_rot}
 \begin{figure}
     \center
     \includegraphics[width = 0.8\textwidth]{figures/diff_rot_aia1600.png}
-    \caption{Example of the functionality of \sunpy to apply solar differential rotation to a Map. 
-    Panels (a) and (b) show the Sun as observed in AIA 1600~\AA\ on two different days, 2014-02-20 and 2014-02-22. 
-    A large sunspot group is highlighted by the red arrow, and a smaller sunspot by the white arrow. 
+    \caption{Example of the functionality of \sunpy to apply solar differential rotation to a Map.
+    Panels (a) and (b) show the Sun as observed in AIA 1600~\AA\ on two different days, 2014-02-20 and 2014-02-22.
+    A large sunspot group is highlighted by the red arrow, and a smaller sunspot by the white arrow.
     Panel (c) shows the map of (a) that has been rotated differentially using \sunpy to the time of map (b).}
     \label{fig:diff_rot}
 \end{figure}
