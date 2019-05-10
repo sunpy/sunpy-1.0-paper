@@ -7,7 +7,7 @@ The \package{sunpy.coordinates} subpackage provides definitions of and transform
 These reference frames and their associated transformations are implemented using the \package{astropy.coordinates} subpackage and extend \astropy's coordinate frame transformation graph to include solar coordinates.
 \autoref{fig:transform_graph} shows the transformation graph between the various coordinate frames provided by \sunpy and their connection to astronomical coordinate frames.
 Four solar physics coordinate frames are currently implemented: \hpc, \hcc, \hgs, and \hgc.
-Each of these frames and the associated transformations are defined in \citet{thompson2006coordinate}.
+Each of these frames and the associated transformations are defined in \citet{2006A&A...449..791T}.
 Both the \hpc and \hcc frames are observer-dependent and require the location of an observer to be specified when constructing the frame.
 In the \hpc frame, the observer is at the origin of the coordinate system while in the \hcc frame the $z$-axis is defined to be parallel to the Sun-observer line.
 % elaborate a bit more here as well; why are these frames useful? (split into two paragraphs)
