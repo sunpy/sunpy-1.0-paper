@@ -11,3 +11,4 @@ authors.fls
 authors.log
 main.fdb_latexmk
 main.synctex.gz
+auto/**
