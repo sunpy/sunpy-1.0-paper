@@ -16,6 +16,9 @@ jobs:
       - checkout
       - run: *merge-check
       - run: pdflatex main.tex
+      - run: bibtex bibliography
+      - run: pdflatex main.tex
+      - run: pdflatex main.tex
       - store_artifacts:
           path: main.pdf
 
