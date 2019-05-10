@@ -15,10 +15,7 @@ jobs:
     steps:
       - checkout
       - run: *merge-check
-      - run: pdflatex main.tex
-      - run: bibtex
-      - run: pdflatex main.tex
-      - run: pdflatex main.tex
+      - run: latexmk -pdf main.tex
       - store_artifacts:
           path: main.pdf
 
