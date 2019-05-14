@@ -1,0 +1,5 @@
+[ tool.giles ]
+
+  [ tool.giles.circleci_artifacts.pdf ]
+    url = "main.pdf"
+    message = "Click details to preview the built pdf."

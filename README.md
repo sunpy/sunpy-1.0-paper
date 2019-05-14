@@ -1,9 +1,5 @@
 # sunpy-1.0-paper
-The SunPy 1.0 Paper Repo.
-
-As of this commit, this is only a snapshot of the paper. Editing is
-currently ongoing in real-time on Overleaf. You can view the latest
-version using this [link](https://www.overleaf.com/read/kqhqgznzswds).
+The SunPy 1.0 paper repository.
 
 Scope of the Paper
 ==================
@@ -30,6 +26,11 @@ Please follow the following standards. We designed the following guidelines to m
 *  Avoid overly technical language (like subclass, decorator, namespace, mixin, and factory) wherever possible.
 *  Use plain English to reference a piece of code (e.g. "a Pandas dataframe" versus "a `pandas.DataFrame`").
 *  Define references to other code whenever reasonable (e.g. "a Pandas dataframe, or a two-dimensional data structure aligned in rows and columns").
+
+LaTeX Formatting
+----------------
+
+Please always be strict on having one sentance per line to aid in git diffing and latex error detection.
 
 Feedback & Comments
 ===================
