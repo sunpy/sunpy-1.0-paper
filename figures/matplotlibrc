@@ -15,3 +15,4 @@ ytick.direction : in
 savefig.dpi : 200
 savefig.format : pdf
 savefig.bbox : tight
+backend: TkAgg
