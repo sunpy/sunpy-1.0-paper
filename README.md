@@ -57,3 +57,7 @@ The timeline for this paper is
 * June 1st - Third draft (good enough to be handed out at SPD meeting in Jun)
 * July 1st - Fourth draft final review
 * Submit!
+
+Editing and Pull Requests
+=========================
+In order coordinate editing the paper and submitting pull requests please send a message to the Riot channel to let people know you are working on a particular section.
