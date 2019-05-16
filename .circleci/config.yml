@@ -7,21 +7,45 @@ merge-check: &merge-check
       git checkout -qf pr/$CIRCLE_PR_NUMBER/merge
     fi
 
+skip-check: &skip-check
+  name: Skip if last commmit is from CircleCI
+  command: |
+    echo $(git log -1 --pretty=format:'%an')
+    commituser=$(git log -1 --pretty=format:'%an')
+    if [[ $commituser = *"CirceCI"* ]]; then
+        circleci step halt
+    fi
+
 version: 2
 jobs:
   latex-pdf:
     docker:
-      - image: koppor/texlive
+      - image: danteev/texlive
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "f6:fa:eb:d1:d0:b3:bb:46:e4:d2:a6:c7:8c:72:a7:51"
       - checkout
+      - run: *skip-check
       - run: *merge-check
       - run: latexmk -pdf main.tex
       - store_artifacts:
           path: main.pdf
-
       - run:
           name: "Built pdf is available at:"
-          command: DOCS_URL="${CIRCLE_BUILD_URL}/artifacts/${CIRCLE_NODE_INDEX}/${CIRCLE_WORKING_DIRECTORY/#\~/$HOME}/main.pdf"; echo $DOCS_URL
+          command: export DOCS_URL="${CIRCLE_BUILD_URL}/artifacts/${CIRCLE_NODE_INDEX}/${CIRCLE_WORKING_DIRECTORY/#\~/$HOME}/main.pdf"; echo $DOCS_URL
+      - run:
+          name: "Update URL in README.md"
+          command: |
+            if [[ -z "${CIRCLE_PR_NUMBER}" ]]; then
+              DOCS_URL="${CIRCLE_BUILD_URL}/artifacts/${CIRCLE_NODE_INDEX}/${CIRCLE_WORKING_DIRECTORY/#\~/$HOME}/main.pdf"
+              sed -i '7s@.*@'"$DOCS_URL"'@' README.md
+              git config user.email "None"
+              git config user.name "CirceCI"
+              git add README.md
+              git commit -m 'CircleCI PDF URL Update'
+              git push --set-upstream origin test
+            fi
 
 workflows:
   version: 2
