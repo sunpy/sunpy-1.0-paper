@@ -44,7 +44,7 @@ jobs:
               git config user.name "CirceCI"
               git add README.md
               git commit -m 'CircleCI PDF URL Update'
-              git push --set-upstream origin test
+              git push --set-upstream origin master
             fi
 
 workflows:
