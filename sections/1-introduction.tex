@@ -14,7 +14,7 @@ A common, version-controlled, open source platform that provides a standard inte
 SunPy aims to provide this solution for the field of solar physics.
 
 The mission statement of the SunPy Project is to facilitate and promote the use and development of several community-led, free, and open-source\footnote{\url{https://opensource.org/osd}} data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
-To achieve this goal, the project develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see Section \ref{sec:affil_packages}) that provides additional functionality. 
+To achieve this goal, the project primarily develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see Section \ref{sec:affil_packages}) that provides additional functionality. 
 
 The SunPy Project was formally founded in March of 2014. The project selected the \python programming language to leverage the rich ecosystem of packages already available for general data analysis. 
 These include \package{Numpy} for multi-dimensional array manipulation \citep{numpy}, \package{scipy} for scientific functions \citep{scipy}, \package{Matplotlib} for publication-quality 2D plotting \citep{matplotlib}, and \package{Pandas} for data structures and time series analysis \citep{pandas}.
@@ -27,7 +27,7 @@ This paper describes the first stable release (v1.0) of the core package. A prev
 
 The organization of the \sunpyproj is modeled on the structure of a board-only not-for-profit corporate entity. 
 It consists of an up-to 10 member self-selected board. 
-An executive director, elected by the board, leads the development of \sunpy core package, provides user support, and supports the development of affiliated packages. 
+An executive director, elected by the board, forms the core development team, leads the development of \sunpy core package, provides user support, and supports the development of affiliated packages. 
 As such, the executive director is also the \sunpy lead developer.
 A deputy lead developer and release manager, as well as other volunteers from the developer community, support the lead developer.
 Board members serve two year terms while the lead developer serves one year terms. 
@@ -58,12 +58,13 @@ Since 2011, 7 students contributed to SunPy through a similar program funded by 
 Many SunPy community members served as mentors for these students\footnote{\url{https://github.com/sunpy/sunpy/wiki/Wall-of-Fame}}. 
 In 2018, NumFOCUS, a 501(c)(3) public charity which collects and manages tax-deductible contributions for many open-source scientific software packages such as NumPy and AstroPy, gave GSoC student Vishnunarayan K. I. an award for exceptional contributions to the open source scientific software ecosystem for his efforts to update SunPy with a modern astronomical time system.
 
-The National Academies of Sciences, Engineering, and Medicine's 2018 report on Open Source Software Policy Options for NASA Earth and Space Sciences \citep{NAP2018} outlines several solutions to alleviate this problem -- namely that the NASA Science Mission Directorate provide funding for new and existing open source software projects, promote scientists who spend time developing and improving open source software projects, and offer prizes for exemplary contributions to the open source software community. 
+The National Academies of Sciences, Engineering, and Medicine's report on Open Source Software Policy Options for NASA Earth and Space Sciences \citep{NAP2018} outlines several solutions to alleviate this problem -- namely that the NASA Science Mission Directorate provide funding for new and existing open source software projects, promote scientists who spend time developing and improving open source software projects, and offer prizes for exemplary contributions to the open source software community. 
+The National Academies of Sciences, Engineering, and Medicine's report on Reproducibility and Replicability in Science \citep{NAP2019} recommends that funding agencies invest in the research and development of open-source software that support reproducibility.
 The \sunpy community supports solutions like these for all relevant funding agencies and furthermore has the ability to accept financial contributions from institutions or individuals through the NumFOCUS organization.
 
 \section{Development Model}
 
-To satisfy the mission statement of the Project, the \sunpy community adopted an open development model for all development. 
+To satisfy the mission statement of the Project, the \sunpy community adopted an open development model. 
 This development model is widely used within the scientific Python community. 
 The \sunpy organization and \sunpypkg package are hosted on \github and use Git\footnote{\url{https://git-scm.com/}} as its distributed version control software.
 The entire codebase is publicly available and anyone can suggest changes through pull requests. 
