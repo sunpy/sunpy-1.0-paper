@@ -13,14 +13,15 @@ Scientists conducting interdisciplinary research from multiple instruments run i
 A common, version-controlled, open source platform that provides a standard interface to data products and encourages the re-use of common functions can go a long way toward solving this problem. 
 SunPy aims to provide this solution for the field of solar physics.
 
-The mission statement of the \sunpyproj is to facilitate and promote the use and development of several community-led, free, and open-source\footnote{\url{https://opensource.org/osd}} data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
+The mission statement of the SunPy Project is to facilitate and promote the use and development of several community-led, free, and open-source\footnote{\url{https://opensource.org/osd}} data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
 To achieve this goal, the project develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see Section \ref{sec:affil_packages}) that provides additional functionality. 
-The project was formally founded in March of 2014 and released version 0.5 three months later \citep{Community:2015cy}, although development of the core package began in 2011. 
 
-The \sunpyproj selected the \python programming language to leverage the rich ecosystem of packages already available for general data analysis. 
+The SunPy Project was formally founded in March of 2014. The project selected the \python programming language to leverage the rich ecosystem of packages already available for general data analysis. 
 These include \package{Numpy} for multi-dimensional array manipulation \citep{numpy}, \package{scipy} for scientific functions \citep{scipy}, \package{Matplotlib} for publication-quality 2D plotting \citep{matplotlib}, and \package{Pandas} for data structures and time series analysis \citep{pandas}.
 These core packages form the backbone for hundreds of thousands of additional \python packages.
 Of particular relevance to \sunpypkg is the \astropypkg package, which provides core functionality for the analysis of astrophysical data \citep{astropy2018}. 
+
+This paper describes the first stable release (v1.0) of the core package. A previous paper described release v0.5 \citep{Community:2015cy}.
 
 \section{Project Organization \& Enhancement Proposals}
 
@@ -47,11 +48,15 @@ Some notable SEPs led to the adoption of physical units throughout the code base
 
 \section{Support \& Sustainability}
 
-The \sunpyproj and relies largely on unpaid, volunteer efforts from early career scientists. 
+The \sunpyproj relies largely on unpaid, volunteer efforts from early career scientists. 
 The project has not received any significant direct financial support for its work facilitating and promoting any open-source and open development software including \sunpy itself. 
 The \astropy community faces a similar problem \citep{PriceWhelan:2018ji, Muna2016}. 
 
-The SunPy Project does participate in two summer of code programs, which offer students stipends to write code for open-source projects, via the OpenAstronomy umbrella organization. Since 2013, 16 students contributed to SunPy through the Google Summer of Code (GSoC) program. Since 2011, 7 students contributed to SunPy through a similar program funded by the European Space Agency called The ESA Summer of Code in Space. Many SunPy community members served as mentors for these students\footnote{\url{https://github.com/sunpy/sunpy/wiki/Wall-of-Fame}}. In 2018, NumFOCUS, a 501(c)(3) public charity which collects and manages tax-deductible contributions for many open-source scientific software packages such as NumPy and AstroPy, gave GSoC student Vishnunarayan K. I. an award for exceptional contributions to the open source scientific software ecosystem for his efforts to update SunPy with a modern astronomical time system.
+The SunPy Project does participate in two summer of code programs, which offer students stipends to write code for open-source projects, via the OpenAstronomy umbrella organization. 
+Since 2013, 16 students contributed to SunPy through the Google Summer of Code (GSoC)\footnote{\url{https://summerofcode.withgoogle.com/}} program. 
+Since 2011, 7 students contributed to SunPy through a similar program funded by the European Space Agency called The ESA Summer of Code in Space\footnote{\url{https://socis.esa.int/}}. 
+Many SunPy community members served as mentors for these students\footnote{\url{https://github.com/sunpy/sunpy/wiki/Wall-of-Fame}}. 
+In 2018, NumFOCUS, a 501(c)(3) public charity which collects and manages tax-deductible contributions for many open-source scientific software packages such as NumPy and AstroPy, gave GSoC student Vishnunarayan K. I. an award for exceptional contributions to the open source scientific software ecosystem for his efforts to update SunPy with a modern astronomical time system.
 
 The National Academies of Sciences, Engineering, and Medicine's 2018 report on Open Source Software Policy Options for NASA Earth and Space Sciences \citep{NAP2018} outlines several solutions to alleviate this problem -- namely that the NASA Science Mission Directorate provide funding for new and existing open source software projects, promote scientists who spend time developing and improving open source software projects, and offer prizes for exemplary contributions to the open source software community. 
 The \sunpy community supports solutions like these for all relevant funding agencies and furthermore has the ability to accept financial contributions from institutions or individuals through the NumFOCUS organization.
@@ -62,23 +67,26 @@ To satisfy the mission statement of the Project, the \sunpy community adopted an
 This development model is widely used within the scientific Python community. 
 The \sunpy organization and \sunpypkg package are hosted on \github and use Git\footnote{\url{https://git-scm.com/}} as its distributed version control software.
 The entire codebase is publicly available and anyone can suggest changes through pull requests. 
-Since the codebase is licensed under a permissive 2-clause BSD licence\footnote{\url{https://opensource.org/licenses/BSD-2-Clause}}, anyone can redistribute, improve, repackage or use it in a closed environment as long as they maintain the copyright notice and the license disclaimer about the warranty. 
+Since the codebase is licensed under a permissive 2-clause BSD licence\footnote{\url{https://opensource.org/licenses/BSD-2-Clause}}, anyone can redistribute, improve, repackage or use it in a closed environment as long as they credit the SunPy developers and redistribute the license. 
 In order to maintain high quality code, every contribution must satisfy the following requirements:
 \begin{enumerate}
     \item Code and documentation must follow widely used style guides (PEP 8 and numpydoc).
     \item All new features must be accompanied with documentation. 
     This includes code comments, formal documentation, and gallery examples.
-    \item Test code must be provided with coverage at or above\todo{Figure out this number}X\%.
+    \item Test code must be provided with coverage reports.
     \item Finally, all code must be reviewed and accepted by at least two members of the developer community before it is integrated into the codebase.
 \end{enumerate}
 
 \begin{figure}
-\begin{tabular}{ccc}
-  \includegraphics[width=45mm]{figures/sunpy_history.pdf} &
-  \includegraphics[width=45mm]{figures/busfactor_plot.pdf} &   
-  \includegraphics[width=45mm]{figures/cumulative_authors.pdf} \\
-(a) & (b) & (c) \\
+\begin{tabular}{cc}
+  \includegraphics[width=0.5\textwidth]{figures/sunpy_history.pdf} &
+  \includegraphics[width=0.5\textwidth]{figures/busfactor_plot.pdf} \\
+(a) & (b)  \\
 \end{tabular}
-\caption{(a) We need a caption here. }
+\begin{tabular}{c}
+  \includegraphics[width=0.5\textwidth]{figures/cumulative_authors.pdf} \\
+(c)  \\
+\end{tabular}
+\caption{We need a caption here.}
 \label{fig:image2}
 \end{figure}
