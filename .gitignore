@@ -12,3 +12,7 @@ authors.log
 main.fdb_latexmk
 main.synctex.gz
 auto/**
+*/__pycache__
+__pycache__
+.vscode/
+main.synctex(busy)

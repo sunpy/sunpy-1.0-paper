@@ -12,10 +12,12 @@ repo_path = sunpy_paper.sunpy_path
 repo = Repo(repo_path)
 
 commits = list(repo.iter_commits('master'))
-commit_datetime = [pd.to_datetime(c.committed_datetime.astimezone(pytz.utc)) for c in commits]
+commit_datetime = [pd.to_datetime(
+    c.committed_datetime.astimezone(pytz.utc)) for c in commits]
 authors = [f"{c.author.name} <{c.author.email}>" for c in commits]
 mailmap = sunpy_paper.get_author_transform_mapping(repo)
-mapped_authors = [mailmap.get(a.strip().lower(), a.strip().lower()) for a in authors]
+mapped_authors = [mailmap.get(
+    a.strip().lower(), a.strip().lower()) for a in authors]
 author_names = [c.author.name.lower() for c in commits]
 author_emails = [c.author.email for c in commits]
 data = pd.DataFrame(
@@ -29,7 +31,6 @@ x = pd.DataFrame(data={'set': temp.values}, index=temp.index)
 x['count'] = [len(v) for v in x['set'].values]
 
 # author commits
-
 fig, ax1 = plt.subplots()
 x['count'].plot(ls='steps')
 plt.ylabel('Committers per month')
@@ -37,14 +38,8 @@ plt.ylabel('Committers per month')
 sunpy_paper.add_releases_vs_time(ax1)
 plt.savefig('committers_per_month_vs_time.pdf')
 
-
-
-
-
-
-
-fig, ax1 = plt.subplots()
 # now plot cumulative authors as a function of time
+fig, ax1 = plt.subplots()
 a = set()
 result = []
 for i in range(len(x['set'].values)):
@@ -61,11 +56,8 @@ sunpy_paper.add_releases_vs_time(ax1)
 plt.savefig('cumulative_authors.pdf')
 
 
-
-
-
-fig, ax1 = plt.subplots()
 # now create a plot of the number of commits versus the number of committers
+fig, ax1 = plt.subplots()
 author_count = data.groupby('author').apply(lambda x: len(x))
 # author_count.sort_values('author', inplace=True)
 bins = np.logspace(np.log10(1), np.log10(10000), 20)
