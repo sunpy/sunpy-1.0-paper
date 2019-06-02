@@ -1,31 +1,24 @@
 \section{Data search and retrieval}
 \label{sec:fido}
-% edited by Steven C. 24-Apr-2019
-% edited by Jack 24-Apr-2019
+
 One of the most important tasks that must occur before any analysis can take place is to search for and retrieve data.
-A particular science goal may require data from multiple data providers, each of which may have different methods of search and retrieval.  
-This heterogeneity
-%even in the relatively small field of solar physics
-increases the effort required by scientists to get the data they need. 
-In order to address this issue \sunpypkg provides a single and powerful data search and retrieval interface which can interface with all data providers. 
-Referred to as \Fido, it provides a unified data search and download interface for user that simplifies and homogenizes search and retrieval to multiple data providers. 
+A particular science goal may require data from multiple data providers, each of which may have different methods of search and retrieval.
+This heterogeneity increases the effort required by scientists to get the data they need.
+In order to address this issue \sunpypkg provides a single and powerful data search and retrieval interface which can interface with all data providers.
+Referred to as \Fido, it provides a unified data search and download interface for user that simplifies and homogenizes search and retrieval to multiple data providers.
 \Fido currently supports the Virtual Solar Observatory (VSO), the Joint Science Operations Center (JSOC) (see Section \ref{sec:drms}) and a number of individual data providers that make their data available via web-accessible resources such as HTTP websites (RHESSI, SDO-EVE, NOAA GOES soft X-ray flux, PROBA2-LYRA and NOAA sunspot number prediction) and FTP sites (NOAA sunspot number, Nobeyama Radioheliograph).
 
-A \Fido search can include multiple instruments, and can query all available data providers with a single query.  
-Search queries make use of search tokens (e.g. instrument, time range, wavelength) which can be joined using Boolean operators enabling complex search queries to be constructed easily. 
-The result of a query can be inspected and edited before retrieval. 
-\Fido makes use of asynchronous download streams significantly improving download speeds. 
+A \Fido search can include multiple instruments, and can query all available data providers with a single query.
+Search queries make use of search tokens (e.g. instrument, time range, wavelength) which can be joined using Boolean operators enabling complex search queries to be constructed easily.
+The result of a query can be inspected and edited before retrieval.
+\Fido makes use of asynchronous download streams significantly improving download speeds.
 
-%Data downloads via the \code{Fido.fetch} method can be split up into multiple parallel streams, improving download speeds.  \Fido also handles failed data downloads: the output from \code{Fido.fetch} flags failed downloads, and passing that output back in to \code{Fido.fetch}\ allows \Fido to attempt to download those files again.
+Data downloads via the \code{Fido.fetch} method can be split up into multiple parallel streams, improving download speeds.
+\Fido also handles failed data downloads: the output from \code{Fido.fetch} flags failed downloads, and passing that output back in to \code{Fido.fetch}\ allows \Fido to attempt to download those files again.
 
-Another important aspect of data search are event catalogs. 
-The primary solar event catalog is the Heliophysics Event Knowledgebase (HEK) which provides a searchable database of manually and automatically detected solar features and events such as sunspots, solar flares, coronal mass ejections, etc.  \sunpypkg provides a HEK search client which is highly flexible, allowing multiple event types and their properties to be queried simultaneously. 
-For example, it is possible to search for SPoCA (\cite{2014AA...561A..29V}) active regions above a user-specified size within a given time-range.  
+Another important aspect of data search are event catalogs.
+The primary solar event catalog is the Heliophysics Event Knowledgebase (HEK) which provides a searchable database of manually and automatically detected solar features and events such as sunspots, solar flares, coronal mass ejections, etc.  \sunpypkg provides a HEK search client which is highly flexible, allowing multiple event types and their properties to be queried simultaneously.
+For example, it is possible to search for SPoCA (\cite{2014AA...561A..29V}) active regions above a user-specified size within a given time-range.
 
-% sdc 24-apr-2019 - suggest that we do not mention the following as it does not add much
-% to this section and should really part of the Fido anyway!
-% This is a section on data retrieval, and people are using
-% the helioviewer client to retrieve JPEG2000 image data.  So
-% I included it, but I admit it is not a core part of SunPy's data download capability.
-% Eventually SunPy's Helioviewer client should be an affiliated package and out of SunPy proper.
-%The Helioviewer client permits the user to query the Helioviewer JPEG2000 image archive, download image data, and to easily construct images of solar data available at the Helioviewer archive from multiple sources.
+Finally, \sunpy has a Helioviewer client which permits the user to query the Helioviewer JPEG2000 image archive, download image data, and to easily construct images of solar data available at the Helioviewer archive from multiple sources.
+This will eventually  be moved out of \sunpy proper to create an affiliated package that expands the scope of the client.
