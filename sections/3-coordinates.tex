@@ -11,12 +11,9 @@ The currently supported Sun-centered coordinate systems are Heliocentric Aries E
 The coordinates framework leverages the \package{astropy.coordinates} subpackage and its \code{SkyCoord} class \citep[see Section 3.3 of][]{astropy2018} by defining the above frames and the transformations between those frames.
 A \code{SkyCoord} object specifies both the coordinate frame (e.g., HCC) and a representation of the particular coordinate (e.g., Cartesian coordinates).
 
-HGC, HGS, HEEQ, and HAE are observer-independent coordinate frames.
-HAE is a Cartesian frame that is useful for specifying objects (e.g., spacecraft) in interplanetary space.
-HGC is defined by a latitude relative to the Sun's equator and a longitude relative to the Sun's prime meridan \citep[see][]{2007CeMDA..98..155S}, and is useful for specifying the locations of features that rotate with the Sun.
-HGS is similar to HGC, but its longitude is relative to the central meridian as seen from Earth (i.e., an Earth-based observer is at zero longitude).
-HEEQ is equivalent to HGS, but uses a Cartesian representation rather than longitude/latitude.
-HGS is a particularly convenient frame to transform to and from the Heliocentric Celestial Reference System (HCRS) because the transformation is the combination of two rotation angles: the time-independent angle between the Sun's rotation axis and the HCRS celestial pole and the time-dependent angle of the central meridian as seen from Earth relative to the vernal equinox.
+The observer-independent coordinate frames -- HAE, HEEQ, HGC, and HGS -- are useful for specifying the locations of features on the Sun or objects (e.g., spacecraft) in interplanetary space.
+The commonly used HGS frame is of particular note because it transforms in a straightforward manner to and from the Heliocentric Celestial Reference System (HCRS).
+The transformation is the combination of two rotation angles: the time-independent angle between the Sun's rotation axis and the HCRS celestial pole \citep[see][]{2007CeMDA..98..155S} and the time-dependent angle of the central meridian (as seen from Earth) relative to the vernal equinox.
 This transformation between HGS and HCRS links the frames defined in \package{sunpy.coordinates} with the the frames defined in \package{astropy.coordinates}, allowing any solar frame to be transformed to and from any astronomical frame (\autoref{fig:transform_graph}).
 In fact, HAE is actually implemented in \package{astropy.coordinates} (as \code{HeliocentricMeanEcliptic}), but the shared framework means that it can be used seamlessly in \sunpy.
 
@@ -30,13 +27,12 @@ In fact, HAE is actually implemented in \package{astropy.coordinates} (as \code{
     \label{fig:transform_graph}
 \end{figure}
 
-HCC and HPC are observer-dependent coordinate frames, and accordingly the observer location is necessary to fully define the frame.
+The observer-dependent coordinate frames -- HCC and HPC -- are useful for observational data, with the potential for subsequent transformation to an observer-independent frame.
+The HPC frame in particular is widely used for images from solar missions.
+These frames have axes that change orientation depending on the location of the observer, and thus the observer location is necessary to fully define the frame.
 This observer location is also stored in the \code{SkyCoord} object.
-HCC is the Cartesian frame where the Z axis is parallel to the Sun-observer line and the YZ plane contains the Sun's rotation axis.
-HPC is the projected equivalent of HCC, and is commonly used for images from solar missions.
-While HPC's coordinates are not truly Cartesian, close to the Sun the small-angle approximation is valid.
-If the observer is not explicitly specified, the observer is assumed to be at Earth, which may be a reasonable approximation for most observations.
-Be aware that relying on the default observer of Earth does not fully define the frame unless the observation time is specified, since the location of Earth needs to be known.
+If the observer is not explicitly specified, the observer is assumed to be at Earth, which may be a sufficient approximation for most observations.
+Be aware that on the default observer of Earth does not fully define the frame unless the observation time is specified, since the location of Earth needs to be known.
 
 The \package{sunpy.coordinates} subpackage enables significant functionality in the \sunpycode{Map} object (see \autoref{sec:map}), and a few examples are shown in \autoref{fig:coordinates_examples}.
 
