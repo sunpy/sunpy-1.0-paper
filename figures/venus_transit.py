@@ -3,12 +3,15 @@ import os
 
 import matplotlib.pyplot as plt
 from astropy import units as u
-from astropy.coordinates import SkyCoord
+from astropy.coordinates import SkyCoord, solar_system_ephemeris
 
 from sunpy import map
 from sunpy.coordinates import frames, get_body_heliographic_stonyhurst
 
 import sunpy_paper
+
+# Have Astropy use a JPL ephemeris (~10 MB download)
+solar_system_ephemeris.set('de432s')
 
 f = '20120606_040731_UTC.0041.fits'
 

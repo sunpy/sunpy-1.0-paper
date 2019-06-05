@@ -1,16 +1,21 @@
 \section{Solar Coordinates}
 \label{sec:coords}
 
-The \package{sunpy.coordinates} subpackage provides definitions of and transformations between several reference frames commonly used in solar physics.
-These reference frames and their associated transformations are implemented using the \package{astropy.coordinates} subpackage and extend \astropy's coordinate frame transformation graph to include solar coordinates.
-\autoref{fig:transform_graph} shows the transformation graph between the various coordinate frames provided by \sunpy and their connection to astronomical coordinate frames.
-Four solar physics coordinate frames are currently implemented: \hpc, \hcc, \hgs, and \hgc.
-Each of these frames and the associated transformations are defined in \citet{2006A&A...449..791T}.
-Both the \hpc and \hcc frames are observer-dependent and require the location of an observer to be specified when constructing the frame.
-In the \hpc frame, the observer is at the origin of the coordinate system while in the \hcc frame the $z$-axis is defined to be parallel to the Sun-observer line.
+The \package{sunpy.coordinates} subpackage provides:
+\begin{itemize}
+    \item A robust framework for working with coordinate systems
+    \item Functions to obtain the locations of solar-system bodies
+    \item Functions to calculate Sun-specific coordinate information
+\end{itemize}
+The currently supported Sun-centered coordinate systems are Heliocentric Aries Ecliptic (HAE), Heliocentric Cartesian (HCC), Heliocentric Earth Equatorial (HEEQ), Heliographic Carrington (HGC), Heliographic Stonyhurst (HGS), and Helioprojective Cartesian (HPC) \citep[see][]{2006A&A...449..791T}.
+The coordinates framework leverages the \package{astropy.coordinates} subpackage and its \code{SkyCoord} class \citep[see Section 3.3 of][]{astropy2018} by defining the above frames and the transformations between those frames.
+A \code{SkyCoord} object specifies both the coordinate frame (e.g., HCC) and a representation of the particular coordinate (e.g., Cartesian coordinates).
 
-\todo{elaborate a bit more here as well; why are these frames useful? (split into two paragraphs)}
-\todo{Description of the HCRS <-> HGS transform?}
+The observer-independent coordinate frames -- HAE, HEEQ, HGC, and HGS -- are useful for specifying the locations of features on the Sun or objects (e.g., spacecraft) in interplanetary space.
+The commonly used HGS frame is of particular note because it transforms in a straightforward manner to and from the Heliocentric Celestial Reference System (HCRS).
+The transformation is the combination of two rotation angles: the time-independent angle between the Sun's rotation axis and the HCRS celestial pole \citep[see][]{2007CeMDA..98..155S} and the time-dependent angle of the central meridian (as seen from Earth) relative to the vernal equinox.
+This transformation between HGS and HCRS links the frames defined in \package{sunpy.coordinates} with the the frames defined in \package{astropy.coordinates}, allowing any solar frame to be transformed to and from any astronomical frame (\autoref{fig:transform_graph}).
+In fact, HAE is actually implemented in \package{astropy.coordinates} (as \code{HeliocentricMeanEcliptic}), but the shared framework means that it can be used seamlessly in \sunpy.
 
 \begin{figure}
     \todo{Why are the arrows between the solar frames brown and green? all black?}
@@ -22,24 +27,16 @@ In the \hpc frame, the observer is at the origin of the coordinate system while 
     \label{fig:transform_graph}
 \end{figure}
 
-Coordinates and their associated frames are specified using an \astropy \code{SkyCoord} object \citep[see Section 3.3 of][]{astropy2018}.
-Observer location is encoded in the same way.
-For example, in the \hpc and \hcc frames, the \code{.observer\_coordinate} attribute is a \code{SkyCoord} defined in the \hgs frame.
-The default observer location is set to the position of the Earth as long as the time of the observation is specified.
-If the time is not set the coordinate cannot be transformed to another frame unless an explicit observer is specified, as the time is required to calculate the location of the Earth.
+The observer-dependent coordinate frames -- HCC and HPC -- are useful for observational data, with the potential for subsequent transformation to an observer-independent frame.
+The HPC frame in particular is widely used for images from solar missions.
+These frames have axes that change orientation depending on the location of the observer, and thus the observer location is necessary to fully define the frame.
+This observer location is also stored in the \code{SkyCoord} object.
+If the observer is not explicitly specified, the observer is assumed to be at Earth, which may be a sufficient approximation for most observations.
+Be aware that on the default observer of Earth does not fully define the frame unless the observation time is specified, since the location of Earth needs to be known.
 
-\todo{elaborate on this a bit}
-
-The \package{sunpy.coordinates} subpackage is most useful when combined with the \sunpycode{Map} object (see \autoref{sec:map}).
-Coordinates are automatically populated when opening a FITS image using the appropriate header metadata.
-This combination enables a number of number of tasks which were once cumbersome.
-A few examples are shown in \autoref{fig:coordinates_examples}.
+The \package{sunpy.coordinates} subpackage enables significant functionality in the \sunpycode{Map} object (see \autoref{sec:map}), and a few examples are shown in \autoref{fig:coordinates_examples}.
 
 \todo{brief description of figures}
-
-Just as an \code{astropy.units.Quantity} object is used to attach units to a numerical value (see \autoref{sec:units}), an \code{astropy.coordinates.SkyCoord} object includes the spatial coordinate as well as the system in which that coordinate is defined.
-In addition to the numerical values of the coordinate, a \code{SkyCoord} includes a reference frame or system and a representation.
-A reference frame describes the manner in which a point is oriented in space while a representation is a way to describe a point in a particular reference frame (e.g. Cartesian, spherical).
 
 \begin{figure}
     \gridline{\fig{figures/fieldlines_aia.pdf}{0.3\textwidth}{(a)}
@@ -52,6 +49,18 @@ A reference frame describes the manner in which a point is oriented in space whi
     (c) A coronagraph image of the solar corona as observed by STEREO-A COR-2. The predicted positions of the stars from the Gaia DR2 catalog and mars are overplotted.}
     \label{fig:coordinates_examples}
 \end{figure}
+
+The above examples make use of functions in \package{sunpy.coordinates} to obtain the location of solar-system bodies.
+\code{get\_body\_heliographic\_stonyhurst} not only returns the location of one of the planets, but can appropriately correct for light travel time to an observer to return the apparent location (in the past) of that planet.
+This planet location is obtained using the active ephemeris in \package{astropy.coordinates}, so if one wants the location of a non-Earth body and accuracy is important, one should use \code{astropy.coordinates.solar\_system\_ephemeris} to specify a JPL ephemeris rather than Astropy's default ephemeris.
+\code{get\_horizons\_coord} allows one to query JPL HORIZONS\footnote{\url{https://ssd.jpl.nasa.gov/?horizon}} for the location of a wide range of solar-system bodies.
+JPL HORIZONS includes ephemeris information not only for planets and other natural bodies in the solar system, but also for major spacecraft such as SDO and SOHO.
+This function requires the \package{astroquery}\footnote{\url{https://astroquery.readthedocs.io/en/latest/}} package to be installed and an Internet connection.
+
+The coordinate framework is also used to calculate Sun-specific coordinate information with high accuracy.
+These functions are under \package{sunpy.coordinates.sun} and return values such as Carrington rotation number for the provided time.
+Nearly all of the returned values match values in the \textit{Astronomical Almanac} to published precision (e.g., the hundredth of an arcsecond for apparent right ascension).
+For times that are provided to these functions, one should take care to specify whether the time scale is UT or some other time scale (e.g., TT).
 
 \subsection{Solar differential coordination - Jack}
 
