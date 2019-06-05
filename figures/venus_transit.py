@@ -1,37 +1,50 @@
-import numpy as np
-import os
+"""
+==============================================
+Overplotting the position of the Venus transit
+==============================================
 
+How to accurately plot the position of Venus as it transitted in front
+of the Sun as observed by SDO/AIA.
+"""
 import matplotlib.pyplot as plt
+
 from astropy import units as u
 from astropy.coordinates import SkyCoord
+from astropy.coordinates import solar_system_ephemeris
+from astropy.utils.data import download_file
 
-from sunpy import map
-from sunpy.coordinates import frames, get_body_heliographic_stonyhurst
+import sunpy.map
+from sunpy.coordinates import get_body_heliographic_stonyhurst
 
-import sunpy_paper
+###############################################################################
+# Let's download an image of the Venus transit.
+f = download_file('http://jsoc.stanford.edu/data/events/Venus_AIA24s_1600/Out/fits/20120606_040731_UTC.0041.fits')
+aiamap = sunpy.map.Map(f)
 
-f = '20120606_040731_UTC.0041.fits'
+###############################################################################
+# For this example, we require high precision ephemeris information. The built-in
+# ephemeris provided by astropy are not accurate enough. This requires jplephem
+# to be installed.
+solar_system_ephemeris.set('jpl')
 
-# get the data of interest and save fits files
-map1 = map.Map(os.path.join(sunpy_paper.data_dir, f))
+###############################################################################
+# Now we get the position of venus and convert it into the SDO/AIA coordinates.
+venus = get_body_heliographic_stonyhurst('venus', aiamap.date, observer=aiamap.observer_coordinate)
+venus_hpc = venus.transform_to(aiamap.coordinate_frame)
 
-# now get venus position
-venus = get_body_heliographic_stonyhurst('venus', map1.date, observer=map1.observer_coordinate)
-venus_hpc = venus.transform_to(frames.Helioprojective(observer=map1.observer_coordinate))
-
+###############################################################################
+# Let's crop the image with Venus at it's center.
 fov = 100 * u.arcsec
-top_right = SkyCoord(venus_hpc.Tx + fov, venus_hpc.Ty + fov, frame=map1.coordinate_frame)
-bottom_left = SkyCoord(venus_hpc.Tx - fov, venus_hpc.Ty - fov, frame=map1.coordinate_frame)
-smap = map1.submap(top_right, bottom_left)
+top_right = SkyCoord(venus_hpc.Tx + fov, venus_hpc.Ty + fov, frame=aiamap.coordinate_frame)
+bottom_left = SkyCoord(venus_hpc.Tx - fov, venus_hpc.Ty - fov, frame=aiamap.coordinate_frame)
+smap = aiamap.submap(top_right, bottom_left)
 
-fig = plt.figure()
-ax = fig.add_subplot(1, 1, 1, projection=smap)
-# now get venus position
-smap.plot(axes=ax)
+###############################################################################
+# Let's plot the results.
+ax = plt.subplot(111, projection=smap)
+smap.plot()
 smap.draw_limb()
 ax.plot_coord(venus_hpc, 'x', color='white')
 
-wave = str(int(map1.wavelength.value))
-time = map1.date.to_datetime().strftime('%Y%m%d_%H%M%S')
-plt.savefig(f'fig_venus_transit_{wave}_{time}.pdf', dpi=200)
-plt.close(fig)
+plt.savefig('fig_venus_transit.pdf', dpi=200)
+plt.close()
