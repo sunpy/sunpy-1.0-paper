@@ -40,7 +40,8 @@ def count_lines_of_code(repo_path, verbose=False):
     must be installed."""
 
     cmd = 'cloc'
-    out = subprocess.Popen(f"{cmd} {repo_path}", shell=True, stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
+    out = subprocess.Popen(f"{cmd} {repo_path}", shell=True,
+                           stdout=subprocess.PIPE, universal_newlines=True).stdout.read()
 
     str = StringIO(out)
     for line in str:
@@ -52,7 +53,7 @@ def count_lines_of_code(repo_path, verbose=False):
     return data
 
 
-for i, c in enumerate(sorted(commit_list, key=lambda x:x.committed_date)):
+for i, c in enumerate(sorted(commit_list, key=lambda x: x.committed_date)):
     g.checkout(c)
     dates.append(str(c.committed_datetime))
     print(f'{c.committed_datetime} {c.message}')
@@ -64,12 +65,13 @@ for i, c in enumerate(sorted(commit_list, key=lambda x:x.committed_date)):
     blanks.append(data.sum()['blank'])
 
     if i > MAX_COMMITS:
-         break
+        break
 
 
 g.checkout('master')
 
-result = pd.DataFrame(index=dates, data={'code': loc, 'comment': comments, 'blank': blanks, 'files': files})
+result = pd.DataFrame(index=dates, data={
+                      'code': loc, 'comment': comments, 'blank': blanks, 'files': files})
 
 output_file = os.path.join(sunpy_paper.data_dir, "loc_vs_time.csv")
 

@@ -72,9 +72,8 @@ lat.set_major_formatter('d.dd')
 cor2.plot(axes=ax, vmin=0, vmax=600)
 cor2.draw_limb()
 
-# plot the position of Mars
-ax.plot_coord(mars_hpc, 's', color='white', fillstyle='none', markersize=12, label='Mars')
-# Plot all of the stars.
+ax.plot_coord(mars_hpc, 's', color='white',
+              fillstyle='none', markersize=12, label='Mars')
 for this_coord in hpc_coords:
     ax.plot_coord(this_coord, 'o', color='white', fillstyle='none')
 plt.legend()

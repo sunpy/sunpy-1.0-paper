@@ -23,9 +23,9 @@
 %%
 %% Version number is added when author enters: version = {number}, only in `misc'
 %%
-%% Removed `format.doi output' in {article} because in 
-%% combination with { format.pid output } we could get double doi entries 
-%% in the bibliography. 
+%% Removed `format.doi output' in {article} because in
+%% combination with { format.pid output } we could get double doi entries
+%% in the bibliography.
 %%
 %% Rewrote format.pid so that we can check to see if we have a doi number; in
 %% which case we use that and suppress the arXiv and eprint combination. However,
@@ -38,7 +38,7 @@
 %% Changed bbl.version so that there is no longer a trailing `.'
 
 %% Revision 1.14 2016/9/14 Amy Hendrickson
-%% Added URL field 
+%% Added URL field
 
 %% Revision 1.13 2016/8/9 Amy Hendrickson
 %% Change to presort and bibsort to get multiple entries with same author/year
@@ -59,14 +59,14 @@
 %% access articles (no volume of page available, but online).
 %% Removed bibliography count from preamble since it seems to
 %% confuse some versions of latex.
-%% 
-%% Revision 1.9 2013/2/19 Erik Tollerud <erik.tollerud@yale.edu> 
+%%
+%% Revision 1.9 2013/2/19 Erik Tollerud <erik.tollerud@yale.edu>
 %% fixes for spurious error messages due to rev 1.8 changes
 %% also fixed missing publisher field printing in "book"
 %%
 %% Revision 1.8  2013/01/10 16:31:34  alberto
 %% Added proper formatting of arXiv eprint entries output by ADS
-%% (these are article records, but the eprint id is printed only 
+%% (these are article records, but the eprint id is printed only
 %% if no traditional page number is available).  Also added support
 %% for ASCL entries under the "misc" category.
 %%
@@ -108,7 +108,7 @@
 %% merlin.mbs  (with options: `,ay,nat,nm-rev,nmdash,dt-beg,yr-per,note-yr,atit-u,jtit-x,jttl-rm,thtit-a,vnum-x,volp-com,jpg-1,pp-last,btit-rm,add-pub,pub-par,pre-edn,edby,edbyx,blk-com,fin-bare,ppx,ed,abr,ord,jabr,amper,em-x')
 %% ----------------------------------------
 %% *** Bibliographic Style for ApJ ***
-%% 
+%%
  %-------------------------------------------------------------------
  % The original source file contains the following version information:
  % \ProvidesFile{merlin.mbs}[1998/02/25 3.85a (PWD)]
@@ -444,7 +444,7 @@ FUNCTION {format.names}
   #1 'nameptr :=
   s num.names$ 'numnames :=
   numnames 'namesleft :=
-  numnames #5 > 
+  numnames #5 >
     { #3 'numtrunc := }
     {}
   if$
@@ -454,8 +454,8 @@ FUNCTION {format.names}
     't :=
     nameptr #1 >
       {
-	nameptr #1 - numtrunc = 
-	  { 
+	nameptr #1 - numtrunc =
+	  {
 	    #1 'namesleft :=
 	    "others" 't :=
 	  }
@@ -715,7 +715,7 @@ FUNCTION {format.doi}
 
 FUNCTION {format.pid}
 { doi empty$
-  {eprint empty$ 
+  {eprint empty$
      { "" }
      { format.eprint }
     if$}
@@ -1139,7 +1139,7 @@ FUNCTION {format.full.book.spec} % The title should be on the stack.
 	    { " No." number tie.or.space.connect * }
 	    if$
 	}
-	{ series ", Vol." volume tie.or.space.connect *  
+	{ series ", Vol." volume tie.or.space.connect *
           ", " * swap$ format.ed.booktitle *
 	  number empty$
 	    'skip$
