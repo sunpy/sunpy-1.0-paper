@@ -4,3 +4,4 @@ gitpython
 numpy
 seaborn
 pfsspy
+astroquery

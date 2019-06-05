@@ -17,20 +17,24 @@ import pfsspy.coords
 
 from sunpy_paper import data_dir
 
+import sunpy_paper
+sunpy_paper.setup_plot()
 
 ###############################
 #  Load GONG and AIA Data     #
 ###############################
 
 # Load a GONG magnetic field map. The map date is 10/03/2019
-[[br, header]] = sunpy.io.fits.read(os.path.join(data_dir, '190310t0014gong.fits'))
+[[br, header]] = sunpy.io.fits.read(
+    os.path.join(data_dir, '190310t0014gong.fits'))
 # The mean is subtracted to enforce div(B) = 0 on the solar surface
 br = br - np.mean(br)
 # GONG maps have their LH edge at -180deg in Carrington Longitude so roll to get it at 0deg.
 br = np.roll(br, header['CRVAL1'] + 180, axis=1)
 
 # Load the corresponding AIA 171 map
-aia = sunpy.map.Map(os.path.join(data_dir, 'aia_lev1_171a_2019_03_10t00_00_09_35z_image_lev1.fits'))
+aia = sunpy.map.Map(os.path.join(
+    data_dir, 'aia_lev1_171a_2019_03_10t00_00_09_35z_image_lev1.fits'))
 # Crop to the desired active region
 aia_submap = aia.submap(
     SkyCoord(Tx=300*u.arcsec, Ty=100*u.arcsec, frame=aia.coordinate_frame),
@@ -93,7 +97,7 @@ for f in flines:
         np.any(f_hpc.Ty < aia_submap.bottom_left_coord.Ty) or
         np.any(f_hpc.Tx > aia_submap.top_right_coord.Tx) or
         np.any(f_hpc.Ty > aia_submap.top_right_coord.Ty)
-       ):
+    ):
         continue
     ax.plot_coord(f_hpc, alpha=0.4, linewidth=1, color='black')
 ax.grid(alpha=0)

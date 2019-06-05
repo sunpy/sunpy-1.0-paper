@@ -1,16 +1,14 @@
-\section{Infrastructure - Stuart}
+\section{Infrastructure}
 \label{sec:infrastructure}
-% edited by Steven C. 23-Apr-2019
 
-\subsection{Releases and Versioning - Nabil}
-% my formatting sucks here, sorry Steve.
+\subsection{Releases and Versioning}
 
-SunPy has been releasing on a ill-defined schedule but for 1.0 and on-wards, it was decided to follow a release schedule. 
+\sunpyproj has been releasing on a ill-defined schedule but for 1.0 and on-wards, it was decided to follow a release schedule.
 There will be two planned releases of \sunpypkg per year with 6 months between these releases around the months of May and November.
 This is to align the release with release cycles of upstream packages such as Astropy.
 
 Furthermore, each release of \sunpypkg will fit into one of two categories: a Long Term Support (LTS) release and a short-support or non-LTS release.
-The main difference is the differing amounts of time that a release will be supported by bug fixes and documentation upgrades. 
+The main difference is the differing amounts of time that a release will be supported by bug fixes and documentation upgrades.
 The first release of the year shall be a non-LTS release, which shall be supported for 6 months or until the next release.
 The second release of the year will be an LTS release and will be supported for 12 months or until the next LTS release.
 
@@ -31,20 +29,20 @@ An example release sequence, following this scheme, would look like this:
 
 One benefit of users using an LTS release is that it will provide warnings for any functionality that will be changed or removed for the next LTS release.
 Where as changes to the code that could break existing scripts, will not happen until the next LTS release but could happen on the non-LTS releases.
-This provides a stable base for long term \sunpy users.
+This provides a stable base for long term \sunpypkg users.
 
-\subsection{Continuous Integration - Nabil}
+\subsection{Continuous Integration}
 The \sunpyproj follows common practices and makes extensive use of continuous integration
-which refers to the practice of automated testing and code change inspection.  
-Any and all proposed code contributions to \sunpypkg trigger test suits to be run on a number of free services which integrate into the \github website. 
+which refers to the practice of automated testing and code change inspection.
+Any and all proposed code contributions to \sunpypkg trigger test suits to be run on a number of free services which integrate into the \github website.
 These services provide the first review of all new code and therefore maintain the integrity of the package which makes it easier for new contributors to understand the impact of their changes.
 
-\sunpypkg's test suite can be broken down into three broad categories: offline, online and figure tests. 
-Offline test suite checks the majority of the codebase. 
-Online tests specifically checks code that contacts generalized data service providers such as the VSO \todo{(predefined else where?)} or JSOC as well as specific data providers like GOES or NOAA. 
-These tests depend on the availability of these online services. 
-Finally figure tests check code that generate plots and will generate a failure if the image has changed. 
-This enables high level functionality checks.
+\sunpypkg's test suite can be broken down into three broad categories: offline, online and figure tests.
+Offline test suite checks the majority of the codebase.
+Online tests specifically checks code that contacts generalized data service providers such as the VSO or JSOC as well as specific data providers like GOES or NOAA.
+These tests depend on the availability of these online services.
+Finally figure tests check code that generate plots and will generate a failure if the image has changed.
+This enables high level functionality checks on the code that is more difficult to test normally.
 
 \sunpy makes use of the following online services:
 
@@ -55,7 +53,4 @@ This enables high level functionality checks.
 \item \href{https://codecov.io/}{Codecov}: Provides code coverage metrics.
 \end{itemize}
 
-% sdc 24-Apr-2019 the following is not a test suite
-%\item \href{https://readthedocs.org/}{Read the Docs}: This is where our \href{http://docs.sunpy.org/en/stable/}{online documentation} is hosted, they also build the documentation in the process.
-% Nabil 04-May-2019 sure but I think its important to add it somewhere. 
-% We do use it a lot and it should be listed somewhere.
+In addition, we use \href{https://readthedocs.org/}{Read the Docs} to build and host our \href{http://docs.sunpy.org/en/stable/}{online documentation}.

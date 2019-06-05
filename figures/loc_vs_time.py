@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 import sunpy_paper
-
 sunpy_paper.setup_plot()
 
 datafile_url = os.path.join(sunpy_paper.data_dir, 'loc_vs_time.csv')
