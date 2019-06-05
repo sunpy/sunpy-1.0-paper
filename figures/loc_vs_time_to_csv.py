@@ -4,13 +4,12 @@ from git import Repo
 import subprocess
 import pandas as pd
 from io import StringIO
-import sunpy
 import os
+import sunpy
 
-import sunpy_paper
-
-
-path_to_repo = sunpy.__dir__
+git_dir = '/Users/sdchris1/Developer/repositories/sunpy/'
+# make sure you are on the 1.0 branch
+path_to_repo = os.path.dirname(git_dir)
 print(path_to_repo)
 repo = Repo(path_to_repo)
 

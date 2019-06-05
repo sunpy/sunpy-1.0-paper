@@ -3,10 +3,6 @@ import numpy as np
 import pandas as pd
 import pytz
 from git import Repo
-import seaborn
-
-import sunpy_paper
-sunpy_paper.setup_plot()
 
 repo_path = sunpy_paper.sunpy_path
 repo = Repo(repo_path)
@@ -54,7 +50,6 @@ ax1.set_ylabel('Cumulative Authors')
 
 sunpy_paper.add_releases_vs_time(ax1)
 plt.savefig('cumulative_authors.pdf')
-
 
 # now create a plot of the number of commits versus the number of committers
 fig, ax1 = plt.subplots()
