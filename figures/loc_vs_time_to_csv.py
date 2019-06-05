@@ -5,7 +5,7 @@ import subprocess
 import pandas as pd
 from io import StringIO
 import os
-import sunpy
+import sunpy_paper
 
 git_dir = '/Users/sdchris1/Developer/repositories/sunpy/'
 # make sure you are on the 1.0 branch
