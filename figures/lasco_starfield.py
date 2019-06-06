@@ -9,7 +9,7 @@ import astropy.units as u
 from astropy.time import Time
 
 import sunpy_paper
-sunpy_paper.setup_plot()
+
 
 # image from helioviewer
 f = '../data/2000_02_27__07_42_05_810__SOHO_LASCO_C3_white-light.jp2'

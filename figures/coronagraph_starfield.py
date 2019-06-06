@@ -9,7 +9,7 @@ import sunpy.map
 from sunpy.coordinates import get_body_heliographic_stonyhurst, frames
 
 import sunpy_paper
-#sunpy_paper.setup_plot()
+
 
 f = '2014_05_15__07_54_00_005__STEREO-A_SECCHI_COR2_white-light.jp2'
 path = os.path.join(sunpy_paper.data_dir, f)

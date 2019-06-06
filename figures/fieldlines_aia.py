@@ -18,7 +18,7 @@ import pfsspy.coords
 from sunpy_paper import data_dir
 
 import sunpy_paper
-# sunpy_paper.setup_plot()
+
 
 ###############################
 #  Load GONG and AIA Data     #
