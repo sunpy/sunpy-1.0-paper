@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import os
 
 import sunpy_paper
-#sunpy_paper.setup_plot()
+
 
 # get the data of interest and save fits files
 map1 = map.Map(os.path.join(sunpy_paper.data_dir,
