@@ -72,7 +72,7 @@ The amount of rotation can be specified using either a new time, a time interval
 
 While earlier versions of \sunpy included tools for dealing with differential rotation, this release includes several improvements.
 For example, applying the effect of solar differential rotation now properly accounts for the changing position of the observer.
-This can be important because observers on the Earth must take into account the solar differential rotation as well as the motion of the Earth when calculating a location on the Sun.
+This can be important because, for example, observers on the Earth must take into account the motion of the Earth in addition to solar differential rotation when calculating how much a location on the Sun appears to move.
 \autoref{fig:diff_rot} shows an example using a 1600 \AA{} AIA observation of how differential rotation can be applied to \code{Map} objects.
 The bottom panel shows the top panel differentially rotated using observer coordinate from the middle panel.
 The image in the middle panel was observed approximately two days after the image in the top panel.
