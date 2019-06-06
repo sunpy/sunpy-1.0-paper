@@ -18,7 +18,7 @@ import pfsspy.coords
 from sunpy_paper import data_dir
 
 import sunpy_paper
-sunpy_paper.setup_plot()
+# sunpy_paper.setup_plot()
 
 ###############################
 #  Load GONG and AIA Data     #
@@ -87,7 +87,7 @@ fig = plt.figure(figsize=(5, 5))
 ax = plt.subplot(1, 1, 1, projection=aia_submap)
 aia_submap.plot(
     axes=ax,
-    title=False,
+    title=True,
     norm=ImageNormalize(vmin=0, vmax=2e3, stretch=SqrtStretch())
 )
 for f in flines:
@@ -102,7 +102,5 @@ for f in flines:
     ax.plot_coord(f_hpc, alpha=0.4, linewidth=1, color='black')
 ax.grid(alpha=0)
 lon, lat = ax.coords
-lon.set_axislabel('Helioprojective Longitude')
-lat.set_axislabel('Helioprojective Latitude')
 # Save figure
-fig.savefig('fieldlines_aia.pdf')
+fig.savefig('fig_fieldlines_aia.pdf')
