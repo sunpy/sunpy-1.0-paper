@@ -51,23 +51,19 @@ result = vv.query_region(search_coord, radius=4 * u.deg, catalog='I/345/gaia2')
 hpc_coords = []
 for this_object in result[0]:
     tbl_crds = SkyCoord(this_object['RA_ICRS'] * u.deg, this_object['DE_ICRS'] * u.deg,
-                        1e12 * u.km, frame='icrs', obstime=cor2.date)
-    hpc_coords.append(tbl_crds.transform_to(cor2.coordinate_frame))
+                        1e12 * u.km, frame='icrs', obstime=map1.date)
+    hpc_coords.append(tbl_crds.transform_to(
+        frames.Helioprojective(observer=map1.observer_coordinate)))
 
-###############################################################################
-# One of the bright features is actually Mars so let's also get that coordinate.
-# get the location of Mars
-mars = get_body_heliographic_stonyhurst('mars', cor2.date, observer=cor2.observer_coordinate)
-mars_hpc = mars.transform_to(frames.Helioprojective(observer=cor2.observer_coordinate))
+# get the location of mars
+mars = get_body_heliographic_stonyhurst(
+    'mars', map1.date, observer=map1.observer_coordinate)
+mars_hpc = mars.transform_to(
+    frames.Helioprojective(observer=map1.observer_coordinate))
 
-###############################################################################
-# Let's plot the results.
-ax = plt.subplot(projection=cor2)
-
-# Let's tweak the axis to show in degrees instead of arcsec
-lon, lat = ax.coords
-lon.set_major_formatter('d.dd')
-lat.set_major_formatter('d.dd')
+# now plot
+fig = plt.figure(figsize=(5,5))
+ax = fig.add_subplot(111, projection=map1)
 
 cor2.plot(axes=ax, vmin=0, vmax=600)
 cor2.draw_limb()
@@ -76,7 +72,10 @@ ax.plot_coord(mars_hpc, 's', color='white',
               fillstyle='none', markersize=12, label='Mars')
 for this_coord in hpc_coords:
     ax.plot_coord(this_coord, 'o', color='white', fillstyle='none')
-plt.legend()
 
-plt.savefig('fig_coronagraph_starfield.pdf', dpi=200)
-plt.close()
+lon, lat = ax.coords
+lon.set_major_formatter('d.dd')
+lat.set_major_formatter('d.dd')
+
+ax.legend()
+plt.savefig('fig_coronagraph_starfield.pdf')

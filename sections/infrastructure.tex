@@ -1,56 +1,41 @@
 \section{Infrastructure}
 \label{sec:infrastructure}
 
-\subsection{Releases and Versioning}
+\subsection{Release Cycle, Versioning, Long-term Support}
+As of the release of 1.0, a formal release schedule for \sunpypkg has been adopted.
+Two releases are planned per year with 6 months between each.
+In order to align with the release cycle of \astropypkg, a major upstream package, the plan is to release each May and November.
+The first release of the year will be a Long Term Support (LTS) release which will be supported for 12 months or until the next LTS release.
+The second release will be a non-LTS and will be supported for 6 months or until the next release.
+A formal versioning convention has also been adopted going forward.
 
-\sunpyproj has been releasing on a ill-defined schedule but for 1.0 and on-wards, it was decided to follow a release schedule.
-There will be two planned releases of \sunpypkg per year with 6 months between these releases around the months of May and November.
-This is to align the release with release cycles of upstream packages such as Astropy.
-
-Furthermore, each release of \sunpypkg will fit into one of two categories: a Long Term Support (LTS) release and a short-support or non-LTS release.
-The main difference is the differing amounts of time that a release will be supported by bug fixes and documentation upgrades.
-The first release of the year shall be a non-LTS release, which shall be supported for 6 months or until the next release.
-The second release of the year will be an LTS release and will be supported for 12 months or until the next LTS release.
-
-\sunpypkg will follow the following versioning system: ``X.Y.z", where the three components have the following meaning.
-``X" is the LTS version number, this will be incremented with every LTS.
-``Y" is the release counter, this will be 0 for LTS releases and increment for each intermediate release.
+\sunpypkg will follow the following versioning system: ``X.Y.z", where the three components have the following meaning;
+``X" is the LTS version number, which will be incremented with every LTS, 
+``Y" is the release counter, this will be 0 for LTS releases and increment for each intermediate non-LTS release,
 ``z" is the bug fix number, and is to be incremented for any bug-fix releases.
 
-An example release sequence, following this scheme, would look like this:
-
-\begin{itemize}
-\itemsep0em
-\item 1.0.0 is an LTS release, released November 2019.
-\item 1.1.0 is a short support release, released May 2020.
-\item 1.0.1 and 1.1.1 are bug-fix releases, released June 2020, to fix a current bug and back-port the fix to the LTS version.
-\item 2.0.0 is an LTS release, released November 2020.
-\end{itemize}
-
-One benefit of users using an LTS release is that it will provide warnings for any functionality that will be changed or removed for the next LTS release.
-Where as changes to the code that could break existing scripts, will not happen until the next LTS release but could happen on the non-LTS releases.
-This provides a stable base for long term \sunpypkg users.
+The primary goal of the adoption of this formal release structure is to provide clarity for support of releases as well as improving predictability of codebase changes for users of \sunpypkg.
 
 \subsection{Continuous Integration}
-The \sunpyproj follows common practices and makes extensive use of continuous integration
-which refers to the practice of automated testing and code change inspection.
-Any and all proposed code contributions to \sunpypkg trigger test suits to be run on a number of free services which integrate into the \github website.
-These services provide the first review of all new code and therefore maintain the integrity of the package which makes it easier for new contributors to understand the impact of their changes.
-
+The \sunpyproj follows common practices and makes extensive use of continuous integration which provide automated testing and code change inspection.
+All proposed code contributions trigger test suites to be run on a number of free services (e.g. 
+\href{https://azure.microsoft.com/en-gb/services/devops/pipelines/}{Microsoft's Azure pipelines},
+\href{https://circleci.com}{circleci},
+\href{https://codecov.io/}{Codecov}) which integrate into the \github website. 
+These services provide the first review of any contribution by running the test suite on each operating system (Windows, Mac, Linux), testing the documentation build, running figure tests, and providing code coverage metrics.
+Additionally \href{https://travis-ci.org}{Travis CI} is used to run the entire test suite on a daily cadence.
 \sunpypkg's test suite can be broken down into three broad categories: offline, online and figure tests.
 Offline test suite checks the majority of the codebase.
-Online tests specifically checks code that contacts generalized data service providers such as the VSO or JSOC as well as specific data providers like GOES or NOAA.
+Online tests specifically tests code that make use of online data providers (e.g. VSO or JSOC).
 These tests depend on the availability of these online services.
-Finally figure tests check code that generate plots and will generate a failure if the image has changed.
-This enables high level functionality checks on the code that is more difficult to test normally.
+Finally, figure tests generate plots and issue failures if they have changed.
+This enables high level functionality testing.
+These tests coupled with these services are an important tool for maintaining the integrity of the package and makes it easier for new contributors to understand the impact of their changes.
 
-\sunpy makes use of the following online services:
-
-\begin{itemize}
-\item \href{https://azure.microsoft.com/en-gb/services/devops/pipelines/}{Microsoft's Azure pipelines}: Runs the entire test suite on each operating system (Windows, Mac, Linux).
-\item \href{https://circleci.com}{circleci}: Runs the library's documentation, a special 32bit build and the figure tests.
-\item \href{https://travis-ci.org}{Travis CI}: Runs the entire test suite on a daily cadence.
-\item \href{https://codecov.io/}{Codecov}: Provides code coverage metrics.
-\end{itemize}
-
-In addition, we use \href{https://readthedocs.org/}{Read the Docs} to build and host our \href{http://docs.sunpy.org/en/stable/}{online documentation}.
+\subsection{Documentation and Gallery}
+The \sunpyproj strives to provide up to date, approachable and high quality documentation.
+All documentation for \sunpypkg as well as all affiliated packages is written using the commonly-used \code{Sphinx} documentation build system.
+This system supports using plain text files with a markup language called \code{reStructuredText} (RST).
+The build process converts these files including documentation strings in Python files into HTML, PDF, or LATEX documents.
+We make use of the \code{sphinx-gallery} extension to build a gallery of analysis examples as well as the extension \code{sphinx-automodapi} which generates documentation pages that list all of the available classes, functions, and attributes.
+Our \href{http://docs.sunpy.org/en/stable/}{online documentation} is automatically built and hosted on \href{https://readthedocs.org/}{Read the Docs} for all releases.

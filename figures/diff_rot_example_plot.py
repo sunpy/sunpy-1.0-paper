@@ -6,16 +6,16 @@ import matplotlib.pyplot as plt
 import os
 
 import sunpy_paper
-sunpy_paper.setup_plot()
+
 
 # get the data of interest and save fits files
 map1 = map.Map(os.path.join(sunpy_paper.data_dir,
                             'aia_lev1_1600a_2014_10_20t00_00_16_13z_image_lev1.fits'))
 map2 = map.Map(os.path.join(sunpy_paper.data_dir,
-                            ' aia_lev1_1600a_2014_10_22t00_00_16_12z_image_lev1.fits'))
+                            'aia_lev1_1600a_2014_10_22t00_00_16_12z_image_lev1.fits'))
 
 # rotate map at 2014-10-20 to day of 2014-10-22
-rotated_map = differential_rotation.diffrot_map(map1, time=map2.date)
+rotated_map = differential_rotation.differential_rotate(map1, observer=map2.observer_coordinate)
 
 # plotting the data
 vmin = 50
@@ -28,8 +28,8 @@ ax3 = fig.add_subplot(3, 1, 3, projection=rotated_map, sharex=ax1, sharey=ax1)
 
 # plot maps
 map1.plot(vmin=vmin, vmax=vmax, axes=ax1, title='AIA 1600 $\mathrm{\AA}$')
-map2.plot(vmin=vmin, vmax=vmax, axes=ax2, title='')
-rotated_map.plot(vmin=vmin, vmax=vmax, axes=ax3, title='')
+map2.plot(vmin=vmin, vmax=vmax, axes=ax2, title=False)
+rotated_map.plot(vmin=vmin, vmax=vmax, axes=ax3, title=False)
 
 # trun off ticklabels for top and middle plot
 ax1.tick_params(axis='x',  labelbottom=False)
@@ -44,10 +44,8 @@ ax1.set_ylim(lims_pix_ax1[1].value)
 
 for axx in [ax1, ax2, ax3]:
     axx.grid(False)
-    axx.set_xlabel('')
-    axx.set_ylabel('Arcsec (Y)')
-
-ax3.set_xlabel('Arcsec (X)')
+    if axx != ax3:
+        axx.set_xlabel('')
 
 # titles for each subplot
 ax1.text(0.03, 0.92, 'a. ' + str(map1.date)
@@ -83,4 +81,4 @@ ax3.arrow(arrows3_pix[1][0].value, arrows3_pix[1]
 
 fig.tight_layout()
 fig.subplots_adjust(hspace=0.01, left=0.1, bottom=0.05, right=0.97, top=0.95)
-plt.savefig('diff_rot_1600.pdf', dpi=200)
+plt.savefig('fig_diff_rot_1600.pdf', dpi=200)
