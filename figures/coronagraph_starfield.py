@@ -9,7 +9,7 @@ import sunpy.map
 from sunpy.coordinates import get_body_heliographic_stonyhurst, frames
 
 import sunpy_paper
-sunpy_paper.setup_plot()
+
 
 f = '2014_05_15__07_54_00_005__STEREO-A_SECCHI_COR2_white-light.jp2'
 path = os.path.join(sunpy_paper.data_dir, f)
@@ -41,20 +41,22 @@ mars_hpc = mars.transform_to(
     frames.Helioprojective(observer=map1.observer_coordinate))
 
 # now plot
-ax = plt.subplot(projection=map1)
-
-lon, lat = ax.coords
-lon.set_major_formatter('d.dd')
-lat.set_major_formatter('d.dd')
+fig = plt.figure(figsize=(5,5))
+ax = fig.add_subplot(111, projection=map1)
 
 map1.plot(axes=ax, vmin=0, vmax=600)
-map1.draw_limb()
-map1.draw_grid()
 
 ax.plot_coord(mars_hpc, 's', color='white',
               fillstyle='none', markersize=12, label='Mars')
 for this_coord in hpc_coords:
     ax.plot_coord(this_coord, 'o', color='white', fillstyle='none')
 
-plt.legend()
+map1.draw_limb()
+map1.draw_grid()
+
+lon, lat = ax.coords
+lon.set_major_formatter('d.dd')
+lat.set_major_formatter('d.dd')
+
+ax.legend()
 plt.savefig('fig_coronagraph_starfield.pdf')

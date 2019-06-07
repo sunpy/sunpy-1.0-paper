@@ -27,7 +27,7 @@ top_right = SkyCoord(venus_hpc.Tx + fov, venus_hpc.Ty + fov, frame=map1.coordina
 bottom_left = SkyCoord(venus_hpc.Tx - fov, venus_hpc.Ty - fov, frame=map1.coordinate_frame)
 smap = map1.submap(top_right, bottom_left)
 
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 5))
 ax = fig.add_subplot(1, 1, 1, projection=smap)
 # now get venus position
 smap.plot(axes=ax)
