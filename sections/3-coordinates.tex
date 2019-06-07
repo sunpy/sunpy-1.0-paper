@@ -10,6 +10,7 @@ The \package{sunpy.coordinates} subpackage provides:
 The currently supported Sun-centered coordinate systems are Heliocentric Aries Ecliptic (HAE), Heliocentric Cartesian (HCC), Heliocentric Earth Equatorial (HEEQ), Heliographic Carrington (HGC), Heliographic Stonyhurst (HGS), and Helioprojective Cartesian (HPC) \citep[see][]{2006A&A...449..791T}.
 The coordinates framework leverages the \package{astropy.coordinates} subpackage and its \code{SkyCoord} class \citep[see Section 3.3 of][]{astropy2018} by defining the above frames and the transformations between those frames.
 A \code{SkyCoord} object specifies both the coordinate frame (e.g., HCC) and a representation of the particular coordinate (e.g., Cartesian coordinates).
+Since most frames evolve over time, the \code{SkyCoord} object may also specify the observation time.
 
 The observer-independent coordinate frames -- HAE, HEEQ, HGC, and HGS -- are useful for specifying the locations of features on the Sun or objects (e.g., spacecraft) in interplanetary space.
 The commonly used HGS frame is of particular note because it transforms in a straightforward manner to and from the Heliocentric Celestial Reference System (HCRS).
@@ -56,7 +57,7 @@ This function requires the \package{astroquery} package \citep{ginsburg_astroque
 The coordinate framework is also used to calculate Sun-specific coordinate information with high accuracy.
 These functions are under \package{sunpy.coordinates.sun} and return values such as Carrington rotation number for the provided time.
 Nearly all of the returned values match values in the \textit{Astronomical Almanac} to published precision (e.g., the hundredth of an arcsecond for apparent right ascension).
-For times that are provided to these functions, one should take care to specify whether the time scale is UT or some other time scale (e.g., TT).
+For times that are provided to these functions, one should take care to specify whether the time scale is UTC or some other time scale (see \autoref{sec:units}).
 
 \subsection{Differential Rotation}
 \label{sec:differential_rotation}
