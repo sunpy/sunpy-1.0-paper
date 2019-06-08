@@ -3,12 +3,9 @@ import numpy as np
 import pandas as pd
 import pytz
 from git import Repo
-import seaborn
-
 import sunpy_paper
-sunpy_paper.setup_plot()
 
-repo_path = sunpy_paper.sunpy_path
+repo_path = '/Users/sdchris1/Developer/repositories/sunpy/'
 repo = Repo(repo_path)
 
 commits = list(repo.iter_commits('master'))
@@ -27,6 +24,9 @@ data = pd.DataFrame(
     index=commit_datetime)
 
 temp = data['author'].resample('M').apply(set)
+# drop the last row since data is not full
+temp.drop(temp.tail(1).index, inplace=True)
+
 x = pd.DataFrame(data={'set': temp.values}, index=temp.index)
 x['count'] = [len(v) for v in x['set'].values]
 
@@ -55,7 +55,6 @@ ax1.set_ylabel('Cumulative Authors')
 sunpy_paper.add_releases_vs_time(ax1)
 plt.savefig('cumulative_authors.pdf')
 
-
 # now create a plot of the number of commits versus the number of committers
 fig, ax1 = plt.subplots()
 author_count = data.groupby('author').apply(lambda x: len(x))
@@ -79,7 +78,4 @@ plt.ylabel('number of committers')
 plt.xlabel('number of commits')
 
 plt.title('')
-seaborn.despine()
 plt.savefig("busfactor_plot.pdf")
-
-plt.show()
