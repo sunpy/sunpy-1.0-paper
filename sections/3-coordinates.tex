@@ -52,7 +52,6 @@ The center and rightmost panels of \autoref{fig:coordinates_examples} make use o
 This planet location is obtained using the active ephemeris in \package{astropy.coordinates}, so if one wants the location of a non-Earth body and accuracy is important, one should use \code{astropy.coordinates.solar\_system\_ephemeris} to specify a JPL ephemeris rather than Astropy's default ephemeris.
 \code{get\_horizons\_coord} allows one to query JPL HORIZONS\footnote{\url{https://ssd.jpl.nasa.gov/?horizon}} for the location of a wide range of solar-system bodies.
 JPL HORIZONS includes ephemeris information not only for planets and other natural bodies in the solar system, but also for major spacecraft such as SDO and SOHO.
-This function requires the \package{astroquery} package \citep{ginsburg_astroquery_2019} to be installed and an Internet connection.
 
 The coordinate framework is also used to calculate Sun-specific coordinate information with high accuracy.
 These functions are under \package{sunpy.coordinates.sun} and return values such as Carrington rotation number for the provided time.
