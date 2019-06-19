@@ -12,7 +12,7 @@ Scientists conducting interdisciplinary research using multiple instruments run 
 Furthermore, it is difficult to reproduce others' scientific results without open data and version-controlled open source software.
 
 A common, version-controlled, open source platform that provides a standard interface to data products and encourages the re-use of common functions can go a long way toward solving this problem.
-\sunpy aims to provide this solution for the field of solar physics.
+\sunpyproj aims to provide this solution for the field of solar physics.
 
 The mission statement of the \sunpyproj is to facilitate and promote the use and development of several community-led, free, and open-source\footnote{\url{https://opensource.org/osd}} data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
 To achieve this goal, the project develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see Section \ref{sec:affil_package}) that provides additional functionality.
@@ -35,9 +35,9 @@ As such, the executive director is also referred to as the lead developer.
 A deputy lead developer and release manager, as well as other volunteers from the developer community, support the lead developer.
 Board members serve two year terms while the lead developer serves one year terms with no term limits.
 
-The \sunpyproj is formally defined through \sunpy Enhancement Proposals (SEPs) which are modeled after the Python Enhancement Proposal process\footnote{\url{https://www.python.org/dev/peps/}}.
+The \sunpyproj is formally defined through SunPy Enhancement Proposals (SEPs) which are modeled after the Python Enhancement Proposal process\footnote{\url{https://www.python.org/dev/peps/}}.
 All SEPs are version-controlled as well as publicly available\footnote{\url{https://github.com/sunpy/sunpy-SEP}}.
-The first two SEPs (SEP-0001 and SEP-0002) define what is an SEP as well as the \sunpy organization.
+The first two SEPs (SEP-0001 and SEP-0002) define what is an SEP as well as the SunPy organization.
 
 SEPs are used to both define the organization of the project as a whole as well as technical requirements for the \sunpypkg core package and affiliated packages.
 There are generally three types of SEPs.
@@ -59,21 +59,21 @@ This presents a number of challenges which the \astropy community also faces and
 
 The National Academies of Sciences, Engineering, and Medicine's report on Open Source Software Policy Options for NASA Earth and Space Sciences \citep{NAP2018} outlines several solutions to alleviate these problem -- namely that the NASA Science Mission Directorate provide funding for new and existing open source software projects, promote scientists who spend time developing and improving open source software projects, and offer prizes for exemplary contributions to the open source software community.
 The National Academies of Sciences, Engineering, and Medicine's report on Reproducibility and Replicability in Science \citep{NAP2019} recommends that funding agencies invest in the research and development of open-source software that support reproducibility.
-The \sunpy community supports solutions like these for all relevant funding agencies and furthermore has the ability to accept financial contributions from institutions or individuals through the NumFOCUS organization, a 501(c)(3) public charity which collects and manages tax-deductible contributions for many open-source scientific software packages such as NumPy and AstroPy.
+The SunPy community supports solutions like these for all relevant funding agencies and furthermore has the ability to accept financial contributions from institutions or individuals through the NumFOCUS organization, a 501(c)(3) public charity which collects and manages tax-deductible contributions for many open-source scientific software packages such as \numpy and \astropy.
 
 The \sunpyproj does participate in two summer of code programs, which offer students stipends to write code for open-source projects, via the OpenAstronomy umbrella organization.
 Since 2013, 16 students contributed to \sunpypkg and affiliated packages through the Google Summer of Code (GSoC)\footnote{\url{https://summerofcode.withgoogle.com/}} program.
 Since 2011, 7 students contributed through a similar program funded by the European Space Agency called The ESA Summer of Code in Space\footnote{\url{https://socis.esa.int/}}.
-Many \sunpy community members served as mentors for these students\footnote{\url{https://github.com/sunpy/sunpy/wiki/Wall-of-Fame}}.
-In 2018, s GSoC student Vishnunarayan K. I. was presented an award for exceptional contributions to the open source scientific software ecosystem for his efforts to update \sunpy with a modern astronomical time system by NumFOCUS.
+Many SunPy community members served as mentors for these students\footnote{\url{https://github.com/sunpy/sunpy/wiki/Wall-of-Fame}}.
+In 2018, s GSoC student Vishnunarayan K. I. was presented an award for exceptional contributions to the open source scientific software ecosystem for his efforts to update \sunpypkg with a modern astronomical time system by NumFOCUS.
 
 \section{Development Model}
 
-To satisfy the mission statement of the Project, the \sunpy community adopted an open development model.
+To satisfy the mission statement of the Project, the SunPy community adopted an open development model.
 This development model is widely used within the scientific Python community.
 The\sunpypkg package is hosted on \github and uses Git\footnote{\url{https://git-scm.com/}} as its distributed version control software.
 The entire codebase is publicly available and anyone can suggest changes through pull requests.
-Since the codebase is licensed under a permissive 2-clause BSD license\footnote{\url{https://opensource.org/licenses/BSD-2-Clause}}, anyone can redistribute, improve, repackage or use it in a closed environment as long as they credit the \sunpy developers and redistribute the license.
+Since the codebase is licensed under a permissive 2-clause BSD license\footnote{\url{https://opensource.org/licenses/BSD-2-Clause}}, anyone can redistribute, improve, repackage or use it in a closed environment as long as they credit the SunPy developers and redistribute the license.
 In order to maintain high quality code, every contribution must satisfy the following requirements:
 \begin{enumerate}
     \item Code and documentation must follow widely used style guides (PEP 8 and numpydoc).
@@ -82,7 +82,7 @@ In order to maintain high quality code, every contribution must satisfy the foll
     \item Test code must be provided with coverage reports.
     \item Finally, all code must be reviewed and accepted by at least two members of the developer community before it is integrated into the codebase.
 \end{enumerate}
-These requirements are imposed on all contributions even those from the \sunpy development team.
+These requirements are imposed on all contributions even those from the SunPy development team.
 
 \begin{figure}
 \begin{tabular}{cc}
