@@ -8,6 +8,7 @@ The \package{sunpy.coordinates} subpackage provides:
     \item Functions to calculate Sun-specific coordinate information
 \end{itemize}
 The currently supported Sun-centered coordinate systems are Heliocentric Aries Ecliptic (HAE), Heliocentric Cartesian (HCC), Heliocentric Earth Equatorial (HEEQ), Heliographic Carrington (HGC), Heliographic Stonyhurst (HGS), and Helioprojective Cartesian (HPC) \citep[see][]{2006A&A...449..791T}.
+Additional coordinate systems are in the process of being implemented and will become available in future releases of \sunpy.
 The coordinates framework leverages the \package{astropy.coordinates} subpackage and its \code{SkyCoord} class \citep[see Section 3.3 of][]{astropy2018} by defining the above frames and the transformations between those frames.
 A \code{SkyCoord} object specifies both the coordinate frame (e.g., HCC) and a representation of the particular coordinate (e.g., Cartesian coordinates).
 Since most frames evolve over time, the \code{SkyCoord} object may also specify the observation time.
