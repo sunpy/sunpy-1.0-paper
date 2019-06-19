@@ -21,7 +21,6 @@ sunpy_releases = {
 }
 
 data_dir = Path(os.path.join(Path(__file__).parents[1], "data"))
-sunpy_repo_path = Path(sunpy.__file__).parents[1]
 
 
 def get_author_transform_mapping(repo):
