@@ -17,7 +17,7 @@ Using a tool in \code{astropy.units}, a function can constrain each of its input
 As another example of the power of unit-aware numbers, the \package{sunpy.sun.constants} module contains constants relevant to solar physics.
 Each of this constants is stored as a \code{astropy.units.Constant} object, which is a \code{Quantity} object with additional information (e.g., uncertainty and reference source).
 
-In a similar vein, \sunpy also supports \code{astropy.time.Time} objects throughout.
+In a similar vein, \sunpypkg also supports \code{astropy.time.Time} objects throughout.
 Time can be measured by a number of different time scales, including Coordinated Universal Time (UTC), Terrestrial Time (TT), or International Atomic Time (TAI).
 In the same manner as pairing numbers with their units, the \code{Time} class pairs a time representation with its time scale, and allows for conversions to other time scales.
 Thus, functions that work with time (e.g., to make ephemeris calculations) can ensure that there is no confusion about the time provided.
