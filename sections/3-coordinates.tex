@@ -8,7 +8,7 @@ The \package{sunpy.coordinates} subpackage provides:
     \item Functions to calculate Sun-specific coordinate information
 \end{itemize}
 The currently supported Sun-centered coordinate systems are Heliocentric Aries Ecliptic (HAE), Heliocentric Cartesian (HCC), Heliocentric Earth Equatorial (HEEQ), Heliographic Carrington (HGC), Heliographic Stonyhurst (HGS), and Helioprojective Cartesian (HPC) \citep[see][]{2006A&A...449..791T}.
-Additional coordinate systems are in the process of being implemented and will become available in future releases of \sunpy.
+Additional coordinate systems are in the process of being implemented and will become available in future releases of the \sunpypkg.
 The coordinates framework leverages the \package{astropy.coordinates} subpackage and its \code{SkyCoord} class \citep[see Section 3.3 of][]{astropy2018} by defining the above frames and the transformations between those frames.
 A \code{SkyCoord} object specifies both the coordinate frame (e.g., HCC) and a representation of the particular coordinate (e.g., Cartesian coordinates).
 Since most frames evolve over time, the \code{SkyCoord} object may also specify the observation time.
@@ -64,7 +64,7 @@ For times that are provided to these functions, one should take care to specify 
 
 %1-2 sentences intro; 1-2 sentences describing what is new; 1 sentence that acknowledges the figure.
 
-% Can delete the first two sentences if the background info feels unnecessary 
+% Can delete the first two sentences if the background info feels unnecessary
 
 When analyzing the dynamics of observed solar emission, it is important to account for variations due to the rotation of the Sun.
 In particular, one must account for \textit{differential rotation}, or the latitudinally-varying rotation rate due to the non-rigidity of the solar interior.
@@ -87,4 +87,3 @@ The bottom panel shows the top panel differentially rotated using the observer l
     Panel (c) shows the map of (a) that has been rotated differentially using \sunpypkg to the time of map (b).}
     \label{fig:diff_rot}
 \end{figure}
-
