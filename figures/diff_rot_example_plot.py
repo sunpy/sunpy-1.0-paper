@@ -32,7 +32,7 @@ map2.plot(vmin=vmin, vmax=vmax, axes=ax2, title=False)
 rotated_map.plot(vmin=vmin, vmax=vmax, axes=ax3, title=False)
 
 # trun off ticklabels for top and middle plot
-ax1.tick_params(axis='x',  labelbottom=False)
+ax1.tick_params(axis='x', labelbottom=False)
 ax2.tick_params(axis='x', labelbottom=False)
 
 # x and y plotting limits in arcsec
