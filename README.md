@@ -14,7 +14,7 @@ meant to replace or repeat the documentation.
 
 Journal
 =======
-This paper will be submitted to the software software of the Astropysical
+This paper will be submitted to the software software of the Astrophysical
 Journal.
 
 Writing standards
@@ -35,7 +35,7 @@ Please follow the following standards. We designed the following guidelines to m
 LaTeX Formatting
 ----------------
 
-Please always be strict on having one sentance per line to aid in git diffing and latex error detection.
+Please always be strict on having one sentence per line to aid in git diffing and latex error detection.
 
 Feedback & Comments
 ===================
