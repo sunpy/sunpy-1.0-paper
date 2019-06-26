@@ -10,7 +10,7 @@ The second release will be a non-LTS and will be supported for 6 months or until
 A formal versioning convention has also been adopted going forward.
 
 \sunpypkg will follow the following versioning system: ``X.Y.z", where the three components have the following meaning;
-``X" is the LTS version number, which will be incremented with every LTS, 
+``X" is the LTS version number, which will be incremented with every LTS,
 ``Y" is the release counter, this will be 0 for LTS releases and increment for each intermediate non-LTS release,
 ``z" is the bug fix number, and is to be incremented for any bug-fix releases.
 
@@ -18,10 +18,10 @@ The primary goal of the adoption of this formal release structure is to provide 
 
 \subsection{Continuous Integration}
 The \sunpyproj follows common practices and makes extensive use of continuous integration which provide automated testing and code change inspection.
-All proposed code contributions trigger test suites to be run on a number of free services (e.g. 
+All proposed code contributions trigger test suites to be run on a number of free services (e.g.
 \href{https://azure.microsoft.com/en-gb/services/devops/pipelines/}{Microsoft's Azure pipelines},
 \href{https://circleci.com}{circleci},
-\href{https://codecov.io/}{Codecov}) which integrate into the \github website. 
+\href{https://codecov.io/}{Codecov}) which integrate into the \github website.
 These services provide the first review of any contribution by running the test suite on each operating system (Windows, Mac, Linux), testing the documentation build, running figure tests, and providing code coverage metrics.
 Additionally \href{https://travis-ci.org}{Travis CI} is used to run the entire test suite on a daily cadence.
 \sunpypkg's test suite can be broken down into three broad categories: offline, online and figure tests.

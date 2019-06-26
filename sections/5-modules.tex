@@ -2,33 +2,32 @@
 \label{sec:data_types}
 
 The \sunpypkg package provides core data types that are designed to provide a standardized interface to data structures across data types (e.g. images and lightcurves) as well as data sources (e.g. from multiple instruments).
-The core data types currently provided are \Timeseries and \Map  which support 1D temporal data and 2D image data, respectively.
-These offer a consistent interface for loading and representing solar data across instruments and missions allowing a simpler work-flow in the analysis of observations. 
-For example, these core data type classes handle the necessary requirements to read mission specific data and contain the data with a consistent API. 
-For example, metadata is provided by the \code{.meta} property, and the numeric data is always stored in \code{.data}. 
-Visualization and basic manipulation routines are also provided. 
+The core data types currently provided are \Timeseries and \Map which support 1D temporal data and 2D image data, respectively.
+These offer a consistent interface for loading and representing solar data across instruments and missions allowing a simpler work-flow in the analysis of observations.
+For example, these core data type classes handle the necessary requirements to read mission specific data and contain the data with a consistent API.
+For example, metadata is provided by the \code{.meta} property, and the numeric data is always stored in \code{.data}.
+Visualization and basic manipulation routines are also provided.
 This section provides an overview of the \Timeseries and \Map classes.
 
 \subsection{\Timeseries}
 \label{sec:timeseries}
 Time-series data is a fundamental observational data type.
-The \Timeseries class provided is designed to handle time-series data through a robust and consistent interface. 
+The \Timeseries class provided is designed to handle time-series data through a robust and consistent interface.
 \Timeseries supports data from a wide range of instruments.
-The inherent structure of the \Timeseries class consists of times and measurements, while the underlying structure used to store the data is a Pandas dataframe. 
+The inherent structure of the \Timeseries class consists of times and measurements, while the underlying structure used to store the data is a Pandas dataframe.
 
-%The base class of \Timeseries is the \GenericTimeSeries class. 
+%The base class of \Timeseries is the \GenericTimeSeries class.
 A number of instruments are supported through subclassing which have instrument-specific methods for reading source files.
-Custom \Timeseries can also be made from input data in the form of a Pandas dataframe, an Astropy Table or a NumPy array.
+Custom \Timeseries can also be made from input data in the form of a Pandas dataframe, an Astropy Table or a \numpy array.
 
-\Timeseries currently supports data sources from the following instruments: 
-\begin{inparaitem}
-\item Geostationary Operational Environmental Satellite (\textit{GOES}) X-ray Sensor (XRS) 
-\item \textit{SDO} EUV Variability Experiment (EVE) \citep{woods2010extreme}
-\item \textit{PROBA2} Large Yield Radiometer (LYRA) \citep{dominique2013lyra}
-\item \textit{Fermi} Gamma-ray Burst (GBM) monitor \citep{meegan2009fermi}
-\item the Nobeyama Radioheliograph (\textit{NoRH}) \citep{nakajima1994nobeyama}
-\item \textit{RHESSI} \citep{lin2003reuven}.
-\end{inparaitem}
+\Timeseries currently supports data sources from the following instruments:
+Geostationary Operational Environmental Satellite (\textit{GOES}) X-ray Sensor (XRS),
+\textit{SDO} EUV Variability Experiment (EVE) \citep{woods2010extreme},
+\textit{PROBA2} Large Yield Radiometer (LYRA) \citep{dominique2013lyra},
+\textit{Fermi} Gamma-ray Burst (GBM) monitor \citep{meegan2009fermi}
+the Nobeyama Radioheliograph (\textit{NoRH}) \citep{nakajima1994nobeyama}
+and \textit{RHESSI} \citep{lin2003reuven}.
+
 The \Timeseries\ class also supports the National Oceanic and Atmospheric (NOAA) Space Weather Prediction Center (SWPC) solar cycle monthly indices and predicted progression.
 These data sources are supported through a \Timeseries\ instrument source file for each listed above.
 With this structure additional instruments and data sources can easily be added.
@@ -45,26 +44,24 @@ The \Timeseries object, similar to \Map (Section \ref{sec:map}), has it's own vi
 The \Map class provides the functionality to analyze 2D data associated with a coordinate system and relevant metadata.
 %A \Map object is created using the \Map factory which will produce a \GenericMap object or a subclass of \GenericMap which deals with instrument specific data.
 %The main use of \Map is to store and manipulate images of the Sun and heliosphere.
-%A number of instruments are explicitly supported, supported through subclassing within the subclass source files for each instrument source. 
+%A number of instruments are explicitly supported, supported through subclassing within the subclass source files for each instrument source.
 Similar to \Timeseries, subclassing provides a compatibility layer which converts the specific meta data and other source-specific parameters to the base class \GenericMap\ interface.
 The source files also include properties such as source-specific color tables and appropriate image scaling for each instrument.
 
 \Map currently supports data sources from the following instruments:
-\begin{inparaitem}
-\item \textit{SDO} - Atmospheric Imaging Assembly (AIA) \citep{lemen2011atmospheric} and the Helioseismic and Magnetic Imager (HMI) \citep{scherrer2012helioseismic}.
-\item \textit{SOHO} - Large Angle Spectroscopic COronagraph (LASCO) \citep{brueckner1995large}, Extreme ultraviolet Imaging Telescope (EIT) \citep{delaboudiniere1995eit}, and Michelson Doppler Imager (MDI) \citep{scherrer1995solar}
-\item \textit{STEREO} - Extreme Ultraviolet Imager (EUVI), COronagraph 1 and 2 (COR1/2) for both \textit{STEREO} A and B \citep{howard2008sun}
-\item \textit{Hinode} - X-Ray Telescope (XRT) \citep{golub2008x}
-\item \textit{IRIS} Slit Jaw Imager (SJI) \citep{DePontieu2014}
-\item \textit{COronal Solar Magnetism Observatory (COSMO)} -  K-coronagraph (K-Cor) all polarized brightness
-\item \textit{PROBA2} - Sun Watcher using Active Pixel System detector and Image Processing (SWAP) \citep{seaton2013swap}
-\item \textit{RHESSI} \citep{lin2002reuven}
-\item \textit{TRACE}
-\item \textit{Yohkoh} Soft X-ray Telescope (SXT) \citep{tsuneta1991soft}.
-\end{inparaitem}
+\textit{SDO} - Atmospheric Imaging Assembly (AIA) \citep{lemen2011atmospheric} and the Helioseismic and Magnetic Imager (HMI) \citep{scherrer2012helioseismic},
+\textit{SOHO} - Large Angle Spectroscopic COronagraph (LASCO) \citep{brueckner1995large}, Extreme ultraviolet Imaging Telescope (EIT) \citep{delaboudiniere1995eit}, and Michelson Doppler Imager (MDI) \citep{scherrer1995solar},
+\textit{STEREO} - Extreme Ultraviolet Imager (EUVI), COronagraph 1 and 2 (COR1/2) for both \textit{STEREO} A and B \citep{howard2008sun},
+\textit{Hinode} - X-Ray Telescope (XRT) \citep{golub2008x},
+\textit{IRIS} Slit Jaw Imager (SJI) \citep{DePontieu2014},
+\textit{COronal Solar Magnetism Observatory (COSMO)} - K-coronagraph (K-Cor) all polarized brightness,
+\textit{PROBA2} - Sun Watcher using Active Pixel System detector and Image Processing (SWAP) \citep{seaton2013swap},
+\textit{RHESSI} \citep{lin2002reuven},
+\textit{TRACE}
+and \textit{Yohkoh} Soft X-ray Telescope (SXT) \citep{tsuneta1991soft}.
 Helioviewer JPEG2000 image files of the above data sources are also supported by the \Map\ class.
 
-A \Map\ can be created either from data files from which the \Map\ factory will automatically detect the type of file, associated instrument and search the appropriate FITS keywords to infer the coordinate system. 
+A \Map\ can be created either from data files from which the \Map\ factory will automatically detect the type of file, associated instrument and search the appropriate FITS keywords to infer the coordinate system.
 A custom \GenericMap can also be created by providing the \Map\ object with data and basic meta information.
 
 Two additional classes based on \Map\ are also provided in \sunpypkg.
