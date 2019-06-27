@@ -2,22 +2,24 @@
 \label{sec:units}
 
 Calculations using physical quantities have traditionally been performed in software using raw numbers in the interest of simplicity and speed.
-The units associated with those numbers would typically be noted separately in comments or in documentation, and that separation of numbers from their units can lead to errors or even disaster.
+The units associated with those numbers would typically be noted separately in comments or in documentation, and that separation between a number and its units can lead to errors or even disaster.
 As an extreme example, the Mars Climate orbiter mission in 1988 failed due to a unit discrepancy \citep{mco_mishap_report}.
 The spacecraft trajectory was reported in English units instead of metric units, which led to the Mars Climate Orbiter entering the Martian atmosphere well below its intended altitude leading to mission failure.
+This mishap could have been avoided by ensuring that physical quantities are fully described in software.
 
-A more modern approach which ensures that physical quantities are fully described in software is described by \citet{Damevski2009}.
-\sunpypkg implements this concept in all of its code using unit functionality provided by \astropy.
-The \code{astropy.units} subpackage provides support for physical quantities through a class, which consists of a number and its associated unit(s).
-Furthermore, these quantities can be combined in expressions with the unit conversions and cancellations automatically taken into account.
+A more modern approach which describes a solution to this problem is provided by \citet{Damevski2009}.
+\sunpypkg implements this concept throughout its code base using  functionality provided by \package{astropy.units}.
+This subpackage provides support for physical quantities through a class, which consists of a number and its associated unit(s).
+Furthermore, these quantities can be combined in expressions with unit conversions and cancellations automatically taken into account.
 Tests have shown that the performance overhead to using this functionality is typically minimal.
 
-We formally mandate that all user-facing functionality provided by \sunpypkg make use of this functionality unless inappropriate.
-Using a tool in \code{astropy.units}, a function can constrain each of its inputs to a specific type of unit (e.g. length, mass).
-As another example of the power of unit-aware numbers, the \package{sunpy.sun.constants} module contains constants relevant to solar physics.
-Each of this constants is stored as a \code{astropy.units.Constant} object, which is a \code{Quantity} object with additional information (e.g., uncertainty and reference source).
+SEP-0003 formally mandate that all user-facing functionality provided by \sunpypkg make use of this functionality unless inappropriate.
+All functions have their input constrained to the appropriate type of unit (e.g. length, mass) and provide an error if the input is not correct.
+Input can then be provided with any appropriate units (e.g. mm, km, inches) and conversions occur automatically without user intervention.
+The \package{sunpy.sun.constants} subpackage contains many standard constants relevant to solar physics with additional information such as uncertainty and reference.
 
-In a similar vein, \sunpypkg also supports \code{astropy.time.Time} objects throughout.
-Time can be measured by a number of different time scales, including Coordinated Universal Time (UTC), Terrestrial Time (TT), or International Atomic Time (TAI).
-In the same manner as pairing numbers with their units, the \code{Time} class pairs a time representation with its time scale, and allows for conversions to other time scales.
-Thus, functions that work with time (e.g., to make ephemeris calculations) can ensure that there is no confusion about the time provided.
+Time is another fundamental quantity that must be appropriately specified for scientific uses.
+Similar motivations led to the adoption of SEP-0008 which mandates the use of a modern scientific time format throughout the \sunpypkg code base.
+This functionality is provided by the \package{astropy.time} which provides support for many different time scales, including Coordinated Universal Time (UTC), Terrestrial Time (TT), or International Atomic Time (TAI).
+In the same manner as pairing numbers with their units, a time class pairs a time representation with its time scale, and allows for conversions to other time scales.
+Thus, functions that require precise times (e.g., for ephemeris calculations) can ensure that there is no confusion about the input.
