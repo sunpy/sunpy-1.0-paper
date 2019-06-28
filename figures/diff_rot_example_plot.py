@@ -3,6 +3,7 @@ from sunpy.physics import differential_rotation
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 import matplotlib.pyplot as plt
+import numpy as np
 import os
 
 import sunpy_paper
@@ -16,6 +17,9 @@ map2 = map.Map(os.path.join(sunpy_paper.data_dir,
 
 # rotate map at 2014-10-20 to day of 2014-10-22
 rotated_map = differential_rotation.differential_rotate(map1, observer=map2.observer_coordinate)
+# do some hacky "masking" because astropy normalization wants to color NaNs, masked values white
+data_masked = np.where(np.isnan(rotated_map.data), -1, rotated_map.data)
+rotated_map = map.Map(data_masked, rotated_map.meta)
 
 # plotting the data
 vmin = 50
