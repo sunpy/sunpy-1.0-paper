@@ -4,16 +4,16 @@
 One of the most important tasks that must occur before any analysis can take place is to search for and retrieve data.
 A particular science goal may require data from multiple data providers, each of which may have different methods of search and retrieval.
 This heterogeneity increases the effort required by scientists to get the data they need.
-In order to address this issue \sunpypkg provides a single and powerful data search and retrieval interface called \Fido.
+In order to address this issue, the  \package{sunpy.net} subpackage provides a single and powerful data search and retrieval interface called \Fido.
 
 \Fido provides a unified interface that simplifies and homogenizes search and retrieval by allowing data to be queried and downloaded from multiple solar sources simultaneously irrespective of the underlying client.
 Currently \Fido supports the Virtual Solar Observatory (VSO), the Joint Science Operations Center (JSOC) (see Section \ref{sec:drms}) and a number of individual data providers that make their data available via web-accessible resources such as HTTP websites (RHESSI, SDO-EVE, NOAA GOES soft X-ray flux, PROBA2-LYRA and NOAA sunspot number prediction) and FTP sites (NOAA sunspot number, Nobeyama Radioheliograph).
 
 A \Fido search can include multiple instruments, and can query all available data providers with a single query.
-Search queries make use of search attributes (e.g. instrument, time range, wavelength) which can be joined using Boolean operators enabling complex search queries to be constructed easily.
+Search queries make use of search attributes (e.g. instrument, time range, wavelength) which can be joined using Boolean operators enabling complex search queries.
 The result of a query can be inspected and edited before retrieval.
 
-The result of the \Fido search query is downloaded via asynchronous download streams significantly improving download speeds.
+The result of the \Fido search query is downloaded via asynchronous and parallel download streams enabling fast download speeds.
 \Fido also recognizes failed data downloads and allows for re-requesting files which were not retrieved.
 
 In addition to data download, access to event catalogues are also an important aspect of solar physics research.
