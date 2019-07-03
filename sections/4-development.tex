@@ -21,25 +21,14 @@ LTS releases will be supported for 12 months or until the next LTS release; non-
 Every numbered release shall be associated with a Digital Object Identifier (DOI).
 
 \begin{figure}
-\begin{tabular}{cc}
-  \includegraphics[width=0.5\textwidth]{figures/fig_loc_vs_time.pdf} &
-  \includegraphics[width=0.5\textwidth]{figures/busfactor_plot.pdf} \\
-(a) & (b) \\
-\end{tabular}
-\begin{tabular}{c}
-  \includegraphics[width=0.5\textwidth]{figures/cumulative_authors.pdf} \\
-(c) \\
-\end{tabular}
-\caption{
-	(a) A plot of the the number of lines of code (solid line) and documentation line count (dotted line) as a function of time.
-	Major releases are indicated by vertical lines.
-	This shows a steady increase of the \sunpypkg codebase with larger additions to our documentation over the last few major versions of \sunpypkg.
+    \center
+    \includegraphics[width = 1.0\textwidth]{figures/dev_meta.pdf}
+    \caption{Left panel: A plot of the steady increase in the total number of lines of code (solid line) and documentation line count (dotted line) as a function of time.
+	Major releases are indicated.
 	A striking reduction in the code base occurred after version 0.9.
 	This period saw a major code organization and deletion of obsolete features along with removing support for Python 2.
-	(b) A plot of the number of commits as a function of the number of authors.
-	It should be noted that the number of commits is not a 100\% useful measure as any one commit could have as many code or line changes as the previous 100 commits.
-	However, it does indicate the majority of commits within the package are undertaken by the least amount of people with an average individual contribution of less than 10 commits.
-	(c) This figure charts the cumulative number of authors (i.e., committers) to \sunpypkg as a function of time which shows a steady increase in the number of people involved in the development team.
-}
+	Middle panel: The cumulative number of committers (i.e. authors) to \sunpypkg as a function of time shows a steady increase in the number of people involved in the development team.
+	Right panel: A plot of the distribution of the number of commits per commiter.
+	Though commits is not the best measure this plot does indicates that the majority of commits are undertaken by the least amount of people with an average individual contribution of less than 10 commits.}
 \label{fig:metafig}
 \end{figure}

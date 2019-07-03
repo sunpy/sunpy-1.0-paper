@@ -12,16 +12,12 @@ x = data.index
 y1 = data["code"].values / 10000.0
 y2 = data["comment"].values / 10000.0
 
-
-fig, ax1 = plt.subplots()
-
-
+fig, ax1 = plt.subplots(figsize=(5, 5))
 ax1.plot(x, y1, label="code", color="black", linestyle="-")
 ax1.plot(x, y2, label="comment", color="black", linestyle="--")
 
-
 plt.ylabel("Lines (thousands)")
-plt.ylim(0, 4)
+plt.ylim(0, 3.5)
 
 plt.legend(loc=2)
 
