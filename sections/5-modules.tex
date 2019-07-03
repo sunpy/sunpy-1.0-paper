@@ -73,7 +73,7 @@ Similar to \Map (Section \ref{sec:map}), \Timeseries has its own visualization m
 Many types of solar data deal with images. For example, the Helioseismic and Magnetic Imager (HMI) instrument aboard the Solar Dynamics Observatory (SDO) maps the magnetic field at the solar photosphere every 45 seconds. 
 
 The \Map class provides a single, consistent interface to analyze 2D image data and relevant metadata from a variety of instruments. 
-Users can create a \Map object by providing input data files located locally or fetched via the \sunpypkg data search and retrieval interface called \Fido (see Section \ref{sec:fido}). The \Map object will automatically detect the instrument and subsequently search for the appropriate FITS keywords to infer the coordinate system.
+Users can create a \Map object by providing input data files located locally or fetched via the \sunpypkg data search and retrieval interface called \Fido (see Section \ref{sec:fido}). The \Map object will automatically detect the instrument and subsequently search for the appropriate FITS keywords to infer the coordinate system \citep{refId0, 2006A&A...449..791T}.
 
 The \Map object permits users to plot not only a single image but also overlay multiple images; such functionality is useful in displaying data from instruments with overlapping fields of view. The \Map object also loads source-specific color tables and appropriate image scaling for each instrument.
 Users can also combine multiple maps together in a time-ordered sequence. The data in each \Map need not have the same size (number of pixels in each direction) or view the same area of the sky (field-of-view). 
