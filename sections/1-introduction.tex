@@ -9,19 +9,22 @@ At the time of writing, the NASA Heliophysics System Observatory consists of 18 
 Software packages to analyze data from these instruments are generally developed independently by each instrument team.
 This creates a diverse and therefore difficult data and software environment to navigate.
 Scientists conducting interdisciplinary research using multiple instruments run into problems with incompatible data formats and incompatible analysis routines written in different languages.
-Furthermore, it is difficult to reproduce others' scientific results without open data and version-controlled open source software.
+Furthermore, it is difficult to reproduce the scientific results of others without open data and version-controlled open source software.
 
 A common, version-controlled, open source platform that provides a standard interface to data products and encourages the re-use of common functions can go a long way toward solving this problem.
 \sunpyproj aims to provide this solution for the field of solar physics.
 
-The mission statement of the \sunpyproj is to facilitate and promote the use and development of several community-led, free, and open source\footnote{\url{https://opensource.org/osd}} data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
+The mission of the \sunpyproj is to facilitate and promote the use and development of community-led, free, and open source\footnote{\url{https://opensource.org/osd}} solar data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
 To achieve this goal, the project develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see Section \ref{sec:affil_package}) that provides additional functionality.
 
 The \sunpyproj was officially founded in March of 2014 to formalize the organization managing the already developing \sunpypkg package.
 The project selected the \python programming language to leverage the rich ecosystem of packages already available for general data analysis.
 These include \numpy for multi-dimensional array manipulation \citep{numpy}, \scipy for scientific functions \citep{scipy}, \matplotlib for publication-quality 2D plotting \citep{matplotlib}, and \pandas for data structures and time series analysis \citep{pandas}.
-These core packages form the backbone for hundreds of thousands of additional \python packages.
-Of particular relevance to \sunpypkg is the \astropypkg package, which provides core functionality for the analysis of astrophysical data \citep{astropy2018}.
+These core packages form the backbone for hundreds of thousands of additional scientific \python packages.
+Of particular relevance to solar physics is the \astropypkg package, which provides core functionality for the analysis of astrophysical data \citep{astropy2018}.
+The \sunpyproj coordinates with the \astropy developer community and the \sunpypkg depends on many subpackages of the \astropypkg package.
 
 This paper describes the first stable release (v1.0) of the core package.
-A previous paper described release v0.5 \citep{Community:2015cy}.
+A previous paper describes v0.5 \citep{Community:2015cy}.
+This article is not meant to replace the \sunpypkg documentation but provides an overview of the organization and highlights important functionality.
+The full paper, including all of the code to produce the figures, is available in a \github repository\footnote{\url{https://github.com/sunpy/sunpy-1.0-paper}}.
