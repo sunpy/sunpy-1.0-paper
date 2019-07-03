@@ -9,100 +9,22 @@ At the time of writing, the NASA Heliophysics System Observatory consists of 18 
 Software packages to analyze data from these instruments are generally developed independently by each instrument team.
 This creates a diverse and therefore difficult data and software environment to navigate.
 Scientists conducting interdisciplinary research using multiple instruments run into problems with incompatible data formats and incompatible analysis routines written in different languages.
-Furthermore, it is difficult to reproduce others' scientific results without open data and version-controlled open source software.
+Furthermore, it is difficult to reproduce the scientific results of others without open data and version-controlled open source software.
 
 A common, version-controlled, open source platform that provides a standard interface to data products and encourages the re-use of common functions can go a long way toward solving this problem.
-\sunpy aims to provide this solution for the field of solar physics.
+\sunpyproj aims to provide this solution for the field of solar physics consistent with best practices \citep{Wilson:2014cka, bangerth2013}.
 
-The mission statement of the \sunpyproj is to facilitate and promote the use and development of several community-led, free, and open-source\footnote{\url{https://opensource.org/osd}} data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
-To achieve this goal, the project primarily develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see Section \ref{sec:affil_package}) that provides additional functionality.
+The mission of the \sunpyproj is to facilitate and promote the use and development of community-led, free, and open source\footnote{\url{https://opensource.org/osd}} solar data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
+To achieve this goal, the project develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see Section \ref{sec:affil_package}) that provides additional functionality.
 
-The \sunpyproj was formally founded in March of 2014 to formalize the organization managing the already developing \sunpypkg package.
+The \sunpyproj was officially founded in March of 2014 to formalize the organization managing the already developing \sunpypkg package.
 The project selected the \python programming language to leverage the rich ecosystem of packages already available for general data analysis.
-These include \package{Numpy} for multi-dimensional array manipulation \citep{numpy}, \package{scipy} for scientific functions \citep{scipy}, \package{Matplotlib} for publication-quality 2D plotting \citep{matplotlib}, and \package{Pandas} for data structures and time series analysis \citep{pandas}.
-These core packages form the backbone for hundreds of thousands of additional \python packages.
-Of particular relevance to \sunpypkg is the \astropypkg package, which provides core functionality for the analysis of astrophysical data \citep{astropy2018}.
+These include \numpy for multi-dimensional array manipulation \citep{numpy}, \scipy for scientific functions \citep{scipy}, \matplotlib for publication-quality 2D plotting \citep{matplotlib}, and \pandas for data structures and time series analysis \citep{pandas}.
+These core packages form the backbone for hundreds of thousands of additional scientific \python packages.
+Of particular relevance to solar physics is the \astropypkg package, which provides core functionality for the analysis of astrophysical data \citep{astropy2018}.
+The \sunpyproj coordinates with the \astropy developer community and the \sunpypkg depends on many subpackages of the \astropypkg package.
 
 This paper describes the first stable release (v1.0) of the core package.
-A previous paper described release v0.5 \citep{Community:2015cy}.
-
-\section{Project Organization \& Enhancement Proposals}
-
-The organization of the \sunpyproj is modeled on the structure of a board-only not-for-profit corporate entity.
-It consists of an up-to 10 member self-selected board.
-An executive director, elected by the board, leads the core development team and the development of \sunpypkg core package, provides user support, and supports the development of affiliated packages.
-As such, the executive director is also referred to as the lead developer.
-A deputy lead developer and release manager, as well as other volunteers from the developer community, support the lead developer.
-Board members serve two year terms while the lead developer serves one year terms with no term limits.
-
-The \sunpyproj is formally defined through \sunpy Enhancement Proposals (SEPs) which are modeled after the Python Enhancement Proposal process\footnote{\url{https://www.python.org/dev/peps/}}.
-All SEPs are version-controlled as well as publicly available\footnote{\url{https://github.com/sunpy/sunpy-SEP}}.
-The first two SEPs (SEP-0001 and SEP-0002) define what is an SEP as well as the \sunpy organization.
-
-SEPs are used to both define the organization of the project as a whole as well as technical requirements for the \sunpypkg core package and affiliated packages.
-There are generally three types of SEPs.
-\begin{itemize}
-    \item \textbf{Standard}: Introduces and describes a new feature, or changes to an existing feature, and is meant to function as a high-level technical design document.
-    \item \textbf{Process}: Describes a new process, or changes to an existing process, in the organization.
-    \item \textbf{Informational}: Provides information and does not introduce any new features, changes, or processes.
-\end{itemize}
-
-As of the time of writing, there are a total of 8 SEPs.
-Some notable SEPs led to the adoption of physical units throughout the code base (SEP-0003, see Section~\ref{sec:units}), defined the affiliated package program (SEP-0004, see Section~\ref{sec:affil_package}), standardized the use of coordinate and coordinate transformations (SEP-0005, see Section~\ref{sec:coords}), and led to the adoption of a high precision scientific time format (SEP-0008).
-
-\section{Support \& Sustainability}
-\label{sec:intro:support}
-
-To date, the \sunpyproj relies largely on unpaid, volunteer efforts from early career scientists.
-The project has not received any significant direct financial support for its work facilitating and promoting open-source and open development software including \sunpypkg itself.
-This presents a number of challenges which the \astropy community also faces and are well described in \cite{PriceWhelan:2018ji} and \cite{Muna2016}.
-
-The National Academies of Sciences, Engineering, and Medicine's report on Open Source Software Policy Options for NASA Earth and Space Sciences \citep{NAP2018} outlines several solutions to alleviate these problem -- namely that the NASA Science Mission Directorate provide funding for new and existing open source software projects, promote scientists who spend time developing and improving open source software projects, and offer prizes for exemplary contributions to the open source software community.
-The National Academies of Sciences, Engineering, and Medicine's report on Reproducibility and Replicability in Science \citep{NAP2019} recommends that funding agencies invest in the research and development of open-source software that support reproducibility.
-The \sunpy community supports solutions like these for all relevant funding agencies and furthermore has the ability to accept financial contributions from institutions or individuals through the NumFOCUS organization, a 501(c)(3) public charity which collects and manages tax-deductible contributions for many open-source scientific software packages such as NumPy and AstroPy.
-
-The \sunpyproj does participate in two summer of code programs, which offer students stipends to write code for open-source projects, via the OpenAstronomy umbrella organization.
-Since 2013, 16 students contributed to \sunpypkg and affiliated packages through the Google Summer of Code (GSoC)\footnote{\url{https://summerofcode.withgoogle.com/}} program.
-Since 2011, 7 students contributed through a similar program funded by the European Space Agency called The ESA Summer of Code in Space\footnote{\url{https://socis.esa.int/}}.
-Many \sunpy community members served as mentors for these students\footnote{\url{https://github.com/sunpy/sunpy/wiki/Wall-of-Fame}}.
-In 2018, s GSoC student Vishnunarayan K. I. was presented an award for exceptional contributions to the open source scientific software ecosystem for his efforts to update \sunpy with a modern astronomical time system by NumFOCUS.
-
-\section{Development Model}
-
-To satisfy the mission statement of the Project, the \sunpy community adopted an open development model.
-This development model is widely used within the scientific Python community.
-The\sunpypkg package is hosted on \github and uses Git\footnote{\url{https://git-scm.com/}} as its distributed version control software.
-The entire codebase is publicly available and anyone can suggest changes through pull requests.
-Since the codebase is licensed under a permissive 2-clause BSD license\footnote{\url{https://opensource.org/licenses/BSD-2-Clause}}, anyone can redistribute, improve, repackage or use it in a closed environment as long as they credit the \sunpy developers and redistribute the license.
-In order to maintain high quality code, every contribution must satisfy the following requirements:
-\begin{enumerate}
-    \item Code and documentation must follow widely used style guides (PEP 8 and numpydoc).
-    \item All new features must be accompanied with documentation.
-    This includes code comments, formal documentation, and gallery examples.
-    \item Test code must be provided with coverage reports.
-    \item Finally, all code must be reviewed and accepted by at least two members of the developer community before it is integrated into the codebase.
-\end{enumerate}
-These requirements are imposed on all contributions even those from the \sunpy development team.
-
-\begin{figure}
-\begin{tabular}{cc}
-  \includegraphics[width=0.5\textwidth]{figures/fig_loc_vs_time.pdf} &
-  \includegraphics[width=0.5\textwidth]{figures/busfactor_plot.pdf} \\
-(a) & (b)  \\
-\end{tabular}
-\begin{tabular}{c}
-  \includegraphics[width=0.5\textwidth]{figures/cumulative_authors.pdf} \\
-(c)  \\
-\end{tabular}
-\caption{
-	(a) A plot of the the number of lines of code (black line) and documentation line count (dotted black line) as a function of time with major releases.
-	It details a steady increase of the \sunpypkg codebase with larger additions to our documentation over the last few major versions of \sunpypkg.
-	A striking reduction in the code base occurred after version 0.9.
-	During this period a major code organization, deletion of obsolete features as well as removing Python 2 support occurred.
-	(b) A plot of the number of authors version number of commits.
-	It should be noted that the number of commits is not a 100\% useful measure as any one commit could have as many code or line changes as the previous 100 commits.
-	However, it does indicate the majority of commits within the package are undertaken by the least amount of people with on average, contributions from an individual is typically less than 10 commits.
-	(c) This figure charts the cumulative number of authors (i.e., committers) to the \sunpypkg as a function of time which shows a steady increase in the number of people that are involved in the development team.
-}
-\label{fig:metafig}
-\end{figure}
+A previous paper describes v0.5 \citep{Community:2015cy}.
+This article is not meant to replace the \sunpypkg documentation but provides an overview of the organization and highlights important functionality.
+The full paper, including all of the code to produce the figures, is available in a \github repository\footnote{\url{https://github.com/sunpy/sunpy-1.0-paper}}.

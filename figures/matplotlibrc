@@ -1,11 +1,11 @@
 font.family : serif
 font.serif : Computer Modern
 text.usetex : True
-axes.titlesize : 10
-axes.labelsize : 10
-legend.fontsize : 7
-xtick.labelsize : 8
-ytick.labelsize : 8
+axes.titlesize : 12
+axes.labelsize : 12
+legend.fontsize : 12
+xtick.labelsize : 12
+ytick.labelsize : 12
 xtick.major.pad : 3
 xtick.minor.pad : 3
 ytick.major.pad : 3

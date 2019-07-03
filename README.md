@@ -4,7 +4,7 @@ The SunPy 1.0 paper repository.
 Latest Version
 ==============
 
-https://circleci.com/gh/sunpy/sunpy-1.0-paper/122/artifacts/0//root/project/main.pdf
+https://circleci.com/gh/sunpy/sunpy-1.0-paper/228/artifacts/0//root/project/main.pdf
 
 Scope of the Paper
 ==================
@@ -14,28 +14,28 @@ meant to replace or repeat the documentation.
 
 Journal
 =======
-This paper will be submitted to the software software of the Astropysical
+This paper will be submitted to the software software of the Astrophysical
 Journal.
 
 Writing standards
 =================
 Please follow the following standards. We designed the following guidelines to make the paper easily digestible and accessible for everyone.
 
-*  Use the defined commands in `main.tex`.
-*  Do not include code examples.
-*  Use the first-person plural ("we") and the active voice. E.g.:
-    * active: "the diversity of data sets makes this difficult"
-    * passive: "this is made difficult by the diversity of data sets"
-    * active: "The SunPy Community et al. (2015) described version 0.5"
-    * passive: "Version 0.5 was described in The SunPy Community et al. (2015)"
-*  Avoid overly technical language (like subclass, decorator, namespace, mixin, and factory) wherever possible.
-*  Use plain English to reference a piece of code (e.g. "a Pandas dataframe" versus "a `pandas.DataFrame`").
-*  Define references to other code whenever reasonable (e.g. "a Pandas dataframe, or a two-dimensional data structure aligned in rows and columns").
+* Use the defined commands in `main.tex`.
+* Do not include code examples.
+* Use the first-person plural ("we") and the active voice. E.g.:
+  * active: "the diversity of data sets makes this difficult"
+  * passive: "this is made difficult by the diversity of data sets"
+  * active: "The SunPy Community et al. (2015) described version 0.5"
+  * passive: "Version 0.5 was described in The SunPy Community et al. (2015)"
+* Avoid overly technical language (like subclass, decorator, namespace, mixin, and factory) wherever possible.
+* Use plain English to reference a piece of code (e.g. "a Pandas dataframe" versus "a `pandas.DataFrame`").
+* Define references to other code whenever reasonable (e.g. "a Pandas dataframe, or a two-dimensional data structure aligned in rows and columns").
 
 LaTeX Formatting
 ----------------
 
-Please always be strict on having one sentance per line to aid in git diffing and latex error detection.
+Please always be strict on having one sentence per line to aid in git diffing and latex error detection.
 
 Feedback & Comments
 ===================
