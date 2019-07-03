@@ -2,6 +2,7 @@
 \label{sec:infrastructure}
 
 \subsection{Release Cycle, Versioning, Long-term Support}
+\label{sec:release}
 As of the release of 1.0, a formal release schedule for \sunpypkg has been adopted.
 Two releases are planned per year with 6 months between each.
 In order to align with the release cycle of \astropypkg, a major upstream package, the plan is to release each May and November.
@@ -26,16 +27,16 @@ These services provide the first review of any contribution by running the test 
 Additionally \href{https://travis-ci.org}{Travis CI} is used to run the entire test suite on a daily cadence.
 \sunpypkg's test suite can be broken down into three broad categories: offline, online and figure tests.
 Offline test suite checks the majority of the codebase.
-Online tests specifically tests code that make use of online data providers (e.g. VSO or JSOC).
+Online tests specifically tests code that make use of online web services (e.g. VSO or JSOC).
 These tests depend on the availability of these online services.
 Finally, figure tests generate plots and issue failures if they have changed.
 This enables high level functionality testing.
-These tests coupled with these services are an important tool for maintaining the integrity of the package and makes it easier for new contributors to understand the impact of their changes.
+The \sunpypkg test suite coupled with these services are an important tool for maintaining the integrity of the package and makes it easier for new contributors to understand the impact of their changes.
 
 \subsection{Documentation and Gallery}
 The \sunpyproj strives to provide up to date, approachable and high quality documentation.
-All documentation for \sunpypkg as well as all affiliated packages is written using the commonly-used \code{Sphinx} documentation build system.
+All documentation for \sunpypkg as well as all affiliated packages is written using the commonly-used \code{Sphinx} documentation build system\footnote{\url{http://www.sphinx-doc.org/en/master/}}.
 This system supports using plain text files with a markup language called \code{reStructuredText} (RST).
 The build process converts these files including documentation strings in Python files into HTML, PDF, or LATEX documents.
-We make use of the \code{sphinx-gallery} extension to build a gallery of analysis examples as well as the extension \code{sphinx-automodapi} which generates documentation pages that list all of the available classes, functions, and attributes.
+We make use of the \code{sphinx-gallery}\footnote{\url{https://sphinx-gallery.github.io}} extension to build a gallery of analysis examples as well as the extension \code{sphinx-automodapi}\footnote{\url{https://sphinx-automapi.readthedocs.io}} which generates documentation pages that list all of the available classes, functions, and attributes.
 Our \href{http://docs.sunpy.org/en/stable/}{online documentation} is automatically built and hosted on \href{https://readthedocs.org/}{Read the Docs} for all releases.
