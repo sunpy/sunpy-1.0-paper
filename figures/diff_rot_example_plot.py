@@ -40,16 +40,20 @@ ax3 = fig.add_subplot(3, 1, 3, projection=rotated_map, sharex=ax1, sharey=ax1)
 
 # plot maps
 map1.plot(vmin=vmin, vmax=vmax, axes=ax1, title="AIA 1600 $\mathrm{\AA}$")
-map2.plot(vmin=vmin, vmax=vmax, axes=ax2, title=False)
-rotated_map.plot(vmin=vmin, vmax=vmax, axes=ax3, title=False)
+map1.draw_limb(axes=ax1)
+rotated_map.plot(vmin=vmin, vmax=vmax, axes=ax2, title=False)
+rotated_map.draw_limb(axes=ax2)
+map2.plot(vmin=vmin, vmax=vmax, axes=ax3, title=False)
+map2.draw_limb(axes=ax3)
 
 # turn off ticklabels for top and middle plot
 ax1.tick_params(axis="x", labelbottom=False)
 ax2.tick_params(axis="x", labelbottom=False)
-
+ax2.set_ylabel("")
+ax3.set_ylabel("")
 # turn off y ticklabels for top and bottom plot
-ax1.tick_params(axis="y", labelbottom=False)
-ax3.tick_params(axis="y", labelbottom=False)
+# ax2.tick_params(axis="y", labelbottom=False)
+# ax3.tick_params(axis="y", labelbottom=False)
 
 # x and y plotting limits in arcsec
 lims_arcsec = ((-1001, 1000) * u.arcsec, (-500, 0) * u.arcsec)
@@ -71,21 +75,21 @@ ax1.text(
     fontsize=10,
     transform=ax1.transAxes,
 )
-ax2.text(
-    0.03,
-    0.92,
-    "b. " + str(map2.date)[0:10],
-    color="w",
-    fontsize=10,
-    transform=ax2.transAxes,
-)
 ax3.text(
     0.03,
     0.92,
-    "c. Rotated map a. to time of b.",
+    "c. " + str(map2.date)[0:10],
     color="w",
     fontsize=10,
     transform=ax3.transAxes,
+)
+ax2.text(
+    0.03,
+    0.92,
+    "b. Rotated map a. to time of c.",
+    color="w",
+    fontsize=10,
+    transform=ax2.transAxes,
 )
 
 # define arrow coordinates in pixels
