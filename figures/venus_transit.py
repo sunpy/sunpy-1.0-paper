@@ -8,22 +8,28 @@ of the Sun as observed by SDO/AIA.
 """
 import matplotlib.pyplot as plt
 import numpy as np
+import os.path
 
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 from astropy.coordinates import solar_system_ephemeris
-from astropy.utils.data import download_file
+
+# from astropy.utils.data import download_file
 
 import sunpy.map
 from sunpy.coordinates import get_body_heliographic_stonyhurst
 from astropy.visualization.wcsaxes import SphericalCircle
 
+import sunpy_paper
+
 ###############################################################################
 # Let's download an image of the Venus transit.
-f = download_file(
-    "http://jsoc.stanford.edu/data/events/Venus_AIA24s_1600/Out/fits/20120606_040731_UTC.0041.fits"
-)
-aiamap = sunpy.map.Map(f)
+# f = download_file(
+#    "http://jsoc.stanford.edu/data/events/Venus_AIA24s_1600/Out/fits/20120606_040731_UTC.0041.fits"
+# )
+
+datafile_url = os.path.join(sunpy_paper.data_dir, "AIA20120606_040729_1600.fits")
+aiamap = sunpy.map.Map(datafile_url)
 
 ###############################################################################
 # For this example, we require high precision ephemeris information. The built-in
@@ -38,13 +44,9 @@ venus = get_body_heliographic_stonyhurst(
 )
 venus_hpc = venus.transform_to(aiamap.coordinate_frame)
 
-earth = get_body_heliographic_stonyhurst(
-    "earth", aiamap.date, observer=aiamap.observer_coordinate
-)
-
-venus_angular_extent = np.arctan(venus_radius / (earth.radius - venus.radius)).to(
-    "arcsec"
-)
+venus_angular_extent = np.arctan(
+    venus_radius / (aiamap.observer_coordinate.radius - venus.radius)
+).to("arcsec")
 
 ###############################################################################
 # Let's crop the image with Venus at it's center.
