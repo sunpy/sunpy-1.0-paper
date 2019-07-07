@@ -4,30 +4,6 @@ import sunpy.data.sample
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 
-import matplotlib as mpl
-
-testy = {'font.family' : 'serif',
-'font.serif' : 'Computer Modern',
-'text.usetex' : True,
-'axes.titlesize' : 12,
-'axes.labelsize' : 12,
-'legend.fontsize' : 12,
-'xtick.labelsize' : 12,
-'ytick.labelsize' : 12,
-'xtick.major.pad' : 3,
-'xtick.minor.pad' : 3,
-'ytick.major.pad' : 3,
-'ytick.minor.pad' : 3,
-'xtick.direction' : 'in',
-'ytick.direction' : 'in',
-'savefig.dpi' : 200,
-'savefig.format' : 'pdf',
-'savefig.bbox' : 'tight',
-'backend': 'TkAgg'}
-
-for key in testy:
-    mpl.rcParams[key] = testy[key]
-
 my_map = sunpy.map.Map(sunpy.data.sample.AIA_171_IMAGE)
 
 top_right = SkyCoord(1200 * u.arcsec, 0 * u.arcsec, frame=my_map.coordinate_frame)
