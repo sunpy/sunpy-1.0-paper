@@ -23,10 +23,10 @@ axes[0].plot(x, y1, label="code", color="black", linestyle="-")
 axes[0].plot(x, y2, label="comment", color="black", linestyle="--")
 
 axes[0].set_ylabel("Lines (thousands)")
+axes[0].set_xlabel("Year")
 axes[0].set_ylim(0, 3.5)
-
 axes[0].legend(loc=2)
-
+axes[0].minorticks_off()
 # add vertical lines for the releases
 sunpy_paper.add_releases_vs_time(axes[0])
 
@@ -78,7 +78,10 @@ for i in range(len(x["set"].values)):
 cum_authors = pd.Series(data=result, index=temp.index)
 cum_authors.plot(color="black", linestyle="-", ax=axes[1])
 axes[1].set_ylabel("Cumulative Authors")
+axes[1].set_xlabel("Year")
+axes[1].minorticks_off()
 
+print(cum_authors)
 sunpy_paper.add_releases_vs_time(axes[1])
 
 # now create a plot of the number of commits versus the number of committers
@@ -94,8 +97,8 @@ x = bin_centers[:-1]
 y = np.log10(vals)
 result = np.polyfit(x[:-4], y[:-4], deg=1)
 axes[2].plot(
-    10 ** x[:-4],
-    10 ** (result[0] * x[:-4] + result[1]),
+    10 ** x[:-2],
+    10 ** (result[0] * x[:-2] + result[1]),
     label="N$^{" + "{0:0.2f}".format(result[0]) + "}$",
     color="black",
     linestyle="-",
@@ -110,7 +113,7 @@ axes[2].set_xticklabels([str(tick) for tick in xticks])
 yticks = [1, 10, 100]
 axes[2].set_yticks(xticks)
 axes[2].set_yticklabels([str(tick) for tick in yticks])
-axes[2].set_ylim(0.8, 200)
+axes[2].set_ylim(0.8, 100)
 axes[2].set_xlim(1, 20000)
 
 axes[2].set_ylabel("number of committers")
