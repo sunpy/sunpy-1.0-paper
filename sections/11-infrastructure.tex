@@ -1,9 +1,12 @@
 \section{Infrastructure}
 \label{sec:infrastructure}
+This section describes the 
+The \sunpyproj makes use of many tools and web services to develop high-quality code and documentation consistent with best practices.
+This section provides an overview of these tools which enable the \sunpyproj to achieve its goals without central institutional oversight.
 
 \subsection{Release Cycle, Versioning, Long-term Support}
 \label{sec:release}
-As of the release of 1.0, a formal release schedule for \sunpypkg has been adopted.
+As of the release of v1.0, a formal release schedule for \sunpypkg has been adopted.
 Two releases are planned per year with 6 months between each.
 In order to align with the release cycle of \astropypkg, a major upstream package, the plan is to release each May and November.
 The first release of the year will be a Long Term Support (LTS) release which will be supported for 12 months or until the next LTS release.
@@ -27,7 +30,7 @@ These services provide the first review of any contribution by running the test 
 Additionally \href{https://travis-ci.org}{Travis CI} is used to run the entire test suite on a daily cadence.
 \sunpypkg's test suite can be broken down into three broad categories: offline, online and figure tests.
 Offline test suite checks the majority of the codebase.
-Online tests specifically tests code that make use of online web services (e.g. VSO or JSOC).
+Online tests specifically test code that make use of online web services (e.g. VSO or JSOC).
 These tests depend on the availability of these online services.
 Finally, figure tests generate plots and issue failures if they have changed.
 This enables high level functionality testing.
