@@ -1,9 +1,10 @@
  \section{Data Types}
 \label{sec:data_types}
 
-The \sunpypkg package provides two core data types designed to provide a general, standard, and consistent interface for loading and representing solar data across instruments and missions.
-The core data types currently provided are \Timeseries and \Map, which support 1D temporal data and 2D image data, respectively. 
-They also include functionality for data visualization and data manipulation. 
+The \sunpypkg package provides two core data types that are designed to provide a general, standard, and consistent interface for loading and representing solar data across instruments and missions.
+The core data types currently provided in \sunpypkg are \Timeseries and \Map, which support 1D temporal data and 2D image data, respectively. 
+The purpose of these core classes is to accommodate the user with a standard data structure regardless of the data source (e.g. observational data from separate instruments) with a consistent interface for accessing solar data attributes such as the data array itself as well as the meta data and relevant units.
+They also include functionality for data manipulation and data visualization. 
 This section provides an overview of the \Timeseries and \Map data types.
 
 \subsection{\Timeseries}
@@ -22,44 +23,47 @@ Similar to \Map (Section \ref{sec:map}), \Timeseries has its own visualization m
 \begin{center}
 \begin{tabular}{|p{10cm}|c|c|}
 \hline
-\textbf{Instrument} & \textbf{Supported by \Timeseries} & \textbf{Supported by \Map} \\
+\textbf{Supported by \Timeseries}\\
 \hline
 \hline
-\textit{COronal Solar Magnetism Observatory (COSMO)} K-coronagraph (K-Cor) \citep{dewijn12} & & x \\
+\textit{COronal Solar Magnetism Observatory (COSMO)} K-coronagraph (K-Cor) & \citep{dewijn12} \\
 \hline
-\textit{Fermi} Gamma-ray Burst Monitor (GBM) \citep{meegan2009fermi}& x & \\
+\textit{Fermi} Gamma-ray Burst Monitor (GBM) &  \citep{meegan2009fermi} \\
 \hline
-\textit{Geostationary Operational Environmental Satellite (GOES)} X-ray Sensor (XRS) \citep{garcia94, hanser96} & x & \\
+\textit{Geostationary Operational Environmental Satellite (GOES)} X-ray Sensor (XRS) & \citep{garcia94, hanser96} \\
 \hline
-\textit{Hinode} X-Ray Telescope (XRT) \citep{golub2008x} & & x \\
+\textit{Hinode} X-Ray Telescope (XRT) & \citep{golub2008x}  \\
 \hline
-\textit{Interface Region Imaging Spectrograph (IRIS)} Slit Jaw Imager (SJI) \citep{DePontieu2014} & & x \\
+\textit{Interface Region Imaging Spectrograph (IRIS)} Slit Jaw Imager (SJI) & \citep{DePontieu2014}  \\
 \hline
-\textit{Nobeyama Radioheliograph (NoRH)} \citep{nakajima1994nobeyama}& x & \\
+\textbf{Supported by \Map}\\
 \hline
-\textit{PRoject for Onboard Autonomy (PROBA2)} Large Yield Radiometer (LYRA) \citep{dominique2013lyra}& x & \\
 \hline
-\textit{PRoject for Onboard Autonomy (PROBA2)} Sun Watcher using Active Pixel System detector and Image Processing (SWAP) \citep{seaton2013swap}&  & x \\
+\textit{Nobeyama Radioheliograph (NoRH)} & \citep{nakajima1994nobeyama} \\
 \hline
-\textit{Reuven Ramaty High Energy Solar Spectroscopic Imager (RHESSI)} \citep{lin2003reuven}& x & x \\
+\textit{PRoject for Onboard Autonomy (PROBA2)} Large Yield Radiometer (LYRA) & \citep{dominique2013lyra} \\
 \hline
-\textit{Solar and Heliospheric Observatory (SOHO)} Extreme ultraviolet Imaging Telescope (EIT) \citep{delaboudiniere1995eit}& & x \\
+\textit{PRoject for Onboard Autonomy (PROBA2)} Sun Watcher using Active Pixel System detector and Image Processing (SWAP) & \citep{seaton2013swap} \\
 \hline
-\textit{Solar and Heliospheric Observatory (SOHO)} Large Angle Spectroscopic COronagraph (LASCO) \citep{brueckner1995large}& & x \\
+\textit{Reuven Ramaty High Energy Solar Spectroscopic Imager (RHESSI)} & \citep{lin2003reuven} \\
 \hline
-\textit{Solar and Heliospheric Observatory (SOHO)} Michelson Doppler Imager (MDI) \citep{scherrer1995solar}& & x \\
+\textit{Solar and Heliospheric Observatory (SOHO)} Extreme ultraviolet Imaging Telescope (EIT) & \citep{delaboudiniere1995eit}\\
 \hline
-\textit{Solar Dynamics Observatory (SDO)} Atmospheric Imaging Assembly (AIA) \citep{lemen2012} & & x \\
+\textit{Solar and Heliospheric Observatory (SOHO)} Large Angle Spectroscopic COronagraph (LASCO) & \citep{brueckner1995large} \\
 \hline
-\textit{Solar Dynamics Observatory (SDO)} Helioseismic and Magnetic Imager (HMI) \citep{schou12} & & x \\
+\textit{Solar and Heliospheric Observatory (SOHO)} Michelson Doppler Imager (MDI) & \citep{scherrer1995solar}\\
 \hline
-\textit{Solar Dynamics Observatory (SDO)} EUV Variability Experiment (EVE) \citep{woods2010extreme} & x & \\
+\textit{Solar Dynamics Observatory (SDO)} Atmospheric Imaging Assembly (AIA) & \citep{lemen2012} \\
 \hline
-\textit{Solar TErrestrial RElations Observatory (STEREO)} Extreme Ultraviolet Imager (EUVI), COronagraph 1 and 2 (COR1/2) for both \textit{STEREO} A and B \citep{howard2008sun} & & x \\
+\textit{Solar Dynamics Observatory (SDO)} Helioseismic and Magnetic Imager (HMI) & \citep{schou12}  \\
 \hline
-\textit{Transition Region and Coronal Explorer (TRACE)} \citep{handy99} & & x \\
+\textit{Solar Dynamics Observatory (SDO)} EUV Variability Experiment (EVE) & \citep{woods2010extreme}  \\
 \hline
-\textit{Yohkoh} Soft X-ray Telescope (SXT) \citep{tsuneta1991soft} & & x \\
+\textit{Solar TErrestrial RElations Observatory (STEREO)} Extreme Ultraviolet Imager (EUVI), COronagraph 1 and 2 (COR1/2) for both \textit{STEREO} A and B & \citep{howard2008sun} \\
+\hline
+\textit{Transition Region and Coronal Explorer (TRACE)}  & \citep{handy99}  \\
+\hline
+\textit{Yohkoh} Soft X-ray Telescope (SXT) & \citep{tsuneta1991soft}  \\
 \hline
 \end{tabular}
 \end{center}
