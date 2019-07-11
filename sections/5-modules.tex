@@ -102,15 +102,20 @@ The \Map class in \sunpypkg provides a framework to contain and analyze 2D image
 A \Map can be created by providing input data files located locally or fetched via the \sunpypkg data search and retrieval interface \Fido (see Section~\ref{sec:fido}).
 The \Map class will automatically detect the instrument of the input data files and subsequently search the specific meta data to infer the coordinate system from the appropriate FITS keywords \citep{refId0, 2006A&A...449..791T}.
 Other source-specific meta data is also loaded into the \Map class such as color tables and appropriate image scaling for each instrument.
-\Map contains the image data array, coordinate information and relevant meta data as attributes, all of which can be easily accessed by the user. 
+It is also possible to create a custom \Map from both a 2D data array and the appropriate meta data, such as coordinate information.
 
-\Map provides visualization methods to inspect and plot solar image data. 
+The \Map class contains the image data array, coordinate information and relevant meta data as attributes, all of which can be easily accessed by the user. 
+Visualization methods are also provided by \Map to inspect and plot solar image data. 
 This includes the ability for \Map to plot the image data in a way that represents the world coordinates of the image accurately (see Section~\ref{sec:coords} for more on solar coordinates).
 This allows the user to overplot coordinates of interest on a \Map plot while taking into account the coordinate frame correctly. 
 Other plotting components in \Map includes the ability to mask and clip the image data. 
 
-The \Map class provides functionality to analyze multiple images, such as overlaying images from different instruments with overlapping fields of view, or to combine multiple images together in a time-ordered sequence.  
-Furthermore, \Map also provides the ability to co-align images from different instruments or images taken at different times, which is particularly useful to users performing multi-instrument studies. 
+An example of a \Map created from the Atmospheric Imaging Assembly (AIA) aboard the \textit{Solar Dynamics Observatory (SDO)} is shown in Figure~\ref{fig:map_example}. 
+This plot demonstrates the plotting and manipulation ability of \Map.
+The left hand plot shows the full disk image of the Sun with the relevant image color table and scaling for the observation, and the right hand plot shows a cropped image in the field of view of the white box on the left hand Figure highlighting a solar flare of interest.
+
+The \Map class also provides functionality to analyze multiple images, such as overlaying images from different instruments with overlapping fields of view, or to combine multiple images together in a time-ordered sequence.  
+This includes the ability to co-align images from different instruments or images taken at different times, which is particularly useful to users performing multi-instrument studies. 
 
 
 \begin{figure}
