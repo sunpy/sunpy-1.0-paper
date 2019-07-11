@@ -96,10 +96,12 @@ Images of the Sun and the heliosphere are an important data type in solar observ
 For example, the Helioseismic and Magnetic Imager (HMI) instrument aboard the Solar Dynamics Observatory (SDO) maps the magnetic field at the solar photosphere every 45 seconds with 4k $\times$ 4k pixel resolution. 
 These high resolution image sets require precise coordinate information in order to achieve much solar science, particularly when performing multi-instrument studies. 
 
-The \Map class in \sunpypkg provides a framework to contain and analyze 2D image data that has an associated coordinate frame and relevant meta data. 
-Users can create a \Map object by providing input data files located locally or fetched via the \sunpypkg data search and retrieval interface called \Fido (see Section \ref{sec:fido}). The \Map object will automatically detect the instrument and subsequently search for the appropriate FITS keywords to infer the coordinate system \citep{refId0, 2006A&A...449..791T}.
+The \Map class in \sunpypkg provides a framework to contain and analyze 2D image data that have an associated coordinate frame and relevant meta data. 
+A \Map can be created by providing input data files located locally or fetched via the \sunpypkg data search and retrieval interface \Fido (see Section \ref{sec:fido}).
+The \Map class will automatically detect the instrument of the data source and subsequently search the specific meta data to infer the coordinate system from the appropriate FITS keywords \citep{refId0, 2006A&A...449..791T}. Other source-specific meta data is also loaded into the \Map class such as color tables and appropriate image scaling for each instrument.
 
-The \Map object permits users to plot not only a single image but also overlay multiple images; such functionality is useful in displaying data from instruments with overlapping fields of view. The \Map object also loads source-specific color tables and appropriate image scaling for each instrument.
+
+The \Map object permits users to plot not only a single image but also overlay multiple images; such functionality is useful in displaying data from instruments with overlapping fields of view. The \Map object also loads source-specific color
 Users can also combine multiple maps together in a time-ordered sequence. The data in each \Map need not have the same size (number of pixels in each direction) or view the same area of the sky (field-of-view). 
 
 \begin{figure}
