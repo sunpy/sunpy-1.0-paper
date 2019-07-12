@@ -3,7 +3,7 @@
 
 In order to foster collaboration, coordination, and code re-use, the \sunpyproj supports the concept of affiliated packages.
 These are \python packages that build upon the functionality of the \sunpypkg package or provides general functionality useful to solar physics.
-Affiliated packages can also be used to develop and mature subpackage functionality outside of the constraints of \sunpypkg.
+Affiliated packages can also be used to develop and mature subpackage functionality outside of the constraints of \sunpypkg for eventual inclusion.
 The following requirements must be met by potential affiliated packages.
 \begin{itemize}
     \item the package must make use of all appropriate features in \sunpypkg,
@@ -12,9 +12,9 @@ The following requirements must be met by potential affiliated packages.
 \end{itemize}
 Developers can formally apply to become an affiliated package to the lead developer and final approval is required by the SunPy board.
 Packages are re-reviewed on a yearly basis to ensure that they continue to meet the standards.
-All affiliated packages are listed on \url{sunpy.org}, are provided support by the SunPy developer community, and advertised at conferences and workshops.
+All affiliated packages are advertised on the website\footnote{\url{https://sunpy.org/team\#affiliated-packages}}, are provided support by the SunPy developer community, and advertised at conferences and workshops.
 Sponsored affiliated package are a special class of affiliated package whose maintenance and development is the responsibility of the \sunpyproj.
-In order to normalize and as part of the support structure the \sunpyproj provides a package template, \code{sunpy/package-template}\footnote{\url{https://github.com/sunpy/package-template}}, which simplifies packaging, testing, and documentation builds for developers.
+In order to normalize and as part of the support structure the \sunpyproj provides a package template, \code{sunpy/package-template}\footnote{\url{https://github.com/sunpy/package-template}}, which simplifies packaging, testing, and documentation for developers.
 
 The following sections provides short descriptions of the existing affiliated packages.
 
@@ -22,8 +22,8 @@ The following sections provides short descriptions of the existing affiliated pa
 \label{sec:drms}
 
 The \package{drms} package provides functionality to access data hosted by the Joint Science Operations Center (JSOC).
-Operated by Stanford, it is the primary data center for the Solar Dynamics Observatory’s (SDO) Helioseismic and Magnetic Imager (HMI) and Atmospheric Imaging Assembly (AIA) instruments, the Solar and Heliospheric Observatory's (SoHO) Michelson Doppler Imager (MDI) instrument, the NASA Interface Region Imaging Spectrograph (IRIS) Explorer.
-DRMS stands for Data Record Management System, a pSQL database that contains metadata, as well as pointers to image data, for every image contained in the archive.
+Operated by Stanford, it is the primary data center for the Solar Dynamics Observatory’s (SDO) Helioseismic and Magnetic Imager (HMI) and Atmospheric Imaging Assembly (AIA) instruments, the Solar and Heliospheric Observatory's (SOHO) Michelson Doppler Imager (MDI) instrument, and the NASA Interface Region Imaging Spectrograph (IRIS) Explorer.
+DRMS stands for Data Record Management System. It is based on a PostgreSQL database that contains metadata, as well as pointers to image data, for every image contained in the archive.
 The \package{drms} package provides access to query the rich image metadata in the JSOC DRMS. It can also be used to submit tailored data export requests (e.g. movies and images in various formats) and download data files.
 The package is built on the HTTP/JSON interface provided by JSOC.
 
@@ -50,5 +50,5 @@ The \package{IRISPy} package provides tools to read, manipulate and visualize da
 IRIS is a NASA Small Explorer mission which has two instruments; a slit-jaw imager (SJI) and a rastering slit spectrograph (SG).
 The \package{IRISPy} is limited to reading level 2 data for either of these instruments.
 This package provide data classes which hold data from SJI and SG respectively.
-Built on top of the functionality provided by \package{ndcube} (see Section\~ref{sec:ndcube}) they link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provide easy slicing of the data in any axis.
+Built on top of the functionality provided by \package{ndcube} (see Section~\ref{sec:ndcube}) they link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provide easy slicing of the data in any axis.
 Measurement uncertainties accounting for Poisson statistics and readout noise are automatically calculated while a mask identifies what are good pixels to facilitates basic operations (e.g.\ mean, max, and visualizations).

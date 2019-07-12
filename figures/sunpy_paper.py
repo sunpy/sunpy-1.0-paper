@@ -9,15 +9,15 @@ import sunpy
 
 sunpy_releases = {
     "1.0": "2019/06/01",
-    "0.9": "2018/04/22",
-    "0.8": "2017/08/17",
-    "0.7": "2016/05/24",
-    "0.6": "2015/07/21",
-    "0.5": "2014/06/13",
-    "0.4": "2014/02/14",
-    "0.3": "2013/08/30",
-    "0.2": "2012/11/26",
-    "0.1": "2011/09/28",
+    ".9": "2018/04/22",
+    ".8": "2017/08/17",
+    ".7": "2016/05/24",
+    ".6": "2015/07/21",
+    ".5": "2014/06/13",
+    ".4": "2014/02/14",
+    ".3": "2013/08/30",
+    ".2": "2012/11/26",
+    ".1": "2011/09/28",
 }
 
 data_dir = Path(os.path.join(Path(__file__).parents[1], "data"))
@@ -75,5 +75,5 @@ def add_releases_vs_time(ax1):
     ax2.set_xticklabels(sunpy_releases.keys())
     ax2.minorticks_off()
     ax2.set_xlabel("SunPy Releases")
-    for this_release in release_times:
-        ax2.axvline(this_release, color="black", linestyle="--", linewidth=0.1)
+    # for this_release in release_times:
+    #    ax2.axvline(this_release, color="black", linestyle="..", linewidth=0.1)

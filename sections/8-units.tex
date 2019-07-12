@@ -13,13 +13,14 @@ This subpackage provides support for physical quantities through a class, which 
 Furthermore, these quantities can be combined in expressions with unit conversions and cancellations automatically taken into account.
 Tests have shown that the performance overhead to using this functionality is typically minimal.
 
-SEP-0003 formally mandate that all user-facing functionality provided by \sunpypkg make use of this functionality unless inappropriate.
+SEP-0003 \citep{sep-0003} formally mandate that all user-facing functionality provided by \sunpypkg make use of this functionality unless inappropriate.
 All functions have their input constrained to the appropriate type of unit (e.g. length, mass) and provide an error if the input is not correct.
 Input can then be provided with any appropriate units (e.g. mm, km, inches) and conversions occur automatically without user intervention.
 The \package{sunpy.sun.constants} subpackage contains many standard constants relevant to solar physics with additional information such as uncertainty and reference.
 
 Time is another fundamental quantity that must be appropriately specified for scientific uses.
-Similar motivations led to the adoption of SEP-0008 which mandates the use of a modern scientific time format throughout the \sunpypkg code base.
-This functionality is provided by the \package{astropy.time} which provides support for many different time scales, including Coordinated Universal Time (UTC), Terrestrial Time (TT), or International Atomic Time (TAI).
+Similar motivations as for units led to the adoption of SEP-0008 \citep{sep-0008} which mandates the use of a modern scientific time format throughout the \sunpypkg code base.
+This requirement goes beyond what is needed by the general \python community and is not satisfied by the standard \package{datetime} subpackage.
+We have decided to adopt the \package{astropy.time} subpackage which provides support for many different time scales, including Coordinated Universal Time (UTC), Terrestrial Time (TT), or International Atomic Time (TAI).
 In the same manner as pairing numbers with their units, a time class pairs a time representation with its time scale, and allows for conversions to other time scales.
 Thus, functions that require precise times (e.g., for ephemeris calculations) can ensure that there is no confusion about the input.

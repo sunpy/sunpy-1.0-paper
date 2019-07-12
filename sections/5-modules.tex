@@ -1,65 +1,88 @@
  \section{Data Types}
 \label{sec:data_types}
 
-The \sunpypkg package provides two core data types designed to provide a general, standard, and consistent interface for loading and representing solar data across instruments and missions.
-The core data types currently provided are \Timeseries and \Map, which support 1D temporal data and 2D image data, respectively. 
-They also include functionality for data visualization and data manipulation. 
+The \sunpypkg package provides two core data types that are designed to provide a general, standard, and consistent interface for loading and representing solar data across different instruments and missions.
+The core data types currently provided in \sunpypkg are \Timeseries and \Map, which support 1D temporal data and 2D image data, respectively. 
+The purpose of these core classes is to accommodate the user with a standard data structure regardless of the data source (i.e. observational data from separate instruments). 
+They maintain a consistent interface for accessing solar data attributes such as the data array itself as well as the meta data and relevant units. 
+This allows for an easier workflow in the analysis of solar data observations.
+These core classes also include functionality for data manipulation and data visualization. 
 This section provides an overview of the \Timeseries and \Map data types.
 
 \subsection{\Timeseries}
 \label{sec:timeseries}
-Many types of solar data deal with time series. 
-For example, the X-ray Sensor aboard the Geostationary Operational Environmental Satellite (GOES) measures the solar integrated X-Ray flux, in two broadband channels, as a function of time. 
+Many observations in the field of solar physics consist of time series data. 
+For example, the X-ray Sensor aboard the Geostationary Operational Environmental Satellite (GOES), which is used as the classification standard for solar flares, continuously measures the solar integrated X-ray flux as a function of time in two broadband channels. 
+The \Timeseries class in \sunpypkg aims to accommodate the necessary requirements to represent solar time series data.
 
-Users can interact with and manipulate time series data through the \Timeseries object, which provides a single, consistent interface to manipulate time series data from a variety of instruments. 
-Users can add, truncate, re-sample, and combine data within a single \Timeseries or combine multiple \Timeseries together. 
-Similar to \Map (Section \ref{sec:map}), \Timeseries has its own visualization methods to allow for easy inspection of the data.
+\Timeseries allows users to load time series data from a variety of solar instruments and contain the data with appropriate units and time scales (see Sections~\ref{sec:units}). 
+ A user can create a \Timeseries either from data files stored locally (i.e. observational datasets acquired through \Fido (see Section~\ref{sec:fido})), or manually from custom time series data. 
+ The data array as well as the meta data and units data are stored as attributes to the \Timeseries class. 
+
+A large amount of functionality exists within \Timeseries for the manipulation of solar time series data.
+This includes the ability to add, update, truncate, re-sample and combine data within a \Timeseries or combine multiple \Timeseries together. 
+\Timeseries also has its own built-in visualization methods to allow for easy inspection of the time series data. 
+An example of a \Timeseries created from GOES X-ray sensor observations during a day for which a solar flare is present is shown in Figure~\ref{fig:timeseries_example}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\textwidth]{figures/timeseries_example.pdf}
+    \caption{An example of a GOES X-ray Sensor \Timeseries plotted over a 24 hour period. The two colors time series represent the two broadband channels of GOES 1--8~\AA\ (red) and 0.5--4~\AA\ (blue).  A solar flare is noted by the increase in flux and the grey dashed line denotes the flare peak as found from the Helio Event Knowledgebase (HEK).}
+    \label{fig:timeseries_example}
+\end{figure}
 
 \Timeseries currently supports the data sources listed in Table \ref{tab:instruments} in addition to indices from the National Oceanic and Atmospheric (NOAA) Space Weather Prediction Center (SWPC) that track the solar cycle and its predicted progression. Due to its flexible data structure, it is easy to add additional instruments and data sources to the \Timeseries object.
 
 %%%%%%%%%%%%%%%% TABLE %%%%%%%%%%%%%%%%%%%
 \begin{table}
 \begin{center}
-\begin{tabular}{|p{10cm}|c|c|}
+\begin{tabular}{|p{12cm}|c|c|}
 \hline
-\textbf{Instrument} & \textbf{Supported by \Timeseries} & \textbf{Supported by \Map} \\
+& \\
+\textbf{Supported by \Timeseries}& \textbf{Instrument reference}\\
 \hline
 \hline
-\textit{COronal Solar Magnetism Observatory (COSMO)} K-coronagraph (K-Cor) \citep{dewijn12} & & x \\
+\textit{Geostationary Operational Environmental Satellite (GOES)} X-ray Sensor (XRS) & \citep{garcia94, hanser96} \\
 \hline
-\textit{Fermi} Gamma-ray Burst Monitor (GBM) \citep{meegan2009fermi}& x & \\
+\textit{Fermi} Gamma-ray Burst Monitor (GBM) &  \citep{meegan2009fermi} \\
 \hline
-\textit{Geostationary Operational Environmental Satellite (GOES)} X-ray Sensor (XRS) \citep{garcia94, hanser96} & x & \\
+\textit{Nobeyama Radioheliograph (NoRH)} & \citep{nakajima1994nobeyama} \\
 \hline
-\textit{Hinode} X-Ray Telescope (XRT) \citep{golub2008x} & & x \\
+\textit{PRoject for Onboard Autonomy (PROBA2)} Large Yield Radiometer (LYRA) & \citep{dominique2013lyra} \\
 \hline
-\textit{Interface Region Imaging Spectrograph (IRIS)} Slit Jaw Imager (SJI) \citep{DePontieu2014} & & x \\
+\textit{Solar Dynamics Observatory (SDO)} EUV Variability Experiment (EVE) & \citep{woods2010extreme}  \\
 \hline
-\textit{Nobeyama Radioheliograph (NoRH)} \citep{nakajima1994nobeyama}& x & \\
+\textit{Reuven Ramaty High Energy Solar Spectroscopic Imager (RHESSI)} & \citep{lin2003reuven} \\
 \hline
-\textit{PRoject for Onboard Autonomy (PROBA2)} Large Yield Radiometer (LYRA) \citep{dominique2013lyra}& x & \\
+ & \\
+\textbf{Supported by \Map} & \textbf{Instrument reference} \\
 \hline
-\textit{PRoject for Onboard Autonomy (PROBA2)} Sun Watcher using Active Pixel System detector and Image Processing (SWAP) \citep{seaton2013swap}&  & x \\
 \hline
-\textit{Reuven Ramaty High Energy Solar Spectroscopic Imager (RHESSI)} \citep{lin2003reuven}& x & x \\
+\textit{COronal Solar Magnetism Observatory (COSMO)} K-coronagraph (K-Cor) & \citep{dewijn12} \\
 \hline
-\textit{Solar and Heliospheric Observatory (SOHO)} Extreme ultraviolet Imaging Telescope (EIT) \citep{delaboudiniere1995eit}& & x \\
+\textit{Hinode} X-Ray Telescope (XRT) & \citep{golub2008x}  \\
 \hline
-\textit{Solar and Heliospheric Observatory (SOHO)} Large Angle Spectroscopic COronagraph (LASCO) \citep{brueckner1995large}& & x \\
+\textit{Interface Region Imaging Spectrograph (IRIS)} Slit Jaw Imager (SJI) & \citep{DePontieu2014}  \\
 \hline
-\textit{Solar and Heliospheric Observatory (SOHO)} Michelson Doppler Imager (MDI) \citep{scherrer1995solar}& & x \\
+\textit{PRoject for Onboard Autonomy (PROBA2)} Sun Watcher using Active Pixel System detector and Image Processing (SWAP) & \citep{seaton2013swap} \\
 \hline
-\textit{Solar Dynamics Observatory (SDO)} Atmospheric Imaging Assembly (AIA) \citep{lemen2011atmospheric} & & x \\
+\textit{Reuven Ramaty High Energy Solar Spectroscopic Imager (RHESSI)} & \citep{lin2003reuven} \\
 \hline
-\textit{Solar Dynamics Observatory (SDO)} Helioseismic and Magnetic Imager (HMI) \citep{schou12} & & x \\
+\textit{Solar and Heliospheric Observatory (SOHO)} Extreme ultraviolet Imaging Telescope (EIT) & \citep{delaboudiniere1995eit}\\
 \hline
-\textit{Solar Dynamics Observatory (SDO)} EUV Variability Experiment (EVE) \citep{woods2010extreme} & x & \\
+\textit{Solar and Heliospheric Observatory (SOHO)} Large Angle Spectroscopic COronagraph (LASCO) & \citep{brueckner1995large} \\
 \hline
-\textit{Solar TErrestrial RElations Observatory (STEREO)} Extreme Ultraviolet Imager (EUVI), COronagraph 1 and 2 (COR1/2) for both \textit{STEREO} A and B \citep{howard2008sun} & & x \\
+\textit{Solar and Heliospheric Observatory (SOHO)} Michelson Doppler Imager (MDI) & \citep{scherrer1995solar}\\
 \hline
-\textit{Transition Region and Coronal Explorer (TRACE)} \citep{handy99} & & x \\
+\textit{Solar Dynamics Observatory (SDO)} Atmospheric Imaging Assembly (AIA) & \citep{lemen2012} \\
 \hline
-\textit{Yohkoh} Soft X-ray Telescope (SXT) \citep{tsuneta1991soft} & & x \\
+\textit{Solar Dynamics Observatory (SDO)} Helioseismic and Magnetic Imager (HMI) & \citep{schou12}  \\
+\hline
+\textit{Solar TErrestrial RElations Observatory (STEREO)} Extreme Ultraviolet Imager (EUVI), COronagraph 1 and 2 (COR1/2) for both \textit{STEREO} A and B & \citep{howard2008sun} \\
+\hline
+\textit{Transition Region and Coronal Explorer (TRACE)}  & \citep{handy99}  \\
+\hline
+\textit{Yohkoh} Soft X-ray Telescope (SXT) & \citep{tsuneta1991soft}  \\
 \hline
 \end{tabular}
 \end{center}
@@ -70,12 +93,36 @@ Similar to \Map (Section \ref{sec:map}), \Timeseries has its own visualization m
 
 \subsection{\Map}
 \label{sec:map}
-Many types of solar data deal with images. For example, the Helioseismic and Magnetic Imager (HMI) instrument aboard the Solar Dynamics Observatory (SDO) maps the magnetic field at the solar photosphere every 45 seconds. 
+Images of the Sun and the heliosphere are an important data type of solar observations. 
+For example, the Helioseismic and Magnetic Imager (HMI) instrument aboard the Solar Dynamics Observatory (SDO) maps the magnetic field at the solar photosphere every 45 seconds with 4k $\times$ 4k pixel resolution.
+Data in this form exists for multiple wavelengths from a wide range of both space- and ground- based instruments.
+These high resolution image sets require precise coordinate information in order to undertake scientific studies, particularly when performing multi-instrument observations. 
 
-The \Map class provides a single, consistent interface to analyze 2D image data and relevant metadata from a variety of instruments. 
-Users can create a \Map object by providing input data files located locally or fetched via the \sunpypkg data search and retrieval interface called \Fido (see Section \ref{sec:fido}). The \Map object will automatically detect the instrument and subsequently search for the appropriate FITS keywords to infer the coordinate system.
+The \Map class in \sunpypkg provides a framework to contain and analyze 2D image data that have an associated coordinate frame. 
+A \Map can be created by providing input data files located locally or fetched via the \sunpypkg data search and retrieval interface \Fido (see Section~\ref{sec:fido}).
+The \Map class will automatically detect the instrument of the input data files and subsequently search the specific meta data to infer the coordinate system from the appropriate FITS keywords \citep{refId0, 2006A&A...449..791T}.
+Other source-specific meta data is also loaded into the \Map class such as color tables and appropriate image scaling for each instrument.
+It is also possible to create a custom \Map from both a 2D data array and the appropriate meta data, such as coordinate information.
 
-The \Map object permits users to plot not only a single image but also overlay multiple images; such functionality is useful in displaying data from instruments with overlapping fields of view. The \Map object also loads source-specific color tables and appropriate image scaling for each instrument.
-Users can also combine multiple maps together in a time-ordered sequence. The data in each \Map need not have the same size (number of pixels in each direction) or view the same area of the sky (field-of-view). 
+The \Map class contains the image data array, coordinate information and relevant meta data as attributes, all of which can be easily accessed by the user. 
+Visualization methods are also provided by \Map to inspect and plot solar image data. 
+This includes the ability for \Map to plot the image data in a way that represents the world coordinates of the image accurately (see Section~\ref{sec:coords} for more on solar coordinates).
+This allows the user to overplot coordinates of interest on a \Map plot while taking into account the coordinate frame correctly. 
+Other plotting components in \Map includes the ability to mask and clip the image data. 
 
-\Map currently supports the data sources listed in Table \ref{tab:instruments} as well as the Helioviewer JPEG2000 image files of for each of these data sources. Due to its flexible data structure, it is easy to add additional instruments and data sources to the \Map object.
+An example of a \Map created from the Atmospheric Imaging Assembly (AIA) aboard the \textit{Solar Dynamics Observatory (SDO)} is shown in Figure~\ref{fig:map_example}. 
+This plot demonstrates the plotting and manipulation ability of \Map.
+The left hand plot shows the full disk image of the Sun with the relevant image color table and scaling for the observation, and the right hand plot shows a cropped image in the field of view of the white box on the left hand Figure highlighting a solar flare of interest.
+
+The \Map class also provides functionality to analyze multiple images, such as overlaying images from different instruments with overlapping fields of view, or to combine multiple images together in a time-ordered sequence.  
+This includes the ability to co-align images from different instruments or images taken at different times, which is particularly useful to users performing multi-instrument studies. 
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.97\textwidth]{figures/map_example.pdf}
+    \caption{An example of a \sunpypkg \Map plotted from observations of the 171~\AA\ wavelength channel of the Atmospheric Imaging Assembly (AIA) aboard the Solar Dynamics Observatory (SDO).The left hand panel shows a full disk image of the Sun whereas the right hand panel shows a zoom in of the white box in the left hand panel, focusing on the flare that erupted (the same event as the \Timeseries plot in Figure~\ref{fig:timeseries_example}).}
+    \label{fig:map_example}
+\end{figure}
+
+\Map currently supports the data sources listed in Table \ref{tab:instruments} as well as the Helioviewer JPEG2000 image files of for each of these data sources. Similar to \Timeseries, it is easy to add additional instruments and data sources to \Map given the flexibility in the data type structure. 

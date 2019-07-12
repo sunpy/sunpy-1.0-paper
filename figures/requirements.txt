@@ -2,6 +2,7 @@ matplotlib
 pandas
 gitpython
 numpy
-seaborn
+sunpy >= 1.0.2
 pfsspy
 astroquery
+astropy
