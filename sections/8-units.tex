@@ -1,19 +1,15 @@
-\section{Units and Time Scales}
+\subsection{Units and Time Scales}
 \label{sec:units}
 
 Calculations using physical quantities have traditionally been performed in software using raw numbers in the interest of simplicity and speed.
-The units associated with those numbers would typically be noted separately in comments or in documentation, and that separation between a number and its units can lead to errors or even disaster.
-As an extreme example, the Mars Climate orbiter mission in 1988 failed due to a unit discrepancy \citep{mco_mishap_report}.
-The spacecraft trajectory was reported in English units instead of metric units, which led to the Mars Climate Orbiter entering the Martian atmosphere well below its intended altitude leading to mission failure.
-This mishap could have been avoided by ensuring that physical quantities are fully described in software.
+However, this separation between a number and its units can lead to errors or even disaster\footnote{As an extreme example, the Mars Climate orbiter mission in 1988 failed due to a unit discrepancy \citep{mco_mishap_report}.
+This mishap could have been avoided by ensuring that physical quantities were fully described in software.}.
+To avoid this ambiguity, \sunpypkg utilizes the unit-aware functionality provided by the \package{astropy.units} subpackage throughout the entire code base.
+\package{astropy.units} provides support for physical quantities through a \code{Quantity} class, which consists of a number and its associated unit(s).
+These quantities can be combined in expressions with unit conversions and cancellations automatically taken into account.
+Tests have shown that the performance overhead incurred by this functionality is typically minimal.
 
-A more modern approach which describes a solution to this problem is provided by \citet{Damevski2009}.
-\sunpypkg implements this concept throughout its code base using  functionality provided by \package{astropy.units}.
-This subpackage provides support for physical quantities through a class, which consists of a number and its associated unit(s).
-Furthermore, these quantities can be combined in expressions with unit conversions and cancellations automatically taken into account.
-Tests have shown that the performance overhead to using this functionality is typically minimal.
-
-SEP-0003 \citep{sep-0003} formally mandate that all user-facing functionality provided by \sunpypkg make use of this functionality unless inappropriate.
+SEP-0003 \citep{sep-0003} formally mandates that all user-facing functionality provided by \sunpypkg make use of \package{astropy.units}.
 All functions have their input constrained to the appropriate type of unit (e.g. length, mass) and provide an error if the input is not correct.
 Input can then be provided with any appropriate units (e.g. mm, km, inches) and conversions occur automatically without user intervention.
 The \package{sunpy.sun.constants} subpackage contains many standard constants relevant to solar physics with additional information such as uncertainty and reference.
@@ -21,6 +17,6 @@ The \package{sunpy.sun.constants} subpackage contains many standard constants re
 Time is another fundamental quantity that must be appropriately specified for scientific uses.
 Similar motivations as for units led to the adoption of SEP-0008 \citep{sep-0008} which mandates the use of a modern scientific time format throughout the \sunpypkg code base.
 This requirement goes beyond what is needed by the general \python community and is not satisfied by the standard \package{datetime} subpackage.
-We have decided to adopt the \package{astropy.time} subpackage which provides support for many different time scales, including Coordinated Universal Time (UTC), Terrestrial Time (TT), or International Atomic Time (TAI).
+\sunpypkg uses the \package{astropy.time} subpackage which provides support for many different time scales, including Coordinated Universal Time (UTC), Terrestrial Time (TT), or International Atomic Time (TAI).
 In the same manner as pairing numbers with their units, a time class pairs a time representation with its time scale, and allows for conversions to other time scales.
 Thus, functions that require precise times (e.g., for ephemeris calculations) can ensure that there is no confusion about the input.
