@@ -34,7 +34,7 @@ It supports any combination of axis-types such as images (2 spatial axis), image
 It provides the \sunpycode{NDCube} class, a subclass of \astropy's \sunpycode{NDData} data container which holds together the data array uncertainties, and (potentially) a data mask.
 \sunpycode{NDCube} adds support for handling world coordinate transformations through the World Coordinate System (WCS) architecture commonly used in solar physics \citep{2002A&A...395.1061G}.
 This package provides powerful and intuitive tools for slicing datasets with a single command using either array indices or world coordinates, slicing all components including the data array, and coordinates simultaneously.
-This enables users to manipulate their dataset quickly and accurately, allowing them to more efficiently and reliably achieve their science goals and is meant to be used as a basis for more advanced and instrument-specific functionality (see Section~\ref{sec:irispy}).
+This enables users to manipulate their dataset quickly and accurately, allowing them to more efficiently and reliably achieve their science goals and is meant to be used as a basis for more advanced and instrument-specific functionality (see \autoref{sec:irispy}).
 Support for the generalized WCS module \citep{gwcs2018} is planned for the next major release.
 
 \subsection{radiospectra}
@@ -49,5 +49,5 @@ The \package{IRISPy} package provides tools to read, manipulate and visualize da
 IRIS is a NASA Small Explorer mission which has two instruments: a slit-jaw imager (SJI) and a rastering slit spectrograph (SG).
 \package{IRISPy} is limited to reading level 2 data for either of these instruments.
 This package provide data classes which hold data from SJI and SG respectively.
-Built on top of the functionality provided by \package{ndcube} (see Section~\ref{sec:ndcube}) they link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provide easy slicing of the data in any axis.
+Built on top of the functionality provided by \package{ndcube} (see \autoref{sec:ndcube}) they link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provide easy slicing of the data in any axis.
 Measurement uncertainties accounting for Poisson statistics and readout noise are automatically calculated while a mask identifies appropriate pixels for basic operations (e.g.\ mean, max, and visualizations).

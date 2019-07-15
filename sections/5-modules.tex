@@ -22,7 +22,7 @@ The \Timeseries class in \sunpypkg aims to accommodate the necessary requirement
 A large amount of functionality exists within \Timeseries for the manipulation of solar time series data.
 This includes the ability to add, update, truncate, re-sample and combine data within a \Timeseries or combine multiple \Timeseries together. 
 \Timeseries also has built-in visualization methods to allow for easy inspection. 
-An example of a \Timeseries created from GOES X-ray sensor observations during a day for which a solar flare is present is shown in Figure~\ref{fig:timeseries_example}.
+An example of a \Timeseries created from GOES X-ray sensor observations during a day for which a solar flare is present is shown in \autoref{fig:timeseries_example}.
 
 \begin{figure}
     \centering
@@ -31,7 +31,7 @@ An example of a \Timeseries created from GOES X-ray sensor observations during a
     \label{fig:timeseries_example}
 \end{figure}
 
-\Timeseries currently supports the data sources listed in Table \ref{tab:instruments} in addition to indices from the National Oceanic and Atmospheric (NOAA) Space Weather Prediction Center (SWPC) that track the solar cycle and its predicted progression. Due to its flexible data structure, it is easy to add additional instruments and data sources to the \Timeseries object.
+\Timeseries currently supports the data sources listed in \autoref{tab:instruments} in addition to indices from the National Oceanic and Atmospheric (NOAA) Space Weather Prediction Center (SWPC) that track the solar cycle and its predicted progression. Due to its flexible data structure, it is easy to add additional instruments and data sources to the \Timeseries object.
 
 %%%%%%%%%%%%%%%% TABLE %%%%%%%%%%%%%%%%%%%
 \begin{table}
@@ -86,7 +86,7 @@ An example of a \Timeseries created from GOES X-ray sensor observations during a
 \hline
 \end{tabular}
 \end{center}
-\caption{The following table outlines the instruments supported by the \Timeseries and \Map objects described in Section \ref{sec:data_types}.}
+\caption{The following table outlines the instruments supported by the \Timeseries and \Map objects described in \autoref{sec:data_types}.}
 \label{tab:instruments}
 \end{table}
 %%%%%%%%%%%%%%%% TABLE %%%%%%%%%%%%%%%%%%%
@@ -121,8 +121,8 @@ This includes the ability to co-align images from different instruments or image
 \begin{figure}
     \centering
     \includegraphics[width=0.97\textwidth]{figures/map_example.pdf}
-    \caption{An example of a \sunpypkg \Map plotted from observations of the 171~\AA\ wavelength channel of the Atmospheric Imaging Assembly (AIA) aboard the Solar Dynamics Observatory (SDO).The left hand panel shows a full disk image of the Sun whereas the right hand panel shows a zoom in of the white box in the left hand panel, focusing on the flare that erupted (the same event as the \Timeseries plot in Figure~\ref{fig:timeseries_example}).}
+    \caption{An example of a \sunpypkg \Map plotted from observations of the 171~\AA\ wavelength channel of the Atmospheric Imaging Assembly (AIA) aboard the Solar Dynamics Observatory (SDO).The left hand panel shows a full disk image of the Sun whereas the right hand panel shows a zoom in of the white box in the left hand panel, focusing on the flare that erupted (the same event as the \Timeseries plot in \autoref{fig:timeseries_example}).}
     \label{fig:map_example}
 \end{figure}
 
-\Map currently supports the data sources listed in Table \ref{tab:instruments} as well as the Helioviewer JPEG2000 image files of for each of these data sources. Similar to \Timeseries, it is easy to add additional instruments and data sources to \Map. 
+\Map currently supports the data sources listed in \autoref{tab:instruments} as well as the Helioviewer JPEG2000 image files of for each of these data sources. Similar to \Timeseries, it is easy to add additional instruments and data sources to \Map. 
