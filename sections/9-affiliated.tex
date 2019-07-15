@@ -2,7 +2,7 @@
 \label{sec:affil_package}
 
 In order to foster collaboration, coordination, and code re-use, the \sunpyproj supports the concept of affiliated packages.
-These are \python packages that build upon the functionality of the \sunpypkg package or provides general functionality useful to solar physics.
+These are \python packages that build upon the functionality of the \sunpypkg package or provide general functionality useful to solar physics.
 Affiliated packages can also be used to develop and mature subpackage functionality outside of the constraints of \sunpypkg for eventual inclusion.
 The following requirements must be met by potential affiliated packages.
 \begin{itemize}
@@ -13,10 +13,9 @@ The following requirements must be met by potential affiliated packages.
 Developers can formally apply to become an affiliated package to the lead developer and final approval is required by the SunPy board.
 Packages are re-reviewed on a yearly basis to ensure that they continue to meet the standards.
 All affiliated packages are advertised on the website\footnote{\url{https://sunpy.org/team\#affiliated-packages}}, are provided support by the SunPy developer community, and advertised at conferences and workshops.
-Sponsored affiliated package are a special class of affiliated package whose maintenance and development is the responsibility of the \sunpyproj.
-In order to normalize and as part of the support structure the \sunpyproj provides a package template, \code{sunpy/package-template}\footnote{\url{https://github.com/sunpy/package-template}}, which simplifies packaging, testing, and documentation for developers.
+The \sunpyproj also provides a package template\footnote{\url{https://github.com/sunpy/package-template}} which simplifies packaging, testing, and documentation for developers of these affiliated packages.
 
-The following sections provides short descriptions of the existing affiliated packages.
+The following sections provide short descriptions of the existing affiliated packages.
 
 \subsection{drms}
 \label{sec:drms}
@@ -31,24 +30,24 @@ The package is built on the HTTP/JSON interface provided by JSOC.
 \label{sec:ndcube}
 
 The \package{ndcube} package provides functionality for manipulating N-dimensional coordinate-aware data.
-It supports any combination of axis-types for example images (2 spatial axis), images over time (2 spatial and 1 time axis), spectrograms (wavelength and time), as well as more complex data sets such as from slit spectragraphs (wavelength, time, and spatial).
-It provides \sunpycode{NDCube} class, a subclass of \astropy's \sunpycode{NDData} data container which hold together the data array uncertainties, and (potentially) a data mask.
+It supports any combination of axis-types such as images (2 spatial axis), images over time (2 spatial and 1 time axis), spectrograms (wavelength and time), as well as more complex data sets (e.g. slit spectragraphs with wavelength, time, and spatial axes).
+It provides the \sunpycode{NDCube} class, a subclass of \astropy's \sunpycode{NDData} data container which holds together the data array uncertainties, and (potentially) a data mask.
 \sunpycode{NDCube} adds support for handling world coordinate transformations through the World Coordinate System (WCS) architecture commonly used in solar physics \citep{2002A&A...395.1061G}.
 This package provides powerful and intuitive tools for slicing datasets with a single command using either array indices or world coordinates, slicing all components including the data array, and coordinates simultaneously.
 This enables users to manipulate their dataset quickly and accurately, allowing them to more efficiently and reliably achieve their science goals and is meant to be used as a basis for more advanced and instrument-specific functionality (see Section~\ref{sec:irispy}).
-Support for generalized WCS module \citep{gwcs2018} is planned to be added in the next major release.
+Support for the generalized WCS module \citep{gwcs2018} is planned for the next major release.
 
-\subsection{radiospectra - David}
+\subsection{radiospectra}
 The \package{radiospectra} package supports reading and analyzing dynamic radio spectra, primarily from e-Callisto, the International Network of Solar Radio Spectrometers\footnote{\url{http://www.e-callisto.org}}.
-It provides tools for downloading and reading data, handling metadata, homogenizing data, defining and subtracting background.
+It provides tools for downloading and reading data, handling metadata, homogenizing data, and defining and subtracting background.
 This package is likely to undergo major changes with new tools being developed in \code{astropy/specutils}\footnote{\url{https://github.com/astropy/specutils}}.
 
 \subsection{IRISPy}
 \label{sec:irispy}
 
-The \package{IRISPy} package provides tools to read, manipulate and visualize data from the Interface Region Imaging Spectrograph (IRIS; \citealt{DePontieu2014}).
-IRIS is a NASA Small Explorer mission which has two instruments; a slit-jaw imager (SJI) and a rastering slit spectrograph (SG).
-The \package{IRISPy} is limited to reading level 2 data for either of these instruments.
+The \package{IRISPy} package provides tools to read, manipulate and visualize data from the Interface Region Imaging Spectrograph (IRIS, \citealt{DePontieu2014}).
+IRIS is a NASA Small Explorer mission which has two instruments: a slit-jaw imager (SJI) and a rastering slit spectrograph (SG).
+\package{IRISPy} is limited to reading level 2 data for either of these instruments.
 This package provide data classes which hold data from SJI and SG respectively.
 Built on top of the functionality provided by \package{ndcube} (see Section~\ref{sec:ndcube}) they link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provide easy slicing of the data in any axis.
-Measurement uncertainties accounting for Poisson statistics and readout noise are automatically calculated while a mask identifies what are good pixels to facilitates basic operations (e.g.\ mean, max, and visualizations).
+Measurement uncertainties accounting for Poisson statistics and readout noise are automatically calculated while a mask identifies appropriate pixels for basic operations (e.g.\ mean, max, and visualizations).
