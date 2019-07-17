@@ -1,15 +1,15 @@
 \section{The SunPy Core Package}
 \label{sec:sunpycore}
 
-The aim of the \sunpypkg package, the core package in SunPy ecosystem, is to provide a set of Python tools for performing common tasks in the analysis of solar data. These include querying and downloading data, loading and visualizing time series and images, and performing coordinate transformations. In the following sections, we describe the primary capabilities of \sunpypkg and highlight several improvements to the package that are included in version 1.0. 
+The aim of the \sunpypkg package, the core package in SunPy ecosystem, is to provide a set of Python tools for performing common tasks in the analysis of solar data. These include querying and downloading data, loading and visualizing time series and images, and performing coordinate transformations. In the following sections, we describe the primary capabilities of \sunpypkg and highlight several improvements to the package that are included in version 1.0.
 
 \subsection{Data Search and Retrieval}
 \label{sec:fido}
 
 One of the most important tasks that must occur before any analysis can take place is to search for and retrieve data.
-A particular science goal may require data from multiple data providers, each of which may have different methods of search and retrieval.
+A particular science goal may require data from multiple data providers, each of which may have different methods for data search and retrieval.
 This heterogeneity increases the effort required by scientists to get the data they need.
-In order to address this issue, the \package{sunpy.net} subpackage provides interfaces to many commonly used data providers and catalogues in solar physics. 
+In order to address this issue, the \package{sunpy.net} subpackage provides interfaces to many commonly used data providers and catalogues in solar physics.
 
 \subsubsection{The \Fido Interface}
 \label{sec:fido}
@@ -35,5 +35,7 @@ For example, it is possible to search for SPoCA \citep{2014AA...561A..29V} activ
 \subsubsection{Helioviewer Client}
 \label{sec:helioviewer}
 
-Finally, \package{sunpy.net} has a Helioviewer\footnote{\url{https://helioviewer.org/}} client which permits the user to query the Helioviewer JPEG2000 image archive, download image data, and easily construct images of solar data from multiple sources available at the Helioviewer archive.
-This will eventually be moved out of \sunpypkg to an affiliated package in order to expands the scope of the client.
+Finally, \package{sunpy.net} has a Helioviewer\footnote{\url{https://helioviewer.org/}} client which permits the user to query the Helioviewer JPEG2000 image archive.
+Helioviewer provides a powerful online solar image browsing tool and the helioviewer client provides access to the browse data archive used by tool.
+It can download image data and easily construct images of solar data from multiple sources.
+It is currently planned for this functionality to be moved to an affiliated package.
