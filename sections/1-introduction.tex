@@ -2,7 +2,7 @@
 \label{sec:intro}
 
 Heliophysics, as a discipline, is the study of the Sun and its interactions with the solar system.
-The Heliophysics community includes many people studying various sub-domains: the Sun, the solar wind, space weather, terrestrial and planetary magnetospheres, the heliosphere, and the Earth's ionosphere, thermosphere, and mesosphere.
+The heliophysics community is divided into several different sub-domains: the Sun, the solar wind, space weather, terrestrial and planetary magnetospheres, the heliosphere, and the Earth's ionosphere, thermosphere, and mesosphere.
 Advancing our understanding of the fundamental processes underpinning these complex and connected systems requires interdisciplinary research across these scientific sub-disciplines.
 At the time of writing, the NASA Heliophysics System Observatory consists of 18 missions with over 100 instruments.
 
@@ -12,19 +12,18 @@ Scientists conducting interdisciplinary research using multiple instruments run 
 Furthermore, it is difficult to reproduce the scientific results of others without open data and version-controlled open source software.
 
 A common, version-controlled, open source platform that provides a standard interface to data products and encourages the re-use of common functions can go a long way toward solving this problem.
-\sunpyproj aims to provide this solution for the field of solar physics consistent with best practices \citep{Wilson:2014cka}.
+The \sunpyproj aims to provide this solution for the field of solar physics consistent with best practices \citep{Wilson:2014cka}.
 
 The mission of the \sunpyproj is to facilitate and promote the use and development of community-led, free, and open source\footnote{\url{https://opensource.org/osd}} solar data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
-To achieve this goal, the project develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see Section \ref{sec:affil_package}) that provides additional functionality.
+To achieve this goal, the project develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see \autoref{sec:affil_package}).
 
-The \sunpyproj was officially founded in March of 2014 to formalize the organization managing the already developing \sunpypkg package.
+The \sunpyproj was officially founded in March of 2014 to manage the already developing \sunpypkg package.
 The project selected the \python programming language to leverage the rich ecosystem of packages already available for general data analysis.
 These include \numpy for multi-dimensional array manipulation \citep{numpy}, \scipy for scientific functions \citep{scipy}, \matplotlib for publication-quality 2D plotting \citep{matplotlib}, and \pandas for data structures and time series analysis \citep{pandas}.
-These core packages form the backbone for hundreds of additional scientific \python packages.
+These core packages form the backbone of hundreds of additional scientific \python packages.
 Of particular relevance to solar physics is the \astropypkg package, which provides core functionality for the analysis of astrophysical data \citep{astropy2018}.
-The \sunpyproj coordinates with the \astropy developer community and the \sunpypkg depends on many subpackages of the \astropypkg package.
 
 This paper describes the first stable release (v1.0) of the core package.
 A previous paper describes v0.5 \citep{Community:2015cy}.
 This article is not meant to replace the \sunpypkg documentation but provides an overview of the organization and highlights important functionality.
-The full paper, including all of the code to produce the figures, is available in a \github repository\footnote{\url{https://github.com/sunpy/sunpy-1.0-paper}}.
+The full text of the paper, including all of the code to produce the figures, is available in a \github repository\footnote{\url{https://github.com/sunpy/sunpy-1.0-paper}}.

@@ -1,12 +1,13 @@
 \section{Infrastructure}
 \label{sec:infrastructure}
-This section describes the 
+
 The \sunpyproj makes use of many tools and web services to develop high-quality code and documentation consistent with best practices.
 This section provides an overview of these tools which enable the \sunpyproj to achieve its goals without central institutional oversight.
 
-\subsection{Release Cycle, Versioning, Long-term Support}
+\subsection{Release Cycle, Versioning, and Long-Term Support}
 \label{sec:release}
-As of the release of v1.0, a formal release schedule for \sunpypkg has been adopted.
+
+As of the release of version 1.0, a formal release schedule for \sunpypkg has been adopted.
 Two releases are planned per year with 6 months between each.
 In order to align with the release cycle of \astropypkg, a major upstream package, the plan is to release each May and November.
 The first release of the year will be a Long Term Support (LTS) release which will be supported for 12 months or until the next LTS release.
@@ -21,25 +22,27 @@ A formal versioning convention has also been adopted going forward.
 The primary goal of the adoption of this formal release structure is to provide clarity for support of releases as well as improving predictability of codebase changes for users of \sunpypkg.
 
 \subsection{Continuous Integration}
-The \sunpyproj follows common practices and makes extensive use of continuous integration which provide automated testing and code change inspection.
+\label{sec:continuous-integration}
+
+The \sunpyproj makes extensive use of continuous integration which provides automated testing and code change inspection.
 All proposed code contributions trigger test suites to be run on a number of free services (e.g.
-\href{https://azure.microsoft.com/en-gb/services/devops/pipelines/}{Microsoft's Azure pipelines},
-\href{https://circleci.com}{circleci},
-\href{https://codecov.io/}{Codecov}) which integrate into the \github website.
+Microsoft's Azure pipelines, circleci, Codecov) which integrate into \github.
 These services provide the first review of any contribution by running the test suite on each operating system (Windows, Mac, Linux), testing the documentation build, running figure tests, and providing code coverage metrics.
 Additionally \href{https://travis-ci.org}{Travis CI} is used to run the entire test suite on a daily cadence.
 \sunpypkg's test suite can be broken down into three broad categories: offline, online and figure tests.
-Offline test suite checks the majority of the codebase.
-Online tests specifically test code that make use of online web services (e.g. VSO or JSOC).
+The offline test suite checks the majority of the codebase.
+Online tests specifically test code that make use of online web services (e.g. VSO, JSOC).
 These tests depend on the availability of these online services.
 Finally, figure tests generate plots and issue failures if they have changed.
 This enables high level functionality testing.
-The \sunpypkg test suite coupled with these services are an important tool for maintaining the integrity of the package and makes it easier for new contributors to understand the impact of their changes.
+The \sunpypkg test suite coupled with these services are an important tools for maintaining the integrity of the package and make it easier for new contributors to understand the impact of their changes.
 
 \subsection{Documentation and Gallery}
+\label{sec:docs}
+
 The \sunpyproj strives to provide up to date, approachable and high quality documentation.
 All documentation for \sunpypkg as well as all affiliated packages is written using the commonly-used \code{Sphinx} documentation build system\footnote{\url{http://www.sphinx-doc.org/en/master/}}.
 This system supports using plain text files with a markup language called \code{reStructuredText} (RST).
-The build process converts these files including documentation strings in Python files into HTML, PDF, or LATEX documents.
+The build process converts these files, including documentation strings in Python files, into HTML, PDF, or \LaTeX documents.
 We make use of the \code{sphinx-gallery}\footnote{\url{https://sphinx-gallery.github.io}} extension to build a gallery of analysis examples as well as the extension \code{sphinx-automodapi}\footnote{\url{https://sphinx-automapi.readthedocs.io}} which generates documentation pages that list all of the available classes, functions, and attributes.
-Our \href{http://docs.sunpy.org/en/stable/}{online documentation} is automatically built and hosted on \href{https://readthedocs.org/}{Read the Docs} for all releases.
+Our online documentation\footnote{\url{http://docs.sunpy.org/en/stable/}} is automatically built and hosted on Read the Docs\footnote{\url{https://readthedocs.org/}} for all releases.
