@@ -113,9 +113,8 @@ Other plotting components in \Map include the ability to mask and clip the image
 An example of a \Map using data from the Atmospheric Imaging Assembly (AIA) aboard the \textit{Solar Dynamics Observatory (SDO)} is shown in \autoref{fig:map_example}.
 The left panel shows the full disk image of the Sun with the relevant image color table and scaling for the observation, and the right panel shows a cropped image in the field of view of the white box in the left panel, highlighting a solar flare.
 
-The \Map class also provides functionality to analyze multiple images, such as overlaying images from different instruments with overlapping fields of view, or to combine multiple images together in a time-ordered sequence.
-This includes the ability to co-align images from different instruments or images taken at different times to facilitate multi-instrument studies.
-
+When analyzing the dynamics of features on the solar disk, it is important to account for variations due to the apparent rotation of the Sun which includes solar differential rotation, a latitudinally-varying rotation rate due to the non-rigidity of the solar interior\citep[see][]{Beck2000}.
+The \package{sunpy.physics.differential\_rotation} subpackage provide the ability for a \Map to be transformed to a future time including the effect of solar differential rotation (see \autoref{fig:diff_rot}).
 
 \begin{figure}
     \centering
@@ -124,4 +123,19 @@ This includes the ability to co-align images from different instruments or image
     \label{fig:map_example}
 \end{figure}
 
-\Map currently supports the data sources listed in \autoref{tab:instruments} as well as the Helioviewer JPEG2000 image files of  each of these data sources. Similar to \Timeseries, \Map is architected to enable new data sources to be added. 
+The \Map class also provides functionality to analyze multiple images, such as overlaying images from different instruments with overlapping fields of view, or to combine multiple images together in a time-ordered sequence.
+This includes the ability to co-align images from different instruments or images taken at different times to facilitate multi-instrument studies.
+
+
+\begin{figure}
+    \center
+    \includegraphics[width = 0.8\textwidth]{figures/fig_diff_rot_1600.pdf}
+    \caption{The effects of differential rotation.
+    Panels (a) show the Sun as observed by SDO/AIA in 1600~\AA\.
+    A large and small sunspot group is highlighted by a red and white arrow respectively.
+    Panel (b) shows the predicted image after having been rotated two days into the future.
+    Panel (c) shows the actual observation on the day of panel (b) which compares well to the predicted image neglecting the magnetic evolution of the sunspot groups.}
+    \label{fig:diff_rot}
+\end{figure}
+
+\Map currently supports the data sources listed in \autoref{tab:instruments} as well as the Helioviewer JPEG2000 image files of  each of these data sources. Similar to \Timeseries, \Map is architected to enable new data sources to be added.
