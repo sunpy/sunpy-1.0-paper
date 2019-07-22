@@ -74,6 +74,6 @@ def add_releases_vs_time(ax1):
     ax2.set_xticks(release_times)
     ax2.set_xticklabels(sunpy_releases.keys())
     ax2.minorticks_off()
-    ax2.set_xlabel("SunPy Releases")
+    ax2.set_xlabel("Version Release")
     # for this_release in release_times:
     #    ax2.axvline(this_release, color="black", linestyle="..", linewidth=0.1)
