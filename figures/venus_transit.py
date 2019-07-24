@@ -65,12 +65,12 @@ ax = plt.subplot(111, projection=smap)
 smap.plot()
 smap.draw_limb()
 ax.grid(False)
-ax.plot_coord(venus_hpc, "x", color="deepskyblue", label="Venus")
+ax.plot_coord(venus_hpc, "x", color="white", label="Venus")
 
 r = SphericalCircle(
     (venus_hpc.Tx, venus_hpc.Ty),
     venus_angular_extent,
-    edgecolor="deepskyblue",
+    edgecolor="white",
     facecolor="none",
     transform=ax.get_transform("world"),
 )

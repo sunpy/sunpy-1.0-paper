@@ -25,7 +25,7 @@ axes[0].plot(x, y2, label="comment", color="black", linestyle="--")
 axes[0].set_ylabel("Lines (thousands)")
 axes[0].set_xlabel("Year")
 axes[0].set_ylim(0, 3.5)
-axes[0].legend(loc=2)
+axes[0].legend(loc=2, frameon=False)
 axes[0].minorticks_off()
 # add vertical lines for the releases
 sunpy_paper.add_releases_vs_time(axes[0])
@@ -99,11 +99,11 @@ result = np.polyfit(x[:-4], y[:-4], deg=1)
 axes[2].plot(
     10 ** x[:-2],
     10 ** (result[0] * x[:-2] + result[1]),
-    label="N$^{" + "{0:0.2f}".format(result[0]) + "}$",
+    label="$N^{" + "{0:0.2f}".format(result[0]) + "}$",
     color="black",
     linestyle="-",
 )
-axes[2].legend()
+axes[2].legend(frameon=False, fontsize="xx-large")
 axes[2].set_yscale("log")
 axes[2].set_xscale("log")
 xticks = [1, 10, 100, 1000, 10000]
@@ -116,8 +116,8 @@ axes[2].set_yticklabels([str(tick) for tick in yticks])
 axes[2].set_ylim(0.8, 100)
 axes[2].set_xlim(1, 20000)
 
-axes[2].set_ylabel("number of committers")
-axes[2].set_xlabel("number of commits")
+axes[2].set_ylabel("Number of Committers")
+axes[2].set_xlabel("Number of Commits")
 
 axes[2].set_title("")
 plt.savefig("dev_meta.pdf")
