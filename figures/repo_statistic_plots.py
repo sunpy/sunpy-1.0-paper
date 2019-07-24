@@ -116,8 +116,8 @@ axes[2].set_yticklabels([str(tick) for tick in yticks])
 axes[2].set_ylim(0.8, 100)
 axes[2].set_xlim(1, 20000)
 
-axes[2].set_ylabel("Number of committers")
-axes[2].set_xlabel("Number of commits")
+axes[2].set_ylabel("Number of Committers")
+axes[2].set_xlabel("Number of Commits")
 
 axes[2].set_title("")
 plt.savefig("dev_meta.pdf")
