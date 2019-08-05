@@ -7,7 +7,7 @@ In recognition of this, two SEPs have been written to describe the problem and e
 
 Historically, calculations using physical quantities have been performed in software using raw numbers with no associated units.
 At best, the unit information might be provided in a comment or encoded in a variable name.
-However, this separation between numbers and units can lead to errors in calculations, which in some cases can have severe consequences\footnote{As an extreme example, the Mars Climate orbiter mission in 1988 failed due to a unit discrepancy \citep{mco_mishap_report}.}.
+However, this separation between numbers and units can lead to errors in calculation, which in some cases can have severe consequences\footnote{As an extreme example, the Mars Climate orbiter mission in 1988 failed due to a unit discrepancy \citep{mco_mishap_report}.}.
 An effort to minimize the problem of dimensional errors is described in \citet{Damevski2009} which advocates for the solution to be provided at the software architecture layer.
 Following this, \sunpypkg utilizes the unit-aware functionality provided by the \package{astropy.units} subpackage throughout the entire code base.
 This package provides support for physical quantities through a \code{Quantity} class, which consists of a number and its associated unit(s).
