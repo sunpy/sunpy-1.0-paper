@@ -4,7 +4,7 @@ The SunPy 1.0 paper repository.
 Latest Version
 ==============
 
-https://circleci.com/gh/sunpy/sunpy-1.0-paper/296/artifacts/0//root/project/main.pdf
+https://circleci.com/gh/sunpy/sunpy-1.0-paper/314/artifacts/0//root/project/main.pdf
 
 Scope of the Paper
 ==================
