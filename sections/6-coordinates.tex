@@ -1,24 +1,24 @@
 \subsection{Solar Coordinates}
 \label{sec:coords}
 
-The \package{sunpy.coordinates} subpackage provides support for representing and transforming solar-centric coordinates. 
+The \package{sunpy.coordinates} subpackage provides support for representing and transforming solar-centric coordinates.
 These coordinates may represent events (e.g. flares), features on or above the Sun (e.g. magnetic loops), or the position of structures traveling throughout the heliosphere such as coronal mass ejections.
-The package currently supports many of the most widely used Sun-centered coordinate frames including Helioprojective Cartesian (HPC), Heliographic Carrington (HGC), Heliographic Stonyhurst (HGS),  as well as Heliocentric Aries Ecliptic (HAE), Heliocentric Cartesian (HCC) and Heliocentric Earth Equatorial (HEEQ). 
-See \citet{2006A&A...449..791T} for more information about each of these coordinates frames.
+The package currently supports many of the most widely used Sun-centered coordinate frames including Helioprojective Cartesian (HPC), Heliographic Carrington (HGC), Heliographic Stonyhurst (HGS),  as well as Heliocentric Aries Ecliptic (HAE), Heliocentric Cartesian (HCC) and Heliocentric Earth Equatorial (HEEQ).
+See \citet{2006A&A...449..791T} for more information about each of these coordinate frames.
 The functionality provided in this package is built on top of and integrates with the \package{astropy.coordinates} framework \citep[see Section 3.3 of][]{astropy2018}.
 
 An important feature of some of these solar coordinate frames is that they are observer-dependent, meaning that they are not fully defined without also specifying the location of the observer.
 The HPC frame, in particular, which is the most widely used coordinate frame for images of the Sun, places the origin of the frame at the observed center of the solar disk.
 This means that these observer-dependent frames have axes that change orientation depending on the location of the observer.
 In order to accommodate this, all observer-dependent solar coordinates add an observer attribute with the observer coordinate.
-Since many observations of the Sun take place from or near the Earth, it is frequently an adequate approximation to use the Earth's location as the observer position.
+Since many observations of the Sun take place from or near the Earth, it is frequently an adequate approximation to use the center of the Earth as the observer position.
 
 The observer-independent coordinate frames (HAE, HEEQ, HGC, and HGS) are useful for specifying the locations of features on the Sun or objects (e.g., spacecraft) in interplanetary space.
 The commonly-used HGS frame is of particular note because it transforms in a straightforward manner to and from the Heliocentric Celestial Reference System (HCRS).
 This transformation consists of the combination of two rotation angles: the time-independent angle between the Sun's rotation axis and the HCRS celestial pole \citep[see][]{2007CeMDA..98..155S} and the time-dependent angle of the central meridian (as seen from Earth) relative to the vernal equinox.
 This transformation provides the link from the frames defined in \package{sunpy.coordinates} with those defined in \package{astropy.coordinates}, allowing any solar frame to be transformed to and from celestial coordinate frames.
 \autoref{fig:transform_graph} shows the transform graph between these solar coordinate frames and those in \astropy.
-The functionality provided by  \package{sunpy.coordinates} subpackage has been extensively tested and agrees with published values in the \textit{Astronomical Almanac} to a precision of hundredth of an arcsecond for apparent right ascension.
+The functionality provided by  \package{sunpy.coordinates} subpackage has been extensively tested and agrees with published values in the \textit{Astronomical Almanac} to a precision of 0.01 arcsecond for apparent right ascension.
 
 \begin{figure}
     \centering
@@ -28,7 +28,7 @@ The functionality provided by  \package{sunpy.coordinates} subpackage has been e
     \label{fig:transform_graph}
 \end{figure}
 
-A few example applications of the \package{sunpy.coordinates} subpackage are shown in \autoref{fig:coordinates_examples}. 
+A few example applications of the \package{sunpy.coordinates} subpackage are shown in \autoref{fig:coordinates_examples}.
 The leftmost panel shows magnetic field line extrapolations projected onto an SDO/AIA 171\AA{} image of an active region.
 The center and rightmost panels of \autoref{fig:coordinates_examples} make use of functions in \package{sunpy.coordinates} to obtain the apparent (light-travel time-corrected) locations of solar-system bodies and overlay them on images of the Sun in solar coordinate frames.
 Support is  provided for querying ephemeris information from a few different sources including the active ephemeris in \package{astropy.coordinates}, JPL ephemeris, and JPL HORIZONS\footnote{\url{https://ssd.jpl.nasa.gov/?horizon}}.

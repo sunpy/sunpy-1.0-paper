@@ -12,7 +12,7 @@ In order to address this issue, the \package{sunpy.net} subpackage provides inte
 
 The most mature and powerful component of \package{sunpy.net} is the \Fido interface for data search and retrieval.
 \Fido provides a unified interface that simplifies and homogenizes search and retrieval by allowing data to be queried and downloaded from multiple solar sources simultaneously irrespective of the underlying client.
-Currently \Fido supports the Virtual Solar Observatory (VSO), the Joint Science Operations Center (JSOC, see \autoref{sec:drms}) and a number of individual data providers that make their data available via web-accessible resources such as HTTP websites (RHESSI, SDO-EVE, NOAA GOES soft X-ray flux, PROBA2-LYRA and NOAA sunspot number prediction) and FTP servers (NOAA sunspot number, Nobeyama Radioheliograph).
+Currently \Fido supports the Virtual Solar Observatory (VSO), the Joint Science Operations Center (JSOC, see \autoref{sec:drms}) and a number of individual data providers that make their data available via web-accessible resources such as HTTP websites (RHESSI, SDO-EVE, NOAA GOES soft X-ray flux, PROBA2-LYRA, and NOAA sunspot number prediction) and FTP servers (NOAA sunspot number, Nobeyama Radioheliograph).
 
 A \Fido search can include multiple instruments, and can query all available data providers with a single query.
 Search queries can be made up of many different attributes such as instrument, time range, and wavelength.
@@ -25,13 +25,13 @@ The result of the \Fido search query is downloaded via asynchronous and parallel
 \label{sec:hek}
 
 In addition to data download, access to event catalogues are also an important aspect of solar physics research.
-The primary solar event catalog is the Heliophysics Event Knowledgebase \citep[HEK,][]{hek} which provides a searchable database of manually and automatically detected solar features and events such as sunspots, solar flares, coronal mass ejections, etc. \sunpypkg provides a HEK search client which is highly flexible, allowing multiple event types and their properties to be queried simultaneously.
-For example, it is possible to search for SPoCA (Spatial Possibilistic Clustering Algorithm) \citep{2014AA...561A..29V} active regions above a user-specified size within a given time-range.
+The primary solar event catalog is the Heliophysics Event Knowledgebase \citep[HEK,][]{hek} which provides a searchable database of manually and automatically detected solar features and events such as sunspots, flares, coronal mass ejections, etc. A highly flexible HEK search client is provided by \sunpypkg, allowing multiple event types and their properties to be queried simultaneously.
+For example, it is possible to search for active regions identified by SPoCA (Spatial Possibilistic Clustering Algorithm) \citep{2014AA...561A..29V} above a user-specified size within a given time range.
 
 \subsubsection{Helioviewer Client}
 \label{sec:helioviewer}
 
 Finally, \package{sunpy.net} has a Helioviewer\footnote{\url{https://helioviewer.org/}} client which permits the user to query the Helioviewer JPEG2000 image archive.
-Helioviewer provides a powerful online solar image browsing tool and the helioviewer client provides access to the browse data archive used by tool.
+This client accesses the data archive used by the powerful on-line solar image browsing tool provided by Helioviewer.
 It can download image data and easily construct images of solar data from multiple sources.
 It is currently planned for this functionality to be moved to an affiliated package.
