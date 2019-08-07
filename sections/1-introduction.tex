@@ -1,27 +1,38 @@
 \section{Introduction}
 \label{sec:intro}
 
-Heliophysics, as a discipline, is the study of the Sun and its interactions with the solar system.
-The heliophysics community is divided into several different sub-domains: the Sun, the solar wind, space weather, terrestrial and planetary magnetospheres, the heliosphere, and the Earth's ionosphere, thermosphere, and mesosphere.
-Advancing our understanding of the fundamental processes underpinning these complex and connected systems requires interdisciplinary research across these scientific sub-disciplines.
-At the time of writing, the NASA Heliophysics System Observatory consists of 18 missions with over 100 instruments.
+Research astrophysicists rely on software for the analysis of data which is ever-growing and increasingly complex.
+Scientists that study our nearest star, the Sun, are no different.
+Similar to astronomy, solar physics relies primarily on remote sensing from both space- and ground-based observations to measure the properties of our star and deduce the physical mechanisms at work.
+In the past, most solar data analysis was performed using Fortran, a general-purpose, compiled programming language designed for scientific and engineering applications.
+In the 1980s, the solar community made the transition from Fortran to IDL (Interactive Data Language), a commercial and closed-source programming language.
+The community extracted several benefits from this transition.
+IDL is a vector-oriented interpretive programming language which enables much faster and therefore cheaper development compared to FORTRAN.
+It also comes packaged with a large number of powerful libraries that support scientific data visualization and analysis.
+For similar reasons, the astronomy community also made the transition to IDL which led to the release of the IDL Astronomy User's Library for the solar community to leverage.
+Since then, significant and powerful functionality has been developed for solar data analysis as part of Solarsoft, an open-source library of integrated IDL software libraries that provide a common data analysis environment\citet{freeland1998}.
 
-Software packages to analyze data from these instruments are generally developed independently by each instrument team.
-This creates a diverse and therefore difficult data and software environment to navigate.
-Scientists conducting interdisciplinary research using multiple instruments run into problems with incompatible data formats and incompatible analysis routines written in different languages.
-Furthermore, it is difficult to reproduce the scientific results of others without open data and version-controlled open source software.
+The goal of the \sunpyproj is to provide the core functionality needed for solar data analysis in Python and facilitate a new transition from IDL to bring significant and new benefits to the solar community.
+It should be compared to the Astropy Project\footnote{\url{https://www.astropy.org}} which is doing the same for the astrophysics community by developing the \astropypkg core package \citep{astropy2018}.
+Python is an interactive, interpretive, object-oriented, portable and high-level programming language which is extensible with compiled code in lower-level languages.
+The scientific Python environment is supported by foundational packages which include \numpy for multi-dimensional array manipulation \citep{numpy}, \scipy for scientific functions \citep{scipy}, \matplotlib for publication-quality 2D plotting \citep{matplotlib}, and \pandas for data structures and time series analysis \citep{pandas}.
+These core packages form the backbone of hundreds of additional scientific \python packages.
+The general strengths of the scientific Python environment have been enumerated in a number of other papers (cite cite cite). These include (add strengths here).
 
-A common, version-controlled, open source platform that provides a standard interface to data products and encourages the re-use of common functions can go a long way toward solving this problem.
-The \sunpyproj aims to provide this solution for the field of solar physics consistent with best practices \citep{Wilson:2014cka}.
+In relation to other scientific communities, the solar community is relatively small\footnote{For reference, out of the $\sim$7,000 members of the American Astronomy Society, approximately 500 are members of the society's Solar Physics Division.}
+In order to be able to solve increasingly difficult scientific challenges and produce world-class science, the solar community must leverage the existing external resources and software available in Python that are relevant to the solar data analysis.
+The following list describes some of the most impactful benefits to be gained from a transition to Python
 
-The mission of the \sunpyproj is to facilitate and promote the use and development of community-led, free, and open source\footnote{\url{https://opensource.org/osd}} solar data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
-To achieve this goal, the project develops and maintains a core package (\sunpypkg) and supports an ecosystem of affiliated packages (see \autoref{sec:affil_package}).
+\begin{itemize}
+  \item Python is now used by most universities to teach computer science. 8 of the top 10 CS departments (80\%), and 27 of the top 39 (70\%), teach Python in introductory programming courses which are frequently required by engineering and science majors \citep{guo2014}. This means that new members of the solar community do not need to learn a new programming language to become productive researchers significantly reducing the training burden on the community and providing a faster path to scientific results.
+  \item Python is also one of the most widely-used computer programming languages. It therefore provides access to a large, active, and world-wide community of developers which can help solve problems for us both directly and indirectly. Many of the most common programming questions and data analysis tasks have already asked and answered or described in books or on websites such as Stackoverflow. Hiring developers with Python experience is straightforward and open source projects can more easily recruit enthusiasts to contribute to their codebase.
+  \item The scientific Python environment provides access to a rich ecosystem of specialized tools. These include tools which provide advanced image processing techniques (e.g. scikit-image, PIL/Pillow, OpenCV-Python), machine-learning (e.g. scikit-learn, TensorFlow, PyTorch, Theano), Bayesian analysis (e.g. pymc3, TensorFlow, BayesPy), accelerated/parallel computing (e.g. Dask, CuPy).
+  \item Finally, cloud-based computing infrastructure provides access to powerful and scalable computing resources (e.g. Azure, AWS, Travis) sometimes at no cost. Since Python is free and widely used, it is straightfoward to run multiple Python processes with no limitations from potentially costly licenses.
+\end{itemize}
 
 The \sunpyproj was officially founded in March of 2014 to manage the already developing \sunpypkg package.
-The project selected the \python programming language to leverage the rich ecosystem of packages already available for general data analysis.
-These include \numpy for multi-dimensional array manipulation \citep{numpy}, \scipy for scientific functions \citep{scipy}, \matplotlib for publication-quality 2D plotting \citep{matplotlib}, and \pandas for data structures and time series analysis \citep{pandas}.
-These core packages form the backbone of hundreds of additional scientific \python packages.
-Of particular relevance to solar physics is the \astropypkg package, which provides core functionality for the analysis of astrophysical data \citep{astropy2018}.
+The official mission statement is to facilitate and promote the use and development of community-led, free, and open source\footnote{\url{https://opensource.org/osd}} solar data analysis software packages based on the scientific \python\footnote{\url{https://www.python.org/}} environment.
+To achieve this goal, the project develops and maintains a core Python package (\sunpypkg) and supports an ecosystem of affiliated packages (see \autoref{sec:affil_package}) consistent with best practices \citep{Wilson:2014cka}
 
 This paper describes the first stable release (v1.0) of the core package.
 A previous paper describes v0.5 \citep{Community:2015cy}.
