@@ -14,7 +14,7 @@ Developers can apply to become an affiliated package to the lead developer with 
 Packages are re-reviewed on a yearly basis to ensure that they continue to meet the standards.
 To enhance discoverability, a list of all affiliated packages is maintained on the SunPy website\footnote{\url{https://sunpy.org/team\#affiliated-packages}} and they are advertised at national and international conferences and workshops.
 Finally, the development of these packages is provided informal support by the SunPy developer community, and
-a package template\footnote{\url{https://github.com/sunpy/package-template}} has been developed which simplifies and standardizes packaging, testing, and documentation.
+a package template\footnote{\url{https://github.com/sunpy/package-template}} has been developed that simplifies and standardizes packaging, testing, and documentation.
 
 The following sections provide short descriptions of the existing affiliated packages.
 
@@ -22,33 +22,32 @@ The following sections provide short descriptions of the existing affiliated pac
 \label{sec:drms}
 
 The \package{drms} package provides functionality to access data hosted by the Joint Science Operations Center (JSOC).
-Operated by Stanford, it is the primary data center for the Solar Dynamics Observatory’s (SDO) Helioseismic and Magnetic Imager (HMI) and Atmospheric Imaging Assembly (AIA) instruments, the Solar and Heliospheric Observatory's (SOHO) Michelson Doppler Imager (MDI) instrument, and the NASA Interface Region Imaging Spectrograph (IRIS) Explorer.
-DRMS stands for Data Record Management System. It is based on a PostgreSQL database that contains metadata, as well as pointers to image data, for every image contained in the archive.
-The \package{drms} package provides access to query the image metadata in the JSOC DRMS. It can also be used to submit tailored data export requests (e.g. movies and images in various formats) and download data files.
-The package is built on the HTTP/JSON interface provided by JSOC.
+Operated by Stanford, it is the primary data center for SDO/HMI, SDO/AIA, the Solar and Heliospheric Observatory's (SOHO) Michelson Doppler Imager (MDI) instrument, and the NASA Interface Region Imaging Spectrograph (IRIS) Explorer.
+This Data Record Management System (DRMS) is based on a PostgreSQL database that contains metadata, as well as pointers to image data, for every image contained in the archive.
+The \package{drms} package provides access to query the image metadata in the JSOC DRMS. It can also be used to submit tailored data export requests (e.g. movies and images in various formats) and download data files and is built on the HTTP/JSON interface provided by JSOC.
 
 \subsection{ndcube}
 \label{sec:ndcube}
 
 The \package{ndcube} package provides functionality for manipulating N-dimensional coordinate-aware data.
-It supports any combination of axis-types such as images (2 spatial axis), images over time (2 spatial and 1 time axis), spectrograms (wavelength and time), as well as more complex data sets (e.g. slit spectragraphs with wavelength, time, and spatial axes).
-It provides the \sunpycode{NDCube} class, a subclass of \astropy's \sunpycode{NDData} data container which holds together the data array uncertainties, and (potentially) a data mask.
-\sunpycode{NDCube} enahnces the functionality of \sunpycode{NDData} by adding support for handling world coordinate transformations through the World Coordinate System (WCS) architecture commonly used in solar physics \citep{2002A&A...395.1061G}.
-This package provides powerful and intuitive tools for slicing datasets with a single command using either array indices or world coordinates, slicing all components including the data array, and coordinates simultaneously.
-This enables users to manipulate their dataset quickly and accurately, allowing them to more efficiently and reliably achieve their science goals, and is meant to be used as a basis for more advanced and instrument-specific functionality (see \autoref{sec:irispy}).
+Supports is provided for any combination of axis-types such as images (2 spatial axis), images over time (2 spatial and 1 time axis), spectrograms (wavelength and time), as well as more complex data sets (e.g. slit spectragraphs with wavelength, time, and spatial axes).
+The package provides the \sunpycode{NDCube} class, a subclass of \astropy's \sunpycode{NDData} data container that holds together the data array uncertainties, and (potentially) a data mask.
+\sunpycode{NDCube} enhances the functionality of \sunpycode{NDData} by adding support for handling world coordinate transformations through the World Coordinate System (WCS) architecture commonly used in solar physics \citep{2002A&A...395.1061G}.
+Powerful and intuitive tools are included for slicing datasets with a single command (using either array indices or world coordinates) or slicing all components (including the data array and coordinates simultaneously).
+This functionality enables users to manipulate their dataset quickly and accurately, allowing them to more efficiently and reliably achieve their science goals, and is meant to be used as a basis for more advanced and instrument-specific functionality (see \autoref{sec:irispy}).
 Support for the generalized WCS module \citep{gwcs2018} is planned for the next major release.
 
 \subsection{radiospectra}
-The \package{radiospectra} package supports reading and analyzing dynamic radio spectra as a function of time, primarily from e-Callisto, the International Network of Solar Radio Spectrometers\footnote{\url{http://www.e-callisto.org}}.
+The \package{radiospectra} package supports reading and analyzing dynamic radio spectra, as a function of time, primarily from e-Callisto, the International Network of Solar Radio Spectrometers\footnote{\url{http://www.e-callisto.org}}.
 It provides tools for downloading and reading data, handling metadata, homogenizing data, and defining and subtracting background.
 This package is planned to undergo major changes with new tools being developed in \code{astropy/specutils}\footnote{\url{https://github.com/astropy/specutils}}.
 
 \subsection{IRISPy}
 \label{sec:irispy}
 
-The \package{IRISPy} package provides tools to read, manipulate and visualize data from the Interface Region Imaging Spectrograph (IRIS, \citealt{DePontieu2014}).
-IRIS is a NASA Small Explorer mission which has two instruments: an imager (SJI) and a rastering slit spectrograph (SG).
+The \package{IRISPy} package provides tools to read, manipulate and visualize data from IRIS, \citep{DePontieu2014}.
+IRIS is a NASA Small Explorer mission comprised of two instruments: an imager (SJI) and a rastering slit spectrograph (SG).
 \package{IRISPy} is currently limited to reading level 2 data for either of these instruments.
-This package provide data classes which hold data from both SJI and SG.
-Built on top of the functionality provided by \package{ndcube} (see \autoref{sec:ndcube}), they link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provide easy slicing of the data in any axis.
+This package provides data classes which hold data from SJI and SG respectively.
+Built on top of the functionality provided by \package{ndcube} (see \autoref{sec:ndcube}). \package{IRISPy} link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provides easy slicing of the data in any axis.
 Measurement uncertainties accounting for Poisson statistics and readout noise are automatically calculated while a mask is used to identify appropriate pixels for basic operations (e.g.\ mean, max, and visualizations).

@@ -1,32 +1,28 @@
 \section{Development Model}
 \label{sec:development}
 
-To satisfy the mission of the Project, the SunPy community adopted an open development model.
-This development model is widely used within the scientific Python community.
+To satisfy the mission of the Project, the SunPy community adopted an open development model, which is widely used within the scientific Python community.
 The \sunpypkg package is hosted on \github and uses \code{git}\footnote{\url{https://git-scm.com/}} as its distributed version control software.
 The entire code base is publicly available and anyone can suggest changes through pull requests.
 Since the code base is licensed under a permissive 2-clause BSD license\footnote{\url{https://opensource.org/licenses/BSD-2-Clause}}, anyone can redistribute, improve, repackage or use it in a closed environment as long as they credit the SunPy developers and redistribute the license.
 In order to maintain high quality code, every contribution must satisfy the following requirements:
 \begin{enumerate}
     \item Code and documentation must follow widely used style guides (e.g. PEP 8\footnote{\url{https://www.python.org/dev/peps/pep-0008/}}).
-    \item All new features must be accompanied with documentation.
-    This includes code comments, formal documentation, and gallery examples.
+    \item All new features must be accompanied with documentation, including code comments, formal documentation, and gallery examples.
     \item Contributed code must provide unit tests which cover the majority of the new functionality.
-    \item All code must be within scope and it must be reviewed and accepted by at least two members of the developer community before it is merged into the code base\footnote{This requirement is relaxed for bug fixes or small documentation changes.}.
+    \item All code must be within scope, and it must be reviewed and accepted by at least two members of the developer community before it is merged into the code base\footnote{This requirement is relaxed for bug fixes or small documentation changes.}.
 \end{enumerate}
 These requirements are imposed on every pull request regardless of contributor.
 
 As of version 1.0, \sunpypkg consists of 48,427 lines of code\footnote{This number includes documentation and comments.
 There are 30,906 lines of pure code.} contributed by 123 unique contributors over 11,659 \git commits.
 The leftmost panel of \autoref{fig:metafig} shows the steady growth of the code base since 2011 with, on average, approximately 16 lines added per day.
-A reduction in the number of lines of code occurred after the release of version 0.9 due to a major clean up effort which led to the deletion of unused code and the removal of support for Python 2.
+A reduction in the number of lines of code occurred after the release of version 0.9 due to a major clean up effort that led to the deletion of unused code and the removal of support for Python 2.
 
-The middle panel of \autoref{fig:metafig} shows the steady rise in the number of unique contributors with, on average, more than 1 new contributor added each month.
+The middle panel of \autoref{fig:metafig} shows the steady rise in the number of unique contributors with, on average, more than one new contributor added each month.
 Additionally, the rightmost panel of \autoref{fig:metafig} shows the distribution of total number of commits per contributor as of June 2019.
-The distribution is relatively steep with a log-log slope of $-0.34$.
-This means that relatively few authors generate the majority of commits.
+The distribution is relatively steep with a log-log slope of $-0.34$, which indicates that relatively few authors generate the majority of commits.
 The top 10 contributors are responsible for close to 80\% of the all commits.
-
 This compares poorly to other projects such as \astropy \citep{astropy2018}.
 Unlike \astropy, the \sunpyproj was not formed to bring together and coordinate many existing developers and their \python packages.
 The development of the \sunpypkg package began by a core group of scientists with no prior existing code base.
@@ -42,9 +38,9 @@ Converting these contributors into core developers is crucial to the long-term h
     \caption{Left panel: A plot of the steady increase in the total number of lines of code (solid line) and documentation line count (dotted line) as a function of time.
 	Major version releases are indicatd along the top axis.
 	A striking reduction in the code base occurred after version 0.9.
-	This period saw a major code organization and deletion of obsolete features along with removing support for Python 2.
+	This period saw a major code reorganization and deletion of obsolete features along with removing support for Python~2.
 	Middle panel: The cumulative number of committers (i.e. authors) to \sunpypkg as a function of time shows a steady increase in the number of people involved in the development team.
 	Right panel: A plot of the distribution of the number of commits per commiter.
-	Although commits are not the best measure of contribution size, this plot indicates that the majority of commits come from a small group of committers. The average number of commits per committer is less than 10 commits.}
+	Although commits are not the best measure of contribution size, this plot indicates that the majority of commits are undertaken by a small group of committers. The average number of commits per committer is less than 10 commits.}
 \label{fig:metafig}
 \end{figure}
