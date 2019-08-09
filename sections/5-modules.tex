@@ -3,9 +3,9 @@
 
 The \sunpypkg package provides two core data types that are designed to provide a general, standard, and consistent interface for loading and representing solar data across different instruments and missions.
 The two core data types currently provided in \sunpypkg are \Timeseries and \Map, which support 1D temporal data and 2D image data, respectively.
-The purpose of these core classes is to standardize data structures regardless of the data source (i.e. observational data from separate instruments).
-They maintain a consistent interface for accessing solar data attributes such as the data array itself as well as the metadata and relevant units.
-This allows for an easier workflow in the analysis of solar data observations.
+The purpose of these core classes is to standardize data structures regardless of the data source (i.e. observational data from independent instruments).
+The classes maintain a consistent interface for accessing solar data attributes such as the data array itself as well as the metadata and relevant units.
+This arrangement allows for an easier workflow in the analysis of solar data observations.
 These core classes also include functionality for data manipulation and data visualization.
 This section provides an overview of the \Timeseries and \Map data types.
 
@@ -20,14 +20,14 @@ The \Timeseries class in \sunpypkg aims to accommodate the necessary requirement
  The data array as well as the metadata and units data are stored as attributes to the \Timeseries class.
 
 Functionality is also provided for the manipulation of solar time series data.
-This includes the ability to add, update, truncate, re-sample and combine data within a \Timeseries or combine multiple \Timeseries together.
+This capability includes the ability to add, update, truncate, re-sample, and combine data within a \Timeseries or combine multiple \Timeseries together.
 \Timeseries also has built-in visualization methods to allow for easy inspection.
 An example of a \Timeseries created from GOES X-ray sensor observations during a day for which a solar flare is present is shown in \autoref{fig:timeseries_example}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.55\textwidth]{figures/timeseries_example.pdf}
-    \caption{An example of a GOES X-ray Sensor \Timeseries plotted over a 24 hour period. The two colors represent the two broadband channels of GOES 1--8~\AA\ (red) and 0.5--4~\AA\ (blue).  The sharp increase in flux is a solar flare and the grey dashed line denotes the flare peak as found from the Helio Event Knowledgebase (HEK).}
+    \caption{An example of a GOES X-ray Sensor \Timeseries plotted over a 24 hour period. The two colors represent the two broadband channels of GOES 1--8~\AA\ (red) and 0.5--4~\AA\ (blue).  The sharp increase in flux is a solar flare and the grey dashed line denotes the flare peak as determined from the Helio Event Knowledgebase (HEK).}
     \label{fig:timeseries_example}
 \end{figure}
 
@@ -86,16 +86,16 @@ An example of a \Timeseries created from GOES X-ray sensor observations during a
 \hline
 \end{tabular}
 \end{center}
-\caption{The following table outlines the instruments supported by the \Timeseries and \Map objects described in \autoref{sec:data_types}.}
+\caption{Instruments supported by the \Timeseries and \Map objects as described in \autoref{sec:data_types}.}
 \label{tab:instruments}
 \end{table}
 %%%%%%%%%%%%%%%% TABLE %%%%%%%%%%%%%%%%%%%
 
 \subsubsection{\Map}
 \label{sec:map}
-A majority of solar data is in the form images of the Sun.
-For example, the Helioseismic and Magnetic Imager (HMI) instrument aboard the Solar Dynamics Observatory (SDO) maps the magnetic field at the solar photosphere across the entire solar disk every 45 seconds with 4k $\times$ 4k pixel resolution.
-Image of the Sun are taken in multiple wavelengths from a wide range of both space- and ground- based instruments.
+The majority of solar data is in the form of remote-sensing imagery of the Sun.
+For example, the Helioseismic and Magnetic Imager (HMI) instrument aboard SDO maps the magnetic field at the solar photosphere across the entire solar disk every 45 seconds with 4k $\times$ 4k pixel resolution.
+Solar images are taken in multiple wavelengths from a wide range of both space- and ground- based instruments.
 Many high resolution images also require precise coordinate information in order to, for example, compare solar features observed across multiple instruments.
 
 The \Map class in \sunpypkg provides a framework to contain and analyze image data.
@@ -106,36 +106,36 @@ It is also possible to create a custom \Map from both a 2D data array and the ap
 
 Similar to \Timeseries, the \Map class contains the image data array, coordinate information and relevant metadata as attributes, all of which can be easily accessed by the user.
 Visualization methods are also provided to inspect and plot solar image data.
-This includes the ability for \Map to plot the image data in a way that represents the world coordinates of the image accurately (see \autoref{sec:coords} for more on solar coordinates).
-This allows the user to plot coordinates of interest on a \Map while correctly accounting for the coordinate frame.
+This visualization set includes the ability for \Map to plot the image data in a way that represents the world coordinates of the image accurately (see \autoref{sec:coords} for more on solar coordinates).
+This routine allows the user to plot coordinates of interest on a \Map while correctly accounting for the coordinate frame.
 Other plotting components in \Map include the ability to mask and clip the image data.
 
 An example of a \Map using data from the Atmospheric Imaging Assembly (AIA) aboard the \textit{Solar Dynamics Observatory (SDO)} is shown in \autoref{fig:map_example}.
 The left panel shows the full disk image of the Sun with the relevant image color table and scaling for the observation, and the right panel shows a cropped image in the field of view of the white box in the left panel, highlighting a solar flare.
 
-When analyzing the dynamics of features on the solar disk, it is important to account for variations due to the apparent rotation of the Sun which includes solar differential rotation, a latitudinally-varying rotation rate due to the non-rigidity of the solar interior\citep[see][]{Beck2000}.
-The \package{sunpy.physics.differential\_rotation} subpackage provide the ability for a \Map to be transformed to a future time including the effect of solar differential rotation (see \autoref{fig:diff_rot}).
+When analyzing the dynamics of features on the solar disk, it is important to account for variations due to the apparent rotation of the Sun, which includes solar differential rotation, a latitudinally-varying rotation rate due to the non-rigidity of the solar interior \citep[see][]{Beck2000}.
+The \package{sunpy.physics.differential\_rotation} subpackage provides the ability for a \Map to be transformed to a to a future time with compensation for solar differential rotation (see \autoref{fig:diff_rot}).
 
 \begin{figure}
     \centering
     \includegraphics[width=0.97\textwidth]{figures/map_example.pdf}
-    \caption{An example of a \sunpypkg \Map plotted from observations of the 171~\AA\ wavelength channel of the Atmospheric Imaging Assembly (AIA) aboard the Solar Dynamics Observatory (SDO).The left hand panel shows a full disk image of the Sun whereas the right hand panel shows a zoom in of the white box in the left hand panel, focusing on the flare that erupted (the same event as the \Timeseries plot in \autoref{fig:timeseries_example}).}
+    \caption{An example of a \sunpypkg \Map plotted from observations of the 171~\AA\ wavelength channel of AIA aboard SDO.The left hand panel shows a full disk image of the Sun whereas the right hand panel shows a zoom in of the white box in the left hand panel, focusing on the erupting flare (the same event as depicted in \autoref{fig:timeseries_example}).}
     \label{fig:map_example}
 \end{figure}
 
 The \Map class also provides functionality to analyze multiple images, such as overlaying images from different instruments with overlapping fields of view, or to combine multiple images together in a time-ordered sequence.
-This includes the ability to co-align images from different instruments or images taken at different times to facilitate multi-instrument studies.
+This class includes the ability to co-align images from different instruments or images taken at different times to facilitate multi-instrument studies.
 
 
 \begin{figure}
     \center
     \includegraphics[width = 0.8\textwidth]{figures/fig_diff_rot_1600.pdf}
     \caption{The effects of differential rotation.
-    Panels (a) show the Sun as observed by SDO/AIA in 1600~\AA\.
-    A large and small sunspot group is highlighted by a red and white arrow respectively.
+    Panel (a) shows the Sun as observed by SDO/AIA in 1600~\AA.
+    A large and small sunspot group is highlighted by a red and white arrow, respectively.
     Panel (b) shows the predicted image after having been rotated two days into the future.
     Panel (c) shows the actual observation on the day of panel (b) which compares well to the predicted image neglecting the magnetic evolution of the sunspot groups.}
     \label{fig:diff_rot}
 \end{figure}
 
-\Map currently supports the data sources listed in \autoref{tab:instruments} as well as the Helioviewer JPEG2000 image files of  each of these data sources. Similar to \Timeseries, \Map is architected to enable new data sources to be added.
+\Map currently supports the data sources listed in \autoref{tab:instruments} as well as the Helioviewer JPEG2000 image files of  each of these data sources. Similar to \Timeseries, \Map is architected to enable new data sources to be added easily.
