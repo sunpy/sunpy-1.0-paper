@@ -27,7 +27,7 @@ plt.gcf().subplots_adjust(right=0.9)
 
 ax0 = fig.add_subplot(1, 2, 1,  projection=my_map)
 my_map.plot(clip_interval=(1, 99.99)*u.percent, axes=ax0)
-ax0.plot_coord(hpc_coord, markersize = 8, marker = 'x', ls = ' ',color = 'k', label = 'Flare location')
+ax0.plot_coord(hpc_coord, markersize = 8, marker = 'x', ls = ' ',color = 'b', label = 'Flare location')
 ax0.legend(loc='lower right') 
 
 my_map.draw_rectangle(bottom_left, 700*u.arcsec, 700*u.arcsec)
