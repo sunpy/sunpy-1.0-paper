@@ -104,7 +104,7 @@ The \Map class will automatically detect the instrument and parse the metadata t
 Other source-specific metadata is used to determine the appropriate color table and image normalization for visualization.
 It is also possible to create a custom \Map by providing a 2D data array and metadata.
 
-Similar to \Timeseries, the \Map class contains the image data array, coordinate information and relevant metadata as attributes.
+Similar to \Timeseries, the \Map class contains the image data array, coordinate information, and relevant metadata as attributes.
 Visualization methods are also provided to inspect and plot solar image data.
 This visualization set includes the ability for \Map to plot the image data in a way that represents the world coordinates of the image accurately (see \autoref{sec:coords} for more on solar coordinates).
 This routine allows the user to plot coordinates of interest on a \Map while correctly accounting for the coordinate frame.
@@ -119,7 +119,7 @@ The \package{sunpy.physics.differential\_rotation} subpackage provides the abili
 \begin{figure}
     \centering
     \includegraphics[width=0.97\textwidth]{figures/map_example.pdf}
-    \caption{An example of a \Map visualization from observations of the 171~\AA\ wavelength channel of AIA aboard SDO.The left hand panel shows an image of the entire Sun. The right hand panel shows the cropped view in the white box of the left hand panel, focusing on an erupting flare (the same event as depicted in \autoref{fig:timeseries_example}).}
+    \caption{An example of a \Map visualization from observations of the 171~\AA\ wavelength channel of AIA aboard SDO.The left hand panel shows an image of the entire Sun with the flare position as given by the HEK. The right hand panel shows the cropped view in the white box of the left hand panel, focusing on an erupting flare (the same event as depicted in \autoref{fig:timeseries_example}).}
     \label{fig:map_example}
 \end{figure}
 
@@ -138,4 +138,5 @@ This class includes the ability to co-align images from different instruments or
     \label{fig:diff_rot}
 \end{figure}
 
-\Map currently supports the data sources listed in \autoref{tab:instruments} as well as the Helioviewer JPEG2000 image files of  each of these data sources. Similar to \Timeseries, \Map is architected to enable new data sources to be added easily.
+\Map currently supports the data sources listed in \autoref{tab:instruments} as well as the Helioviewer JPEG2000 image files of  each of these data sources. 
+Similar to \Timeseries, \Map is architected to enable new data sources to be added easily.
