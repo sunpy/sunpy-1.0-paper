@@ -17,8 +17,6 @@ import pfsspy.coords
 
 from sunpy_paper import data_dir
 
-import sunpy_paper
-
 
 ###############################
 #  Load GONG and AIA Data     #
@@ -92,6 +90,7 @@ aia_submap.plot(
 )
 for f in flines:
     f_hpc = f.transform_to(aia_submap.coordinate_frame)
+    # Only plot fieldlines in the AR
     if (
         np.any(f_hpc.Tx < aia_submap.bottom_left_coord.Tx) or
         np.any(f_hpc.Ty < aia_submap.bottom_left_coord.Ty) or
@@ -99,7 +98,7 @@ for f in flines:
         np.any(f_hpc.Ty > aia_submap.top_right_coord.Ty)
     ):
         continue
-    ax.plot_coord(f_hpc, alpha=0.4, linewidth=1, color='black')
+    ax.plot_coord(f_hpc, alpha=0.6, linewidth=1, color='black')
 ax.grid(alpha=0)
 lon, lat = ax.coords
 # Save figure
