@@ -32,7 +32,7 @@ The \package{drms} package provides access to query the image metadata in the JS
 The \package{ndcube} package provides functionality for manipulating N-dimensional coordinate-aware data.
 Supports is provided for any combination of axis-types such as images (2 spatial axis), images over time (2 spatial and 1 time axis), spectrograms (wavelength and time), as well as more complex data sets (e.g. slit spectragraphs with wavelength, time, and spatial axes).
 The package provides the \sunpycode{NDCube} class, a subclass of \astropy's \sunpycode{NDData} data container that holds together the data array uncertainties, and (potentially) a data mask.
-\sunpycode{NDCube} enhances the functionality of \sunpycode{NDData} by adding support for handling world coordinate transformations through the World Coordinate System (WCS) architecture commonly used in solar physics \citep{2002A&A...395.1061G}.
+\sunpycode{NDCube} enhances the functionality of \sunpycode{NDData} by adding support for handling world coordinate transformations through the World Coordinate System (WCS) architecture commonly used in solar physics \citep{2002A&A...395.1061G, 2006A&A...449..791T}.
 Powerful and intuitive tools are included for slicing datasets with a single command (using either array indices or world coordinates) or slicing all components (including the data array and coordinates simultaneously).
 This functionality enables users to manipulate their dataset quickly and accurately, allowing them to more efficiently and reliably achieve their science goals, and is meant to be used as a basis for more advanced and instrument-specific functionality (see \autoref{sec:irispy}).
 Support for the generalized WCS module \citep{gwcs2018} is planned for the next major release.
