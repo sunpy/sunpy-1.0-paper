@@ -27,6 +27,8 @@ axes[0].set_xlabel("Year")
 axes[0].set_ylim(0, 3.5)
 axes[0].legend(loc=2, frameon=False)
 axes[0].minorticks_off()
+
+axes[0].xaxis.set_tick_params(labelrotation=45)
 # add vertical lines for the releases
 sunpy_paper.add_releases_vs_time(axes[0])
 
@@ -80,8 +82,8 @@ cum_authors.plot(color="black", linestyle="-", ax=axes[1])
 axes[1].set_ylabel("Cumulative Authors")
 axes[1].set_xlabel("Year")
 axes[1].minorticks_off()
+axes[1].xaxis.set_tick_params(labelrotation=45)
 
-print(cum_authors)
 sunpy_paper.add_releases_vs_time(axes[1])
 
 # now create a plot of the number of commits versus the number of committers
