@@ -21,8 +21,8 @@ The following sections provide short descriptions of the existing affiliated pac
 \subsection{drms}
 \label{sec:drms}
 
-The \package{drms} package provides functionality to access data hosted by the Joint Science Operations Center (JSOC).
-Operated by Stanford, it is the primary data center for SDO/HMI, SDO/AIA, the Solar and Heliospheric Observatory's (SOHO) Michelson Doppler Imager (MDI) instrument, and the NASA Interface Region Imaging Spectrograph (IRIS) Explorer.
+The \package{drms} package provides functionality to access data hosted by the JSOC.
+Operated by Stanford, it is the primary data center for SDO HMI, SDO AIA, the Michelson Doppler Imager (MDI) aboard the \textit{Solar and Heliospheric Observatory} (SOHO) instrument, and the Interface Region Imaging Spectrograph (IRIS).
 This Data Record Management System (DRMS) is based on a PostgreSQL database that contains metadata, as well as pointers to image data, for every image contained in the archive.
 The \package{drms} package provides access to query the image metadata in the JSOC DRMS. It can also be used to submit tailored data export requests (e.g. movies and images in various formats) and download data files and is built on the HTTP/JSON interface provided by JSOC.
 
@@ -38,6 +38,7 @@ This functionality enables users to manipulate their dataset quickly and accurat
 Support for the generalized WCS module \citep{gwcs2018} is planned for the next major release.
 
 \subsection{radiospectra}
+
 The \package{radiospectra} package supports reading and analyzing dynamic radio spectra, as a function of time, primarily from e-Callisto, the International Network of Solar Radio Spectrometers\footnote{\url{http://www.e-callisto.org}}.
 It provides tools for downloading and reading data, handling metadata, homogenizing data, and defining and subtracting background.
 This package is planned to undergo major changes with new tools being developed in \code{astropy/specutils}\footnote{\url{https://github.com/astropy/specutils}}.
@@ -46,8 +47,8 @@ This package is planned to undergo major changes with new tools being developed 
 \label{sec:irispy}
 
 The \package{IRISPy} package provides tools to read, manipulate and visualize data from IRIS, \citep{DePontieu2014}.
-IRIS is a NASA Small Explorer mission comprised of two instruments: an imager (SJI) and a rastering slit spectrograph (SG).
+IRIS is a NASA Small Explorer mission comprised of two instruments: the Slit Jaw Imager (SJI) and a rastering slit spectrograph.
 \package{IRISPy} is currently limited to reading level 2 data for either of these instruments.
-This package provides data classes which hold data from both SJI and SG.
+This package provides data classes which hold data from SJI and the slit spectrograph.
 Built on top of the functionality provided by \package{ndcube} (see \autoref{sec:ndcube}). \package{IRISPy} link the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provides easy slicing of the data in any axis.
 Measurement uncertainties accounting for Poisson statistics and readout noise are automatically calculated while a mask is used to ignore bad pixels when performing basic operations (e.g.\ mean, max, and visualizations).

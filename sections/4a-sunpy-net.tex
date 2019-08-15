@@ -12,7 +12,7 @@ In order to address this issue, the \package{sunpy.net} subpackage provides inte
 
 The most mature and powerful component of \package{sunpy.net} is the \Fido interface for data search and retrieval.
 \Fido provides a unified interface that simplifies and homogenizes search and retrieval by allowing data to be queried and downloaded from multiple data sources simultaneously, irrespective of the underlying client.
-Currently, \Fido supports the Virtual Solar Observatory \citep[VSO,][]{2009EM&P..104..315H}, the Joint Science Operations Center (JSOC, see \autoref{sec:drms}), and a number of individual data providers that make their data available via web-accessible resources such as HTTP websites (RHESSI, SDO-EVE, NOAA GOES soft X-ray flux, PROBA2-LYRA, and NOAA sunspot number prediction) and FTP servers (NOAA sunspot number, Nobeyama Radioheliograph).
+Currently, \Fido supports the Virtual Solar Observatory \citep[VSO,][]{2009EM&P..104..315H}, the Joint Science Operations Center (JSOC, see \autoref{sec:drms}), and a number of individual data providers that make their data available via web-accessible resources such as HTTP websites (RHESSI, SDO EVE, GOES XRS, PROBA2 LYRA, and NOAA sunspot number prediction) and FTP servers (NOAA sunspot number, NoRH).
 
 A \Fido search accesses multiple instruments and all available data providers in a single query.
 Search queries optionally include a variety of attributes, such as instrument, time range, and wavelength.
@@ -25,7 +25,7 @@ The result of a \Fido query can be inspected and edited before retrieval and is 
 
 In addition to data download, access to event catalogues are also an important aspect of solar physics research.
 One of the largest catalogs is the Heliophysics Event Knowledgebase \citep[HEK,][]{hek}, which provides a searchable database of manually and automatically detected solar features and events (e.g. sunspots, flares, coronal mass ejections). The \sunpypkg package provides an HEK search client that is highly flexible allowing multiple event types and their properties to be queried simultaneously.
-For example, it is possible to search for active regions identified by SPoCA (Spatial Possibilistic Clustering Algorithm) \citep{2014AA...561A..29V} above a user-specified size within a given time range.
+For example, it is possible to search for active regions identified by Spatial Possibilistic Clustering Algorithm \citep[SPoCA,][]{2014AA...561A..29V} above a user-specified size within a given time range.
 
 \subsubsection{Helioviewer Client}
 \label{sec:helioviewer}
