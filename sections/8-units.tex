@@ -5,7 +5,7 @@ Solar observations are composed of a physical quantity measured at a specific ti
 Specifying physical quantities and time accurately and precisely are therefore fundamental to any solar data analysis task.
 In recognition of this, two SEPs have been written to describe the problem, and each mandates a specific solution.
 
-Historically, calculations using physical quantities have been performed in software using raw numbers with no associated units.
+Historically, calculations using physical quantities have been performed in software using simple numerical values with no associated units.
 At best, the unit information might be provided in a comment or encoded in a variable name.
 However, this separation between numbers and units can lead to errors in calculation, which in some cases can have severe consequences\footnote{As an extreme example, the Mars Climate orbiter mission in 1988 failed due to a unit discrepancy \citep{mco_mishap_report}.}.
 An effort to minimize the problem of dimensional errors is described in \citet{Damevski2009}, which advocates for the solution to be provided at the software architecture layer.
@@ -15,7 +15,7 @@ These quantities can be combined in expressions with unit conversions and cancel
 Tests have shown that the performance overhead incurred by this functionality is typically minimal.
 
 SEP-0003 \citep{sep-0003} formally mandates that all user-facing functionality provided by \sunpypkg make use of \package{astropy.units}.
-All functions and objects must have their input constrained to the appropriate type of unit (e.g. length, mass) and return an error if the input is not correct.
+All functions and objects must have their input constrained to the appropriate type of unit (e.g. length, mass, energy) and return an error if the input is not correct.
 Inputs can then be provided with any appropriate units (e.g. mm, km, inches) and conversions occur automatically without user intervention.
 The \package{sunpy.sun.constants} subpackage contains many standard constants relevant to solar physics with additional information such as uncertainty and reference.
 
