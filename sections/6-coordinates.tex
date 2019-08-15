@@ -29,7 +29,7 @@ The functionality provided by the \package{sunpy.coordinates} subpackage has bee
 \end{figure}
 
 A few example applications of the \package{sunpy.coordinates} subpackage are shown in \autoref{fig:coordinates_examples}.
-The leftmost panel shows magnetic field line extrapolations projected onto a SDO/AIA 171\AA{} image of an active region.
+The leftmost panel shows magnetic field line extrapolations projected onto a SDO AIA 171\AA{} image of an active region.
 The center and rightmost panels of \autoref{fig:coordinates_examples} make use of functions in \package{sunpy.coordinates} to obtain the apparent (light-travel time-corrected) locations of solar-system bodies and overlay them on images of the Sun in solar coordinate frames.
 Support is  provided for querying ephemeris information from a few different sources, including the active ephemeris in \package{astropy.coordinates}, JPL ephemeris, and JPL HORIZONS\footnote{\url{https://ssd.jpl.nasa.gov/?horizon}}.
 
@@ -39,9 +39,9 @@ Support is  provided for querying ephemeris information from a few different sou
               \fig{figures/fig_coronagraph_starfield.pdf}{0.3\textwidth}{(c)}
               }
     \caption{Several example use cases of the coordinate machinery provided by the \package{sunpy.coordinates} subpackage.
-    (a) Magnetic field lines traced from a potential field extrapolation overlaid on an SDO/AIA 171 \AA{} observation of an active region from 2019 March 10 00:00:09 UTC.
+    (a) Magnetic field lines traced from a potential field extrapolation overlaid on an SDO AIA 171 \AA{} observation of an active region from 2019 March 10 00:00:09 UTC.
     The field extrapolation was computed with \package{pfsspy} \citep{david_stansby_2019_3237053}.
-    (b) The Venus transit as viewed by SDO/AIA in 1600 \AA. The predicted position of Venus is overplotted in the helioprojective coordinate frame of the AIA image.
-    (c) A coronagraph image of the solar corona as observed by STEREO-A COR-2. The predicted positions of stars from the Gaia DR2 catalog (shown as circles) as well as Mars (shown as a box) are overplotted in the helioprojective coordinate frame of the image.}
+    (b) The Venus transit as viewed by SDO AIA in 1600 \AA. The predicted position of Venus is overplotted in the helioprojective coordinate frame of the AIA image.
+    (c) A coronagraph image of the solar corona as observed by STEREO-A COR-2. The predicted positions of stars from the \textit{Gaia} \citep{gaia_collaboration_gaia_2016} Data Release 2 catalog \citep{gaia_collaboration_gaia_2018}, shown as circles, as well as Mars, shown as a box, are overplotted in the HPC coordinate frame of the image.}
     \label{fig:coordinates_examples}
 \end{figure}
