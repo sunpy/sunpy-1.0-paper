@@ -79,7 +79,7 @@ for i in range(len(x["set"].values)):
     result.append(len(set(a)))
 cum_authors = pd.Series(data=result, index=temp.index)
 cum_authors.plot(color="black", linestyle="-", ax=axes[1])
-axes[1].set_ylabel("Cumulative Authors")
+axes[1].set_ylabel("Cumulative Contributors")
 axes[1].set_xlabel("Year")
 axes[1].minorticks_off()
 axes[1].xaxis.set_tick_params(labelrotation=45)
@@ -118,7 +118,7 @@ axes[2].set_yticklabels([str(tick) for tick in yticks])
 axes[2].set_ylim(0.8, 100)
 axes[2].set_xlim(1, 20000)
 
-axes[2].set_ylabel("Number of Committers")
+axes[2].set_ylabel("Number of Contributors")
 axes[2].set_xlabel("Number of Commits")
 
 axes[2].set_title("")

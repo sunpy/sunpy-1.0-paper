@@ -1,9 +1,9 @@
 \subsection{Units and Time Scales}
 \label{sec:units}
 
-Solar observations are composed of a physical quantity measured at a specific time.
+Solar observations include physical quantities measured at specific times.
 Specifying physical quantities and time accurately and precisely are therefore fundamental to any solar data analysis task.
-In recognition of this, two SEPs have been written to describe the problem, and each mandates a specific solution.
+The \sunpyproj addresses this need through two SEPs that apply mandates to the \sunpypkg core package.
 
 Historically, calculations using physical quantities have been performed in software using simple numerical values with no associated units.
 At best, the unit information might be provided in a comment or encoded in a variable name.
@@ -15,17 +15,17 @@ These quantities can be combined in expressions with unit conversions and cancel
 Tests have shown that the performance overhead incurred by this functionality is typically minimal.
 
 SEP-0003 \citep{sep-0003} formally mandates that all user-facing functionality provided by \sunpypkg make use of \package{astropy.units}.
-All functions and objects must have their input constrained to the appropriate type of unit (e.g. length, mass, energy) and return an error if the input is not correct.
-Inputs can then be provided with any appropriate units (e.g. mm, km, inches) and conversions occur automatically without user intervention.
-The \package{sunpy.sun.constants} subpackage contains many standard constants relevant to solar physics with additional information such as uncertainty and reference.
+All functions and objects must have their input constrained to the appropriate type of unit (e.g., length, mass, energy) and return an error if the input is not correct.
+Inputs can then be provided with any units that match the required type (e.g., mm or inches are both valid units for length) and conversions occur automatically without user intervention.
+The \package{sunpy.sun.constants} subpackage contains many standard constants relevant to solar physics with additional information such as uncertainty and reference source.
 
-Time is another fundamental quantity that must be appropriately specified for scientific uses.
+As for time, the functionality in standard \python through the \package{datetime} subpackage is inadequate for the accurate representation of time necessary for scientific uses.
 Solar data analysis requires certain functionality to manipulate and represent times and dates.
 These requirements include support for leap seconds and the ability to represent, and convert between, specific time scales and formats.
-This goes beyond that provided by the standard \python \package{datetime} subpackage.
-For this reason, SEP-0008 \citep{sep-0008} was mandated to adopt the use of the \package{astropy.time} subpackage to represent a date or time throughout the \sunpypkg code base.
-The \package{astropy.time} subpackage provides the necessary support for time scales other than Coordinated Universal Time (UTC) (e.g. International Atomic Time or TAI), and provides functionality for representing common time formats used in solar physics (e.g. Julian day, Unix time). The \package{astropy.time} object also facilitates custom time formats and scales.
-Given that several different time formats and scales are used within solar physics, and in astrophysics alike, it is important to have such a consistent time object with the functionality to convert between different time representations.
+Given that several different time formats and scales are used within solar physics, as well as in astrophysics, it is important to have such a consistent time object with the functionality to convert between different time representations.
 This is of particular importance in comparative studies with multi-instrument observations which may use different time measurement systems.
-The further advantage of leveraging the functionality of \package{astropy.time} within \sunpypkg is motivated by the support it provides for leap seconds, light travel times, and high precision time representation.
-The use of the \package{astropy.time} object also fosters cross-disciplinary studies between solar physics and astrophysics, such as performing detailed timing comparison studies between solar and extra-solar events, and to accurately make use of ephemeris calculations.
+
+SEP-0008 \citep{sep-0008} mandates the use of the \package{astropy.time} subpackage to represent a date or time throughout the \sunpypkg code base.
+The \package{astropy.time} subpackage provides the necessary support for time scales other than Coordinated Universal Time (UTC) (e.g., International Atomic Time or TAI), and provides functionality for representing common time formats used in solar physics (e.g., Julian day, Unix time).
+The further advantage of leveraging the functionality of \package{astropy.time} within \sunpypkg is motivated by the support it provides for leap seconds, high-precision time representation, and custom time formats and scales.
+The use of the \package{astropy.time} also fosters cross-disciplinary studies between solar physics and astrophysics, such as performing detailed timing comparison studies between solar and extra-solar events, and to accurately make use of ephemeris calculations.

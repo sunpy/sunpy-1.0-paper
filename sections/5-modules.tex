@@ -3,7 +3,7 @@
 
 The \sunpypkg package provides two core data types that are designed to provide a general, standard, and consistent interface for loading and representing solar data across different instruments and missions.
 The two core data types currently supported in \sunpypkg are handled by \Timeseries and \Map, objects that support 1D temporal data and 2D image data, respectively.
-The purpose of these core classes is to standardize data structures regardless of the data source (i.e. observational data from independent instruments).
+The purpose of these core classes is to standardize data structures regardless of the data source (e.g., observational data from independent instruments).
 The classes maintain a consistent interface for accessing data attributes such as the data array itself as well as the metadata and relevant units.
 This arrangement allows for an easier workflow in the analysis of solar data observations.
 These core classes also include functionality for data manipulation and data visualization.
@@ -16,11 +16,10 @@ For example, the X-ray Sensor (XRS) instrument aboard the Geostationary Operatio
 The \Timeseries class aims to accommodate such solar time series data.
 
 \Timeseries allows users to load time series data from a variety of solar instruments with appropriate units and time scales (see \autoref{sec:units}).
- A user can create a \Timeseries object either from data files stored locally (i.e. observational datasets acquired through \Fido, see \autoref{sec:fido}), or manually from custom time series data.
+ A user can create a \Timeseries object either from data files stored locally (e.g., observational datasets acquired through \Fido, see \autoref{sec:fido}), or manually from custom time series data.
  The data array, metadata, and units data are all stored as attributes in the \Timeseries class.
 
-Functionality is also provided for the manipulation of time series.
-This capability includes the ability to add, update, truncate, re-sample, and combine data within a \Timeseries or combine multiple \Timeseries together.
+Functionality is also provided for the manipulation of time series, including: adding, updating, truncating, resampling, and combining data within a \Timeseries or combining multiple \Timeseries together.
 \Timeseries also has built-in visualization methods to allow for easy inspection.
 An example of a \Timeseries created from GOES XRS observations of a solar flare is shown in \autoref{fig:timeseries_example}.
 
@@ -31,7 +30,7 @@ An example of a \Timeseries created from GOES XRS observations of a solar flare 
     \label{fig:timeseries_example}
 \end{figure}
 
-\Timeseries currently supports the data sources listed in \autoref{tab:instruments} in addition to indices of solar activity from the National Oceanic and Atmospheric (NOAA) Space Weather Prediction Center that track the solar cycle and its predicted progression. Due to its flexible data structure, it is easy to add additional instruments and data sources to the \Timeseries object.
+\Timeseries currently supports the data sources listed in \autoref{tab:instruments} in addition to indices of solar activity from the National Oceanic and Atmospheric (NOAA) Space Weather Prediction Center that track the solar cycle and its predicted progression. Due to its flexible data structure, it is straightforward to add additional instruments and data sources to the \Timeseries object.
 
 %%%%%%%%%%%%%%%% TABLE %%%%%%%%%%%%%%%%%%%
 \begin{table}
@@ -52,7 +51,7 @@ GOES XRS & \citet{garcia94, hanser96} \\
 \hline
 SDO EUV Variability Experiment (EVE) & \citet{woods2010extreme}  \\
 \hline
-\textit{Reuven Ramaty High Energy Solar Spectroscopic Imager} (RHESSI) & \citet{lin2003reuven} \\
+\textit{Reuven Ramaty High Energy Solar Spectroscopic Imager} (RHESSI) & \citet{lin2002reuven} \\
 \hline
  & \\
 \textbf{Supported by \Map} & \textbf{Instrument reference} \\
@@ -66,7 +65,7 @@ IRIS SJI & \citet{DePontieu2014}  \\
 \hline
 PROBA2 Sun Watcher using Active Pixel System detector and Image Processing (SWAP) & \citet{seaton2013swap} \\
 \hline
-RHESSI & \citet{lin2003reuven} \\
+RHESSI & \citet{lin2002reuven} \\
 \hline
 SOHO Extreme ultraviolet Imaging Telescope (EIT) & \citet{delaboudiniere1995eit}\\
 \hline
@@ -99,14 +98,14 @@ For example, the Helioseismic and Magnetic Imager (HMI) instrument aboard the \t
 Images also require precise coordinate information in order to compare solar features observed across multiple wavelengths with different instruments.
 
 The \Map class in \sunpypkg provides a framework to contain and analyze image data.
-A \Map can be created from local files or using a url to a remote data file.
+A \Map can be created from local files or using a URL to a remote data file.
 The \Map class will automatically detect the instrument and parse the metadata to infer the coordinate system from the appropriate Flexible Image Transport System (FITS) keywords \citep{refId0, 2006A&A...449..791T}.
 Other source-specific metadata is used to determine the appropriate color table and image normalization for visualization.
 It is also possible to create a custom \Map by providing a 2D data array and metadata.
 
 Similar to \Timeseries, the \Map class contains the image data array, coordinate information, and relevant metadata as attributes.
 Visualization methods are also provided to inspect and plot solar image data.
-This visualization set includes the ability for \Map to plot the image data in a way that represents the world coordinates of the image accurately (see \autoref{sec:coords} for more on solar coordinates).
+This visualization set includes the ability for \Map to plot the image data in a way that represents the coordinates of the image accurately (see \autoref{sec:coords} for more on solar coordinates).
 This routine allows the user to plot coordinates of interest on a \Map while correctly accounting for the coordinate frame.
 Other plotting components in \Map include the ability to mask and clip the image data.
 
@@ -119,7 +118,8 @@ The \package{sunpy.physics.differential\_rotation} subpackage provides the abili
 \begin{figure}
     \centering
     \includegraphics[width=0.97\textwidth]{figures/map_example.pdf}
-    \caption{An example of a \Map visualization from observations of the 171~\AA\ wavelength channel of AIA aboard SDO.The left hand panel shows an image of the entire Sun with the flare position as given by the HEK. The right hand panel shows the cropped view in the white box of the left hand panel, focusing on an erupting flare (the same event as depicted in \autoref{fig:timeseries_example}).}
+    \caption{An example of a \Map visualization from observations of the 171~\AA\ wavelength channel of AIA aboard SDO.
+    The left panel shows an image of the entire Sun with the flare position as given by the HEK. The right panel shows the cropped view in the white box of the left hand panel, focusing on an erupting flare (the same event as depicted in \autoref{fig:timeseries_example}).}
     \label{fig:map_example}
 \end{figure}
 
@@ -130,11 +130,11 @@ This class includes the ability to co-align images from different instruments or
 \begin{figure}
     \center
     \includegraphics[width = 0.8\textwidth]{figures/fig_diff_rot_1600.pdf}
-    \caption{The effects of differential rotation.
-    Panel (a) shows the Sun as observed by SDO AIA in 1600~\AA{}.
-    A large and small sunspot group is highlighted by a red and white arrows respectively.
-    Panel (b) shows the predicted image after having been rotated two days into the future.
-    Panel (c) shows the actual observation on the day of panel (b), which compares well to the predicted image neglecting the magnetic evolution of the sunspot groups.}
+    \caption{An example of transforming a \Map to a different time, while accounting for differential rotation of the Sun.
+    Panel (a) shows the Sun as observed by SDO AIA in 1600~\AA{} on a particular day.
+    A large and small sunspot group are highlighted by a red arrow and a white arrow, respectively.
+    Panel (b) shows the observation after transforming forward in time by two days.
+    Panel (c) shows the real observation at the time of panel (b), which compares well to the transformed image, disregarding the magnetic evolution of the sunspot groups.}
     \label{fig:diff_rot}
 \end{figure}
 
