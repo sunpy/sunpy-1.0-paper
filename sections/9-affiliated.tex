@@ -22,7 +22,7 @@ The following sections provide short descriptions of the existing affiliated pac
 \label{sec:drms}
 
 The \package{drms} package provides functionality to access data hosted by the JSOC.
-Operated by Stanford, JSOC is the primary data center for SDO HMI, SDO AIA, the Michelson Doppler Imager (MDI) aboard the \textit{Solar and Heliospheric Observatory} (SOHO) instrument, and the \textit{Interface Region Imaging Spectrograph} (IRIS).
+Operated by Stanford University, JSOC is the primary data center for SDO HMI, SDO AIA, the Michelson Doppler Imager (MDI) aboard the \textit{Solar and Heliospheric Observatory} (SOHO) instrument, and the \textit{Interface Region Imaging Spectrograph} (IRIS).
 JSOC's Data Record Management System (DRMS) is based on a PostgreSQL database that contains metadata, as well as pointers to image data, for every image contained in the archive.
 The \package{drms} package enables querying the image metadata in the JSOC DRMS.
 It can also be used to submit tailored data export requests (e.g., movies and images in various formats) and download data files.
@@ -48,7 +48,7 @@ This package is planned to undergo major changes to use new tools being develope
 \label{sec:irispy}
 
 The \package{IRISPy} package provides tools to read, manipulate and visualize data from IRIS \citep{DePontieu2014}.
-IRIS is a NASA Small Explorer mission comprises two instruments: the Slit Jaw Imager (SJI) and a rastering slit spectrograph.
+IRIS is a NASA Small Explorer mission with two instruments: the Slit Jaw Imager (SJI) and a rastering slit spectrograph.
 \package{IRISPy} is currently limited to reading level 2 data for either of these instruments.
 This package provides data classes which hold data from SJI and the slit spectrograph.
 Built on top of the functionality provided by \package{ndcube} (see \autoref{sec:ndcube}), \package{IRISPy} links the main observations, metadata, uncertainties, data unit, mask, and WCS transformations and provides easy slicing of the data in any axis.
