@@ -49,7 +49,7 @@ map2.draw_limb(axes=ax3)
 # turn off ticklabels for top and middle plot
 ax1.tick_params(axis="x", labelbottom=False)
 ax2.tick_params(axis="x", labelbottom=False)
-ax2.set_ylabel("")
+ax1.set_ylabel("")
 ax3.set_ylabel("")
 # turn off y ticklabels for top and bottom plot
 # ax2.tick_params(axis="y", labelbottom=False)
