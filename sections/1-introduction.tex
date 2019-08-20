@@ -5,32 +5,35 @@ Research astrophysicists rely on software to analyze increasingly large and comp
 Scientists that study our nearest star, the Sun, are no different.
 Solar physicists rely on remote sensing data from both space- and ground-based instruments to measure the properties of our star and deduce the physical mechanisms at work.
 In the past, most solar data analysis was performed using Fortran, a general-purpose, compiled programming language designed for scientific and engineering applications.
-Several reasons motivated the solar physics community to adopt the Interactive Data Language (IDL), a commercial and closed-source programming language, in the 1980s.
-For one, IDL is a vector-oriented interpreted programming language that allows for faster, and therefore cheaper, code development compared with Fortran.
+Several reasons motivated the solar physics community to transition to the Interactive Data Language (IDL), a commercial and closed-source programming language, in the 1980s.
+For one, IDL is an interpreted programming language that enables faster code development compared to Fortran.
 Second, IDL includes many libraries that support scientific data visualization and analysis.
 Finally, the solar community benefitted from functionality developed by the astronomy community (specifically, the IDL Astronomy User's Library).
-Since then, \citep{Freeland:1998we} developed significant functionality for the solar community through a set of freely-available integrated IDL software libraries called SolarSoftWare that provide a common data analysis environment.
+Since then, significant functionality has been developed by the solar community and freely distributed as the SolarSoftWare library \citep{Freeland:1998we}.
 
-Officially founded in March of 2014, the goal of the \sunpyproj is to provide the core functionality needed for solar data analysis in \python\footnote{\url{https://www.python.org/}}, a high-level interpreted  programming language, and facilitate a new transition from IDL to bring significant and new benefits to the solar community.
+Officially founded in March of 2014, the goal of the \sunpyproj is to provide the core functionality needed for solar data analysis in \python\footnote{\url{https://www.python.org/}}, a high-level interpreted  programming language, and facilitate a new transition to bring significant and new benefits to the solar community.
 The \sunpyproj develops and maintains a community-led, free, and open-source\footnote{\url{https://opensource.org/osd}} core \python package (\sunpypkg), supports an ecosystem of affiliated packages (see \autoref{sec:affil_package}) consistent with best practices \citep{Wilson:2014cka}, and engages with the community through mailing lists, chat rooms, tutorials, summer programs, and mentorship.
 The \sunpyproj shares these goals with the Astropy Project\footnote{\url{https://www.astropy.org}}, which develops the \astropypkg core package \citep{astropy2018} for the astrophysics community.
 
-The choice of \python to develop analysis tools for the community was motivated by several different factors.
-The primary motivating factor is the rich and mature ecosystem of packages for performing scientific analysis and computation. 
-The scientific \python ecosystem is supported by foundational packages for manipulating tabular \citep[\pandas,][]{pandas} and multi-dimensional array\citep[\numpy,][]{numpy} data, general purpose scientific computing \citep[\scipy,][]{scipy}, and publication-quality 2D plotting \citep[\matplotlib,][]{matplotlib}. 
-These core packages form the backbone of hundreds of additional scientific \python packages, such as \astropypkg for functionality and tools specific to astronomy, scikit-learn for machine learning and data mining \citep{pedregosa11}, and Dask for parallel and distributed computing \citep{rocklin15}. Interoperability between all these packages enables interdisciplinary analysis across solar physics, space physics, and astrophysics as well as the greater scientific community.
+The choice of \python was motivated by several different factors.
+The scientific \python ecosystem provides a rich and mature ecosystem of packages for performing scientific analysis and computation.
+It is supported by foundational packages for manipulating tabular \citep[\pandas,][]{pandas} and multi-dimensional array\citep[\numpy,][]{numpy} data, general purpose scientific computing \citep[\scipy,][]{scipy}, and publication-quality 2D plotting \citep[\matplotlib,][]{matplotlib}\footnote{According to the The 2018 Python Developers Survey \url{https://www.jetbrains.com/research/python-developers-survey-2018/}, data analysis is the primary use for \python thanks to the broad functionality provided by these foundational packages.}
+These core packages form the backbone of hundreds of additional scientific \python packages, such as \astropypkg for functionality and tools specific to astronomy, scikit-learn for machine learning and data mining \citep{pedregosa11}, and Dask for parallel and distributed computing \citep{rocklin15}.
+Interoperability between all these packages enables interdisciplinary analysis across traditional fields of study including solar physics, space physics, and astrophysics.
 
-Several other cultural factors motivated the adoption of \python.
-The Python programming language is freely-available and open-source, meaning users are not bound by restrictive and costly proprietary licenses.
-Python is one of the most widely-used programming languages by professional software developers\footnote{According to the 2019 Stack Overflow developer survey(\url{https://insights.stackoverflow.com/survey/2019}), Python is the fourth most popular language among professional developers.} and is also now used by most universities to teach computer science \citep{guo2014}.
-Therefore, early career members of the solar physics community will likely already know Python.
-The \python ecosystem also adopted a culture of community development, which means that the entire community is welcome to openly develop functionality to either enhance existing packages like SunPy or create new ones (see Section \ref{sec:development}).
-This means one given person or institution does not control the development of scientific software.
-Finally, the open development model, along with strict version control, allows scientists to create fully reproducible results.
+The \python programming language is freely-available, meaning users are not bound by restrictive and costly proprietary licenses.
+\python is one of the most widely-used programming languages by professional software developers\footnote{According to the 2019 Stack Overflow developer survey(\url{https://insights.stackoverflow.com/survey/2019}), \python is the fourth most popular language among professional developers.} and is also now used by most universities to teach computer science \citep{guo2014}.
+Therefore, early career members of the solar physics community will likely already know how to code in \python.
 
-For all these reasons, the scientific Python ecosystem played a key role in major scientific discoveries, such as the first detection of a gravitational wave \citep{ligo_scientific_collaboration_and_virgo_collaboration_observation_2016} and the first image of a black hole \citep{collaboration_first_2019}.
-The data and code used to generate these results are openly available, allowing the entire scientific community to reproduce these results.
-Because the solar community is relatively small\footnote{For reference, out of the $\sim$9,500 members of the American Astronomy Society, approximately 500 are members of the society's Solar Physics Division.} in relation to other scientific communities, it stands to benefit immensely by utilizing the \python scientific stack to solve increasingly difficult scientific challenges and produce world-class science.
+Finally, an important cultural factor motivated the adoption of \python.
+\python and many \python packages are open-source and developed under an OSI-approved open source license.
+The \python developer community has embraced an inclusive and open development culture, which means that anyone is welcome to develop functionality to either enhance existing packages such as \sunpypkg or create new ones (see Section \ref{sec:development}).
+This means one given person or institution does not control the development of scientific \python software.
+This approach, combined with strict version control, allows scientists to create fully reproducible results.
+
+For all these reasons, the scientific \python ecosystem played a key role in recent major scientific discoveries, such as the first detection of a gravitational wave \citep{ligo_scientific_collaboration_and_virgo_collaboration_observation_2016} and the first image of a black hole \citep{collaboration_first_2019}.
+The data and code used to generate these results are openly available, allowing anyone to reproduce them.
+Because the solar community is relatively small\footnote{For reference, out of the $\sim$9,500 members of the American Astronomy Society, approximately 500 are members of the society's Solar Physics Division.} in relation to other scientific communities, it stands to benefit immensely by adopting the \python scientific stack to solve increasingly difficult scientific challenges and produce world-class science.
 
 This paper describes the first stable release (version 1.0) of the (\sunpypkg) core package.
 A previous paper describes version 0.5 \citep{Community:2015cy}.
