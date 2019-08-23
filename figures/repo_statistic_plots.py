@@ -1,6 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+
+# works for
+# python 3.6
+# pandas 0.25
+# matplotlib 3.1.1
+
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
+
 import pytz
 from git import Repo
 import shutil
@@ -14,19 +23,19 @@ fig, axes = plt.subplots(1, 3, figsize=(15, 5.0))
 
 datafile_url = os.path.join(sunpy_paper.data_dir, "loc_vs_time.csv")
 data = pd.read_csv(datafile_url, parse_dates=True, index_col=0, comment="#")
-
-x = data.index
-y1 = data["code"].values / 10000.0
-y2 = data["comment"].values / 10000.0
-
+x = pd.to_datetime(data.index, utc=True)
+y1 = data["code"].values / 1000.0
+y2 = data["comment"].values / 1000.0
 axes[0].plot(x, y1, label="code", color="black", linestyle="-")
 axes[0].plot(x, y2, label="comment", color="black", linestyle="--")
 
 axes[0].set_ylabel("Lines (thousands)")
 axes[0].set_xlabel("Year")
-axes[0].set_ylim(0, 3.5)
+axes[0].set_ylim(0, 35)
 axes[0].legend(loc=2, frameon=False)
 axes[0].minorticks_off()
+
+axes[0].grid(axis='y')
 
 axes[0].xaxis.set_tick_params(labelrotation=45)
 # add vertical lines for the releases
@@ -83,6 +92,9 @@ axes[1].set_ylabel("Cumulative Contributors")
 axes[1].set_xlabel("Year")
 axes[1].minorticks_off()
 axes[1].xaxis.set_tick_params(labelrotation=45)
+
+axes[1].grid(axis='y')
+
 
 sunpy_paper.add_releases_vs_time(axes[1])
 
