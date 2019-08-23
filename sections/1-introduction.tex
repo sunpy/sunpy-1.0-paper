@@ -17,7 +17,7 @@ The \sunpyproj has similar goals to the Astropy project\footnote{\url{https://ww
 
 The choice of \python was motivated by several different factors.
 The scientific \python ecosystem provides a rich and mature ecosystem of packages for performing scientific analysis and computation.
-It is supported by foundational packages for manipulating tabular \citep[\pandaspkg,][]{pandas} and multi-dimensional array \citep[\numpypkg,][]{numpy} data, general purpose scientific computing \citep[\scipypkg,][]{scipy}, and publication-quality 2D plotting \citep[\matplotlibpkg,][]{matplotlib}\footnote{According to the The 2018 Python Developers Survey \url{https://www.jetbrains.com/research/python-developers-survey-2018/}, data analysis is the primary use for \python thanks to the broad functionality provided by these foundational packages.}
+It is supported by foundational packages for manipulating tabular \citep[\pandaspkg,][]{pandas} and multi-dimensional array \citep[\numpypkg,][]{numpy} data, general purpose scientific computing \citep[\scipypkg,][]{scipy}, and publication-quality 2D plotting \citep[\matplotlibpkg,][]{matplotlib}\footnote{According to the The 2018 Python Developers Survey \url{https://www.jetbrains.com/research/python-developers-survey-2018/}, data analysis is the primary use for \python thanks to the broad functionality provided by these foundational packages.}.
 These core packages form the backbone of hundreds of additional scientific \python packages, such as \astropypkg for functionality and tools specific to astronomy, \package{scikit-learn} for machine learning and data mining \citep{pedregosa11}, and \package{dask} for parallel and distributed computing \citep{rocklin15}.
 Interoperability between all these packages enables interdisciplinary analysis across traditional fields of study including solar physics, space physics, and astrophysics.
 
@@ -26,16 +26,16 @@ The \python programming language is freely-available, meaning users are not boun
 Therefore, early career members of the solar physics community will likely already know how to code in \python.
 
 Finally, an important cultural factor motivated the adoption of \python.
-\python and many \python packages are open-source and developed under an OSI-approved open source license.
+\python and many \python packages are open-source and developed under open source licenses approved by the Open Source Initiative\footnote{\url{https://opensource.org/licenses}}.
 The \python developer community has embraced an inclusive and open development culture, which means that anyone is welcome to develop functionality to either enhance existing packages such as \sunpypkg or create new ones (see Section \ref{sec:development}).
 This means one given person or institution does not control the development of scientific \python software.
 This approach, combined with strict version control, allows scientists to create fully reproducible results.
 
 For all these reasons, the scientific \python ecosystem played a key role in recent major scientific discoveries, such as the first detection of a gravitational wave \citep{ligo_scientific_collaboration_and_virgo_collaboration_observation_2016} and the first image of a black hole \citep{collaboration_first_2019}.
 The data and code used to generate these results are openly available, allowing anyone to reproduce them.
-Because the solar community is relatively small\footnote{For reference, out of the $\sim$9,500 members of the American Astronomy Society, approximately 500 are members of the society's Solar Physics Division.} in relation to other scientific communities, it will benefit immensely by leveraging the \python scientific ecosystem to solve increasingly difficult scientific challenges and produce world-class science.
+Because the solar community is relatively small\footnote{For reference, out of the $\sim$9,500 members of the American Astronomy Society, approximately 500 are members of the society's Solar Physics Division.} in relation to other scientific communities, it will benefit immensely by leveraging the scientific \python ecosystem to solve increasingly difficult scientific challenges and produce world-class science.
 
 This paper describes the first stable release (version 1.0) of the \sunpypkg core package.
 A previous paper describes version 0.5 \citep{Community:2015cy}.
 This article is not meant to replace the \sunpypkg documentation but provides an overview of the organization and highlights important functionality.
-The full text of the paper, including all of the code to produce the figures, is available in a \github\, repository\footnote{\url{https://github.com/sunpy/sunpy-1.0-paper}}.
+The full text of the paper, including all of the code to produce the figures, is available in a \github repository\footnote{\url{https://github.com/sunpy/sunpy-1.0-paper}}.

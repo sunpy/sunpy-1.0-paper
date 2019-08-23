@@ -1,7 +1,7 @@
 \subsection{Data Types}
 \label{sec:data_types}
 
-The \sunpypkg package provides two core data types that are designed to provide a general, standard, and consistent interface for loading and representing solar data across different instruments and missions.
+The \sunpypkg package provides core data types that are designed to provide a general, standard, and consistent interface for loading and representing solar data across different instruments and missions.
 The two core data types currently supported in \sunpypkg are handled by \Timeseries and \Map, objects that support 1D temporal data and 2D image data, respectively.
 The purpose of these core classes is to standardize data structures regardless of the data source (e.g., observational data from independent instruments).
 The classes maintain a consistent interface for accessing data attributes such as the data array itself as well as the metadata and relevant units.
@@ -99,7 +99,7 @@ Images also require precise coordinate information in order to compare solar fea
 
 The \Map class in \sunpypkg provides a framework to contain and analyze image data.
 A \Map can be created from local files or using a URL to a remote data file.
-The \Map class will automatically detect the instrument and parse the metadata to infer the coordinate system from the appropriate Flexible Image Transport System (FITS) keywords \citep{refId0, 2006A&A...449..791T}.
+The \Map class will automatically detect supported instruments and parse the metadata to infer the coordinate system from the appropriate Flexible Image Transport System (FITS) keywords \citep{refId0, 2006A&A...449..791T}.
 Other source-specific metadata is used to determine the appropriate color table and image normalization for visualization.
 It is also possible to create a custom \Map by providing a 2D data array and metadata.
 
