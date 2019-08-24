@@ -61,7 +61,7 @@ The timeline for this paper is
 * May 1st - Second draft
 * June 1st - Third draft (good enough to be handed out at SPD meeting in Jun)
 * July 1st - Fourth draft final review
-* Submit!
+* Aug 23 - Submitted to ApJ
 
 Editing and Pull Requests
 =========================
