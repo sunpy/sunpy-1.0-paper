@@ -11,8 +11,8 @@ This section provides an overview of the \Timeseries and \Map data types.
 
 \subsubsection{\Timeseries}
 \label{sec:timeseries}
-Many observations in the field of solar physics consist of spatially-integrated measurements as a function of time.
-For example, the X-Ray Sensor (XRS) instrument aboard the Geostationary Operational Environmental Satellite (GOES), which is used as the classification standard for solar flares, continuously measures the disk-integrated X-ray flux as a function of time in two broadband channels.
+Many observations in the field of solar physics consist of spatially integrated measurements as a function of time.
+For example, the X-Ray Sensor (XRS) instrument on board the \textit{Geostationary Operational Environmental Satellite} (\textit{GOES}), which is used as the classification standard for solar flares, continuously measures the disk-integrated X-ray flux as a function of time in two broadband channels.
 The \Timeseries class aims to accommodate such solar time series data.
 
 \Timeseries allows users to load time series data from a variety of solar instruments with appropriate units and time scales (see \autoref{sec:units}).
@@ -21,12 +21,13 @@ The \Timeseries class aims to accommodate such solar time series data.
 
 Functionality is also provided for the manipulation of time series, including: adding, updating, truncating, resampling, and combining data within a \Timeseries or combining multiple \Timeseries together.
 \Timeseries also has built-in visualization methods to allow for easy inspection.
-An example of a \Timeseries created from GOES XRS observations of a solar flare is shown in \autoref{fig:timeseries_example}.
+An example of a \Timeseries created from \textit{GOES} XRS observations of a solar flare is shown in \autoref{fig:timeseries_example}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.55\textwidth]{figures/timeseries_example.pdf}
-    \caption{An example of a GOES XRS \Timeseries visualization over 24 hours. The two colors represent the two broadband channels; 1--8~\AA\ (red) and 0.5--4~\AA\ (blue).  The sharp increase in flux at 06:33 UT is a solar flare and the grey dashed line indicates the time of the peak provided by the HEK.}
+    \caption{Example of a \textit{GOES} XRS \Timeseries visualization over 24 hr. The two colors represent the two broadband channels; 1--8~\AA\ (red) and 0.5--4~\AA\ (blue).
+            The sharp increase in flux at 06:33 UT is a solar flare and the gray dashed line indicates the time of the peak provided by the HEK.}
     \label{fig:timeseries_example}
 \end{figure}
 
@@ -35,49 +36,49 @@ An example of a \Timeseries created from GOES XRS observations of a solar flare 
 %%%%%%%%%%%%%%%% TABLE %%%%%%%%%%%%%%%%%%%
 \begin{table}
 \begin{center}
-\begin{tabular}{|p{12cm}|c|c|}
-\hline
-& \\
-\textbf{Supported by \Timeseries}& \textbf{Instrument reference}\\
+\begin{tabular}{p{12cm}cc}
 \hline
 \hline
-\textit{Geostationary Operational Environmental Satellite} (GOES) X-Ray Sensor (XRS) & \citet{garcia94, hanser96} \\
+Supported by \Timeseries & Instrument reference\\
+\hline
+\textit{Geostationary Operational Environmental Satellite} (\textit{GOES}) X-Ray Sensor (XRS) & \citet{garcia94}, \citet{hanser96} \\
 \hline
 \textit{Fermi} Gamma-ray Burst Monitor (GBM) &  \citet{meegan2009fermi} \\
 \hline
-\textit{Nobeyama Radioheliograph} (NoRH) & \citet{nakajima1994nobeyama} \\
+Nobeyama Radioheliograph (NoRH) & \citet{nakajima1994nobeyama} \\
 \hline
 \textit{PRoject for Onboard Autonomy} (PROBA2) Large Yield Radiometer (LYRA) & \citet{dominique2013lyra} \\
 \hline
 \textit{Solar Dynamics Observatory} (SDO) EUV Variability Experiment (EVE) & \citet{woods2010extreme}  \\
 \hline
-\textit{Reuven Ramaty High Energy Solar Spectroscopic Imager} (RHESSI) & \citet{lin2002reuven} \\
+\textit{Reuven Ramaty High Energy Solar Spectroscopic Imager} (\textit{RHESSI}) & \citet{lin2002reuven} \\
 \hline
  & \\
-\textbf{Supported by \Map} & \textbf{Instrument reference} \\
+ \hline
+ \hline
+ Supported by \Map & Instrument reference \\
 \hline
-\hline
-\textit{COronal Solar Magnetism Observatory} (COSMO) K-coronagraph (K-Cor) & \citet{dewijn12} \\
+COronal Solar Magnetism Observatory (COSMO) K-coronagraph (K-Cor) & \citet{dewijn12} \\
 \hline
 \textit{Hinode} X-Ray Telescope (XRT) & \citet{golub2008x}  \\
 \hline
-\textit{Interface Region Imaging Spectrograph} (IRIS) Slit Jaw Imager (SJI) & \citet{DePontieu2014}  \\
+Interface Region Imaging Spectrograph (IRIS) Slit Jaw Imager (SJI) & \citet{DePontieu2014}  \\
 \hline
 PROBA2 Sun Watcher using Active Pixel System detector and Image Processing (SWAP) & \citet{seaton2013swap} \\
 \hline
-RHESSI & \citet{lin2002reuven} \\
+\textit{RHESSI} & \citet{lin2002reuven} \\
 \hline
-\textit{Solar and Heliospheric Observatory} (SOHO) Extreme ultraviolet Imaging Telescope (EIT) & \citet{delaboudiniere1995eit}\\
+\textit{Solar and Heliospheric Observatory} (\textit{SOHO}) Extreme ultraviolet Imaging Telescope (EIT) & \citet{delaboudiniere1995eit}\\
 \hline
-SOHO Large Angle Spectroscopic COronagraph (LASCO) & \citet{brueckner1995large} \\
+\textit{SOHO} Large Angle Spectroscopic COronagraph (LASCO) & \citet{brueckner1995large} \\
 \hline
-SOHO Michelson Doppler Imager (MDI) & \citet{scherrer1995solar}\\
+\textit{SOHO} Michelson Doppler Imager (MDI) & \citet{scherrer1995solar}\\
 \hline
-SDO Atmospheric Imaging Assembly (AIA) & \citet{lemen2012} \\
+\textit{SDO} Atmospheric Imaging Assembly (AIA) & \citet{lemen2012} \\
 \hline
-SDO Helioseismic and Magnetic Imager (HMI) & \citet{schou12}  \\
+\textit{SDO} Helioseismic and Magnetic Imager (HMI) & \citet{schou12}  \\
 \hline
-\textit{Solar TErrestrial RElations Observatory} (STEREO) Extreme Ultraviolet Imager (EUVI), COronagraph 1 and 2 (COR1/2) for both STEREO A and B & \citet{howard2008sun} \\
+\textit{Solar TErrestrial RElations Observatory} (\textit{STEREO}) Extreme Ultraviolet Imager (EUVI), COronagraph 1 and 2 (COR1/2) for both \textit{STEREO A} and \textit{B} & \citet{howard2008sun} \\
 \hline
 \textit{Transition Region and Coronal Explorer} (TRACE)  & \citet{handy99}  \\
 \hline
@@ -93,13 +94,13 @@ SDO Helioseismic and Magnetic Imager (HMI) & \citet{schou12}  \\
 \subsubsection{\Map}
 \label{sec:map}
 A majority of solar data is in the form of images of the Sun.
-Images of the Sun are taken in multiple wavelengths from a wide range of both space- and ground- based instruments.
-For example, the Helioseismic and Magnetic Imager (HMI) instrument aboard the \textit{Solar Dynamics Observatory} (SDO) maps the magnetic field at the photosphere across the entire solar disk every 45 seconds.
+Images of the Sun are taken in multiple wavelengths from a wide range of both space- and ground-based instruments.
+For example, the Helioseismic and Magnetic Imager (HMI) instrument on board the \textit{Solar Dynamics Observatory} (\textit{SDO}) maps the magnetic field at the photosphere across the entire solar disk every 45 s.
 Images also require precise coordinate information in order to compare solar features observed across multiple wavelengths with different instruments.
 
 The \Map class in \sunpypkg provides a framework to contain and analyze image data.
 A \Map can be created from local files or using a URL to a remote data file.
-The \Map class will automatically detect supported instruments and parse the metadata to infer the coordinate system from the appropriate Flexible Image Transport System (FITS) keywords \citep{refId0, 2006A&A...449..791T}.
+The \Map class will automatically detect supported instruments and parse the metadata to infer the coordinate system from the appropriate Flexible Image Transport System (FITS) keywords \citep{2006A&A...449..791T, refId0}.
 Other source-specific metadata is used to determine the appropriate color table and image normalization for visualization.
 It is also possible to create a custom \Map by providing a 2D data array and metadata.
 
@@ -110,29 +111,28 @@ This routine allows the user to plot coordinates of interest on a \Map while cor
 Other plotting components in \Map include the ability to mask and clip the image data.
 
 An example of a \Map using data from the Atmospheric Imaging Assembly (AIA) aboard SDO is shown in \autoref{fig:map_example}.
-The left panel shows the full field of view of AIA using the appropriate color table and scaling for the observation, and the right panel shows a cropped view highlighting a solar flare whose GOES XRS light curve is shown in \autoref{fig:timeseries_example}.
+The left panel shows the full field of view of AIA using the appropriate color table and scaling for the observation, and the right panel shows a cropped view highlighting a solar flare whose \textit{GOES} XRS light curve is shown in \autoref{fig:timeseries_example}.
 
-When analyzing the dynamics of features on the solar disk, it is important to account for variations due to the apparent rotation of the Sun, which includes solar differential rotation, a latitudinally-varying rotation rate due to the non-rigidity of the solar interior \citep[see][]{Beck2000}.
-The \package{sunpy.physics.differential\_rotation} subpackage provides
-the ability for a \Map to be transformed to earlier or future times including the effect of solar differential rotation (see \autoref{fig:diff_rot}).
+When analyzing the dynamics of features on the solar disk, it is important to account for variations due to the apparent rotation of the Sun, which includes solar differential rotation, a latitudinally varying rotation rate due to the nonrigidity of the solar interior \citep[see][]{Beck2000}.
+The \package{sunpy.physics.differential\_rotation} subpackage provides the ability for a \Map to be transformed to earlier or future times including the effect of solar differential rotation (see \autoref{fig:diff_rot}).
 
 \begin{figure}
     \centering
     \includegraphics[width=0.97\textwidth]{figures/map_example.pdf}
-    \caption{An example of a \Map visualization from observations of the 171~\AA\ wavelength channel of AIA aboard SDO.
-    The left panel shows an image of the entire Sun with the flare position as given by the HEK. The right panel shows the cropped view in the white box of the left hand panel, focusing on an erupting flare (the same event as depicted in \autoref{fig:timeseries_example}).}
+    \caption{Example of a \Map visualization from observations of the 171~\AA\ wavelength channel of AIA on board \textit{SDO}.
+    The left panel shows an image of the entire Sun with the flare position as given by the HEK. The right panel shows the cropped view in the white box of the left-hand panel, focusing on an erupting flare (the same event as depicted in \autoref{fig:timeseries_example}).}
     \label{fig:map_example}
 \end{figure}
 
 The \Map class also provides functionality to analyze multiple images, such as overlaying images from different instruments with overlapping fields of view, or to combine multiple images together in a time-ordered sequence.
-This class includes the ability to co-align images from different instruments or images taken at different times to facilitate multi-instrument studies.
+This class includes the ability to coalign images from different instruments or images taken at different times to facilitate multi-instrument studies.
 
 
 \begin{figure}
     \center
     \includegraphics[width = 0.8\textwidth]{figures/fig_diff_rot_1600.pdf}
-    \caption{An example of transforming a \Map to a different time, while accounting for differential rotation of the Sun.
-    Panel (a) shows the Sun as observed by SDO AIA in 1600~\AA{} on a particular day.
+    \caption{Example of transforming a \Map to a different time, while accounting for differential rotation of the Sun.
+    Panel (a) shows the Sun as observed by \textit{SDO} AIA in 1600~\AA{} on a particular day.
     A large and small sunspot group are highlighted by a red arrow and a white arrow, respectively.
     Panel (b) shows the observation after transforming forward in time by two days.
     Panel (c) shows the real observation at the time of panel (b), which compares well to the transformed image, disregarding the magnetic evolution of the sunspot groups.}

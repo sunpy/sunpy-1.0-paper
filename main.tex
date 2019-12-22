@@ -1,13 +1,9 @@
-\documentclass{aastex63}
+\documentclass[preprint]{aastex63}
 \usepackage[utf8]{inputenc}
 \usepackage{natbib}
 \usepackage{listings}
 \usepackage{xspace}
 \usepackage{paralist}
-
-% for notes support
-% \usepackage{geometry}
-% \geometry{right=1.5in}
 
 \newcommand{\package}[1]{\texttt{#1}\xspace}
 \newcommand{\code}[1]{\texttt{#1}\xspace}
@@ -59,11 +55,6 @@
 % Words that should not be hyphenated
 \hyphenation{NumFOCUS}
 
-% For commenting - can be deleted before submission
-%\usepackage[colorinlistoftodos]{todonotes}
-%\newcommand{\inlinecomment}[2]{\todo[inline]{#1: #2}\xspace}
-%\newcommand{\comment}[2]{\todo{#1: #2}\xspace}
-
 \begin{document}
 
 \title{The SunPy Project: Open Source Development and Status of the Version 1.0 Core Package}
@@ -73,18 +64,18 @@
 
 \input{sections/1-introduction.tex}
 \input{sections/2-project_proposals.tex}
-\input{sections/4-development.tex}
+\input{sections/3-development.tex}
 \input{sections/4-sunpy-core.tex}
-\input{sections/4a-sunpy-net.tex}
-\input{sections/5-modules.tex}
-\input{sections/6-coordinates.tex}
+\input{sections/5-sunpy-net.tex}
+\input{sections/6-modules.tex}
+\input{sections/7-coordinates.tex}
 \input{sections/8-units.tex}
-\input{sections/11-infrastructure.tex}
-\input{sections/9-affiliated.tex}
-\input{sections/3-support.tex}
-\input{sections/10-community.tex}
-\input{sections/12-future.tex}
-\input{sections/13-acknowledgements.tex}
+\input{sections/9-infrastructure.tex}
+\input{sections/10-affiliated.tex}
+\input{sections/11-support.tex}
+\input{sections/12-community.tex}
+\input{sections/13-future.tex}
+\input{sections/14-acknowledgements.tex}
 
 \bibliography{bibliography}
 

@@ -1,7 +1,9 @@
 \section{Project Organization and Enhancement Proposals}
 \label{sec:proj_org}
 
-\begin{deluxetable}{cl}
+\begin{deluxetable}{ll}
+    \tablewidth{100pt}
+    \label{tab:abbre}
     \tablecaption{Common Abbreviations and Definitions}
     \tablehead{
         \colhead{Abbreviation} &
@@ -10,7 +12,7 @@
     \startdata
     AIA & Atmospheric Imaging Assembly \\
     DRMS & Data Record Management System \\
-    GOES & \textit{Geostationary Operational Environmental Satellite} \\
+    \textit{GOES} & \textit{Geostationary Operational Environmental Satellite} \\
     HAE & Heliocentric Aries Ecliptic \\
     HCRS & Heliocentric Celestial Reference System \\
     HEEQ & Heliocentric Earth Equatorial \\
@@ -19,16 +21,16 @@
     HGS & Heliographic Stonyhurst \\
     HPC & Helioprojective Cartesian \\
     IDL & Interactive Data Language \\
-    IRIS & \textit{Interface Region Imaging Spectrograph} \\
+    IRIS & Interface Region Imaging Spectrograph \\
     JSOC & Joint Science Operations Center \\
-    LTS & Long Term Support \\
+    LTS & Long-term Support \\
     MDI & Michelson Doppler Imager \\
     NASEM & National Academies of Sciences, Engineering, and Medicine \\
     NOAA & National Oceanic and Atmospheric Administration \\
     PEP & Python Enhancement Proposal \\
-    SDO & \textit{Solar Dynamics Observatory} \\
+    \textit{SDO} & \textit{Solar Dynamics Observatory} \\
     SJI & Slit Jaw Imager \\
-    SOHO & \textit{Solar and Heliospheric Observatory} \\
+    \textit{SOHO} & \textit{Solar and Heliospheric Observatory} \\
     SEP & SunPy Enhancement Proposal \\
     UTC & Coordinated Universal Time \\
     VSO & Virtual Solar Observatory \\
@@ -42,7 +44,8 @@ It consists of a self-selected board of up to 10 members.
 An executive director, elected by the board, leads the core development team and the development of the \sunpypkg  package and supports the development of affiliated packages.
 As such, the executive director is also referred to as the lead developer.
 A deputy lead developer, a release manager, a group of subpackage maintainers, as well as other volunteers from the developer community, support the lead developer.
-Board members serve two-year terms while the lead developer serves one-year terms. No positions have term limits.
+Board members serve two-year terms while the lead developer serves a one-year term.
+No positions have term limits.
 
 The \sunpyproj is formally defined through SunPy Enhancement Proposals (SEPs), which are modeled after the Python Enhancement Proposal (PEP) process\footnote{\url{https://www.python.org/dev/peps/}}.
 All SEPs are version-controlled, citable, and publicly available\footnote{\url{https://github.com/sunpy/sunpy-SEP}}.
@@ -50,11 +53,11 @@ The first SEP \citep[SEP-0001,][]{sep-0001} defines the scope of an SEP \citep[s
 
 There are three types of SEPs:
 \begin{itemize}
-    \item \textbf{Standard}: Introduces and describes a new feature, or changes to an existing feature to \sunpypkg, and is meant to function as a high-level technical design document.
-    \item \textbf{Process}: Describes a new process in the organization, or changes to an existing process.
-    \item \textbf{Informational}: Provides information but does not introduce any new features, changes, or processes.
+    \item \textbf{Standard}: introduces and describes a new feature, or changes to an existing feature to \sunpypkg, and is meant to function as a high-level technical design document.
+    \item \textbf{Process}: describes a new process in the organization, or changes to an existing process.
+    \item \textbf{Informational}: provides information but does not introduce any new features, changes, or processes.
 \end{itemize}
 
-As of the time of writing, there are a total of 9 SEPs which have been approved by the board.
+As of the time of writing, there are a total of nine SEPs that have been approved by the board.
 Some notable SEPs have led to the formal adoption of physical units \citep[SEP-0003,][see \autoref{sec:units}]{sep-0003} and a specific scientific time class \citep[SEP-0008,][see \autoref{sec:units}]{sep-0008} throughout the code base.
 SEPs have also been used to formally define the affiliated-package program \citep[SEP-0004,][see \autoref{sec:affil_package}]{sep-0004} as well as the release schedule and versioning system \citep[SEP-0009,][see \autoref{sec:release}]{sep-0009}.

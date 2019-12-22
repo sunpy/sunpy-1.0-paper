@@ -3,7 +3,7 @@
 
 The \package{sunpy.coordinates} subpackage provides support for representing and transforming coordinates used in solar physics.
 These coordinates may represent events (e.g., flares), features on or above the Sun (e.g., magnetic loops), or the position of structures traveling throughout the heliosphere (e.g., coronal mass ejections).
-The package currently implements many of the most widely used Sun-centered coordinate frames including Helioprojective Cartesian (HPC), Heliographic Carrington (HGC), Heliographic Stonyhurst (HGS),  as well as Heliocentric Aries Ecliptic (HAE), Heliocentric Cartesian (HCC), and Heliocentric Earth Equatorial (HEEQ).
+The package currently implements many of the most widely used Sun-centered coordinate frames including Helioprojective Cartesian (HPC), Heliographic Carrington (HGC) and Heliographic Stonyhurst (HGS), as well as Heliocentric Aries Ecliptic (HAE), Heliocentric Cartesian (HCC), and Heliocentric Earth Equatorial (HEEQ).
 See \citet{2006A&A...449..791T} for more information about each of these coordinate frames.
 Additional coordinate frames will be available in future releases.
 The functionality provided in this package is built on top of and integrates with the \package{astropy.coordinates} framework \citep[see Section 3.3 of][]{astropy2018}.
@@ -15,11 +15,11 @@ The coordinates of the observer are stored in the same object as the other coord
 Since many observations of the Sun take place from or near the Earth, it is frequently an adequate approximation to use the center of the Earth as the observer position.
 
 The observer-independent coordinate frames (HAE, HEEQ, HGC, and HGS) are useful for specifying the locations of features on the Sun or objects (e.g., spacecraft) in interplanetary space.
-The commonly-used HGS frame is of particular note because it transforms in a straightforward manner to and from the Heliocentric Celestial Reference System (HCRS).
+The commonly used HGS frame is of particular note because it transforms in a straightforward manner to and from the Heliocentric Celestial Reference System (HCRS).
 This reference frame consists of the combination of two rotation angles: the time-independent angle between the Sun's rotation axis and the HCRS celestial pole \citep[see][]{2007CeMDA..98..155S} and the time-dependent angle of the Sun's central meridian (as seen from Earth) relative to the vernal equinox.
 This transformation provides the link from the frames defined in \package{sunpy.coordinates} with those defined in \package{astropy.coordinates}, allowing any solar frame to be transformed to and from celestial coordinate frames (see \autoref{fig:transform_graph}).
 The functionality provided by the \package{sunpy.coordinates} subpackage has been extensively tested and agrees with published values in the \textit{Astronomical Almanac}.
-For example, the apparent right ascension of the Sun agrees to a precision of 0.01 arcsecond.
+For example, the apparent R.A. of the Sun agrees to a precision of 0.01 arcsecond.
 
 \begin{figure}
     \centering
@@ -30,8 +30,8 @@ For example, the apparent right ascension of the Sun agrees to a precision of 0.
 \end{figure}
 
 A few example applications of the \package{sunpy.coordinates} subpackage are shown in \autoref{fig:coordinates_examples}.
-The leftmost panel shows magnetic-field-line extrapolations projected onto a SDO AIA 171~\AA{} image of an active region.
-The center and rightmost panels of \autoref{fig:coordinates_examples} make use of functions in \package{sunpy.coordinates} to obtain the apparent (light-travel time-corrected) locations of solar-system bodies and overlay them on images of the Sun in solar coordinate frames.
+The leftmost panel shows magnetic-field-line extrapolations projected onto a \textit{SDO} AIA 171~\AA{} image of an active region.
+The center and rightmost panels of \autoref{fig:coordinates_examples} make use of functions in \package{sunpy.coordinates} to obtain the apparent (light-travel time-corrected) locations of solar system bodies and overlay them on images of the Sun in solar coordinate frames.
 
 This subpackage also provides the capability to query ephemeris information from a few different sources, including the active ephemeris in \package{astropy.coordinates}, JPL ephemerides, or JPL HORIZONS\footnote{\url{https://ssd.jpl.nasa.gov/?horizons}}.
 
@@ -41,9 +41,9 @@ This subpackage also provides the capability to query ephemeris information from
               \fig{figures/fig_coronagraph_starfield.pdf}{0.3\textwidth}{(c)}
               }
     \caption{Several examples of using the coordinate machinery provided by the \package{sunpy.coordinates} subpackage.
-    (a) Magnetic field lines traced from a potential field extrapolation overlaid on an SDO AIA 171~\AA{} observation of an active region from 2019 March 10 00:00:09 UTC.
+    (a) Magnetic field lines traced from a potential field extrapolation overlaid on an \textit{SDO} AIA 171~\AA{} observation of an active region from 2019 March 10 00:00:09 UTC.
     The field extrapolation was computed with \package{pfsspy} \citep{david_stansby_2019_3237053}.
-    (b) The Venus transit as viewed by SDO AIA in 1600 \AA. The predicted position of Venus is overplotted in the coordinate frame of the AIA image.
-    (c) A coronagraph image of the solar corona as observed by STEREO-A COR-2. The predicted positions of stars from the \textit{Gaia} \citep{gaia_collaboration_gaia_2016} Data Release 2 catalog \citep{gaia_collaboration_gaia_2018}, marked by circles, as well as Mars, marked by a box, are overplotted in the coordinate frame of the image.}
+    (b) The Venus transit as viewed by \textit{SDO} AIA in 1600 \AA. The predicted position of Venus is overplotted in the coordinate frame of the AIA image.
+    (c) A coronagraph image of the solar corona as observed by \textit{STEREO-A} COR-2. The predicted positions of stars from the \textit{Gaia} \citep{gaia_collaboration_gaia_2016} Data Release 2 catalog \citep{gaia_collaboration_gaia_2018}, marked by circles, as well as Mars, marked by a box, are overplotted in the coordinate frame of the image.}
     \label{fig:coordinates_examples}
 \end{figure}

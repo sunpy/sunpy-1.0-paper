@@ -17,3 +17,5 @@ auto/**
 __pycache__
 .vscode/
 main.synctex(busy)
+.history
+__latexindent_temp.tex

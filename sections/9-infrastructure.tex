@@ -1,16 +1,16 @@
-\subsection{Release Cycle, Versioning, and Long-Term Support}
+\subsection{Release Cycle, Versioning, and Long-term Support}
 \label{sec:release}
 
 A formal release schedule for \sunpypkg has been adopted with version 1.0.
 The primary goal is to provide clarity for support of releases and to improve predictability of changes to the code base for users of \sunpypkg.
 Two releases are planned per year with 6 months between each.
 In order to align with the release cycle of \astropypkg, a major dependency for \sunpypkg, the plan is to release each May and November.
-The first release of the year will be a Long Term Support (LTS) release, which will be supported for 12 months or until the next LTS release.
+The first release of the year will be a long-term support (LTS) release, which will be supported for 12 months or until the next LTS release.
 The second release will be non-LTS and will be supported for 6 months or until the next release.
 The \sunpypkg package will follow an X.Y.z versioning system where the three components have the following meaning:
 ``X" is the LTS version number (which will be incremented with every LTS);
-``Y" is the release counter (which will be 0 for LTS releases and increment for each intermediate non-LTS release);
-and ``z" is the bug-fix counter (which will incremented for each bug-fix release).
+``Y" is the release counter (which will be 0 for LTS releases and incremented for each intermediate non-LTS release);
+and ``z" is the bug-fix counter (which will be incremented for each bug-fix release).
 
 \section{Infrastructure}
 \label{sec:infrastructure}
@@ -23,15 +23,15 @@ This section provides an overview of these tools which enable the \sunpyproj to 
 
 \sunpypkg's test suite can be broken down into three broad categories: offline, online, and figure tests.
 Offline tests are used for checking the majority of the code base.
-Online tests specifically test code that makes use of online web services (e.g., VSO, JSOC).
+Online tests specifically test codes that make use of online web services (e.g., VSO, JSOC).
 These tests depend on the availability of these online services.
 Finally, figure tests are used to ensure that code changes do not unintentionally change plots produced by \sunpypkg.
 
-While the test suite can be run manually, it is important to run the test suite in an automated fashion to maintain the integity of the package and to make it easier for new contributors to understand the impact of their changes.
+While the test suite can be run manually, it is important to run the test suite in an automated fashion to maintain the integrity of the package and to make it easier for new contributors to understand the impact of their changes.
 The \sunpyproj makes extensive use of continuous-integration services, which provide automated testing and code-change inspection.
 All proposed code contributions trigger test suites to be run on a number of free services (including
-Microsoft's Azure Pipelines\footnote{\url{https://azure.microsoft.com/en-us/services/devops/pipelines/}}, CircleCI\footnote{\url{https://circleci.com}}, and Codecov\footnote{\url{https://codecov.io}}), which integrate into \github.
-These services provide the first review of any contribution by running the test suite on each operating system (Windows, Mac, Linux), testing the documentation build, making comparison plots, and providing code-coverage metrics.
+Microsoft's Azure Pipelines,\footnote{\url{https://azure.microsoft.com/en-us/services/devops/pipelines/}} CircleCI,\footnote{\url{https://circleci.com}} and Codecov,\footnote{\url{https://codecov.io}}) which integrate into \github.
+These services provide the first review of any contribution by running the test suite on each operating system (Windows, Mac and Linux), testing the documentation build, making comparison plots, and providing code-coverage metrics.
 Additionally, Travis CI\footnote{\url{https://travis-ci.org}} is used to run the entire test suite on a daily cadence to check for any changes in behavior due to changes in packages that \sunpypkg depends on.
 
 \subsection{Documentation and Gallery}
