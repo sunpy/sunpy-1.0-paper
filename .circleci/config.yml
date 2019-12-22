@@ -37,7 +37,7 @@ jobs:
       - run:
           name: "Update URL in README.md"
           command: |
-            if [[ -z "${CIRCLE_PR_NUMBER}" ]]; then
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
               DOCS_URL="${CIRCLE_BUILD_URL}/artifacts/${CIRCLE_NODE_INDEX}/${CIRCLE_WORKING_DIRECTORY/#\~/$HOME}/main.pdf"
               sed -i '7s@.*@'"$DOCS_URL"'@' README.md
               git config user.email "None"
