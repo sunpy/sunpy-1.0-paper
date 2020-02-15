@@ -4,7 +4,7 @@ The SunPy 1.0 paper repository.
 Published Version
 =================
 
-https://iopscience.iop.org/article/10.3847/1538-4357/ab4f7a
+https://circleci.com/gh/sunpy/sunpy-1.0-paper/441/artifacts/0//root/project/main.pdf
 
 Scope of the Paper
 ==================
