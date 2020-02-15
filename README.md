@@ -1,10 +1,10 @@
 # sunpy-1.0-paper
 The SunPy 1.0 paper repository.
 
-Latest Version
-==============
+Published Version
+=================
 
-https://circleci.com/gh/sunpy/sunpy-1.0-paper/438/artifacts/0//root/project/main.pdf
+https://iopscience.iop.org/article/10.3847/1538-4357/ab4f7a
 
 Scope of the Paper
 ==================
