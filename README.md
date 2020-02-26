@@ -6,8 +6,7 @@ Published Version
 
 The paper was published in ApJ on 2020 February 12 and can be found [here](https://iopscience.iop.org/article/10.3847/1538-4357/ab4f7a).
 
-The citation is 
-“The SunPy Project: Open Source Development and Status of the Version 1.0 Core Package,” The SunPy Community et al 2020 ApJ 890 68. doi:10.3847/1538-4357/ab4f7a
+How to cite this is found [here.](https://github.com/sunpy/sunpy/blob/master/sunpy/CITATION.rst)
 
 
 Scope of the Paper
