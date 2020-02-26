@@ -4,7 +4,10 @@ The SunPy 1.0 paper repository.
 Published Version
 =================
 
-https://circleci.com/gh/sunpy/sunpy-1.0-paper/441/artifacts/0//root/project/main.pdf
+The paper was published in ApJ on 2020 February 12 and can be found [here](https://iopscience.iop.org/article/10.3847/1538-4357/ab4f7a).
+
+How to cite this is found [here.](https://github.com/sunpy/sunpy/blob/master/sunpy/CITATION.rst)
+
 
 Scope of the Paper
 ==================
