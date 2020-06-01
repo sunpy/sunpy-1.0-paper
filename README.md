@@ -8,6 +8,7 @@ The paper was published in ApJ on 2020 February 12 and can be found [here](https
 
 How to cite this is found [here.](https://github.com/sunpy/sunpy/blob/master/sunpy/CITATION.rst)
 
+Alongside this paper we submitted to [JOSS.](https://joss.theoj.org/papers/10.21105/joss.01832)
 
 Scope of the Paper
 ==================
